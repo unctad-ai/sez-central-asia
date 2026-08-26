@@ -12,7 +12,7 @@ T=[
 ('<a class="navlink" href="#nar-regional">Regional approach</a>','<a class="navlink" href="#nar-regional">Региональный подход</a>'),
 ('<a class="navlink" href="#nar-practica">Experiences</a>','<a class="navlink" href="#nar-practica">Примеры</a>'),
 ('<a class="navlink" href="#apply">Apply</a>','<a class="navlink" href="#apply">Подать заявку</a>'),
-('<span class="lang-switch" aria-label="Language"><a class="on" href="#" aria-current="page" lang="en">EN</a><span class="sep">|</span><a href="ru/" lang="ru" title="Русская версия скоро" aria-disabled="true">RU</a></span>',
+('<span class="lang-switch" aria-label="Language"><a class="on" href="#" aria-current="page" lang="en">EN</a><span class="sep">|</span><a href="ru/" lang="ru">RU</a></span>',
  '<span class="lang-switch" aria-label="Язык"><a href="../" lang="en">EN</a><span class="sep">|</span><a class="on" href="#" aria-current="page" lang="ru">RU</a></span>'),
 ('<button class="btn-print" id="btn-print" type="button">Print / PDF</button>','<button class="btn-print" id="btn-print" type="button">Печать / PDF</button>'),
 # hero
