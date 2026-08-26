@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digitalization of SEZ procedures in Central Asia</title>
+<title>Simpler, more transparent, digital zone services · Central Asia</title>
 <link rel="icon" href="assets/training-eregistrations-favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/hero-kazakhstan-video.mp4" as="video" type="video/mp4">
+<link rel="preload" href="assets/hero-central-asia.jpg" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -22,9 +22,9 @@
     --surface: #ffffff;
     --highlight: oklch(0.945 0.014 78);
     --hero-ink: oklch(0.99 0.005 80);
-    --hero-shade-1: oklch(0.2 0.01 236.03 / 0.78);
-    --hero-shade-2: oklch(0.30 0.04 70 / 0.45);
-    --hero-shade-3: oklch(0.30 0.04 70 / 0.20);
+    --hero-shade-1: oklch(0.18 0.022 238 / 0.80);
+    --hero-shade-2: oklch(0.35 0.035 238 / 0.48);
+    --hero-shade-3: oklch(0.45 0.025 238 / 0.22);
     --collab-surface: oklch(0.34 0.01 70.18);
     --collab-hairline: rgb(255 255 255 / 0.14);
   }
@@ -63,7 +63,7 @@
     display: flex;
     color: var(--hero-ink);
     overflow: hidden;
-    background: url("assets/hero-kazakhstan.jpg") center / cover no-repeat;
+    background: url("assets/hero-central-asia.jpg") center / cover no-repeat;
   }
   .hero::before {
     content: "";
@@ -71,10 +71,10 @@
     inset: 0;
     z-index: 1;
     background:
-      linear-gradient(145deg,
+      linear-gradient(110deg,
         var(--hero-shade-1) 0%,
-        var(--hero-shade-2) 45%,
-        var(--hero-shade-3) 100%);
+        var(--hero-shade-2) 40%,
+        transparent 68%);
     pointer-events: none;
   }
   .hero-video {
@@ -611,7 +611,7 @@
     .collab-band { padding: 1.25rem 0; }
   }
 
-  .hero-cta { display:inline-block; width:fit-content; align-self:flex-start; margin-top:1.4rem; background:var(--hero-ink); color:var(--accent-deep);
+  .hero-cta { display:inline-block; width:fit-content; align-self:flex-start; margin-top:1.4rem; background:#316e9b; color:var(--highlight);
     font-family:"Montserrat",system-ui,sans-serif; font-weight:700; font-size:1rem; text-decoration:none;
     padding:0.8rem 1.5rem; border-radius:999px; box-shadow:0 6px 22px rgba(0,0,0,.28); transition:transform .15s, box-shadow .15s; }
   .hero-cta:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.35); }
@@ -625,99 +625,151 @@
     padding:0.75rem 1.4rem; border-radius:999px; white-space:nowrap; transition:transform .15s, box-shadow .15s; }
   .cta-btn:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgb(0 0 0 / 0.25); }
   @media print { .hero-cta, .cta-btn { display:none; } }
+
+  /* ---------- Round 7: single-column prose layout ---------- */
+  .topnav { position: sticky; top: 0; z-index: 800; background: rgb(252 250 248 / 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .topnav .inner { display: flex; align-items: center; gap: 1.5rem; height: 3.4rem; }
+  .topnav .brand { font-family: "Montserrat", sans-serif; font-weight: 700; color: var(--accent-deep); text-decoration: none; font-size: .95rem; }
+  .topnav .brand span { color: var(--muted); font-weight: 400; }
+  .topnav .links { display: flex; gap: 1.4rem; margin-left: auto; }
+  .topnav .links a { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--fg); text-decoration: none; opacity: .85; }
+  .topnav .links a:hover { color: var(--accent-deep); opacity: 1; }
+  .nav-cta { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-deep); border: 1.5px solid var(--accent-deep); border-radius: .4rem; padding: .35rem .8rem; text-decoration: none; }
+  .nav-cta:hover { background: var(--accent-deep); color: #fff; }
+  @media (max-width: 900px) { .topnav .links { display: none; } }
+
+  .hero .hero-copy { max-width: 46rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.9rem); line-height: 1.05; }
+  .hero .audience { font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.45; }
+
+  .prose { max-width: 46rem; margin: 0 auto; padding: 0 2rem; }
+  .block { padding: 4rem 0 1.5rem; border-bottom: 1px solid var(--border); }
+  .block:last-child { border-bottom: 0; }
+  .eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: .8rem; }
+  .block h2 { font-family: "Montserrat", sans-serif; font-size: clamp(1.5rem, 2.6vw, 2.05rem); line-height: 1.2; margin: 0 0 1.4rem; letter-spacing: -.01em; }
+  .block p { font-size: 1.12rem; line-height: 1.65; margin: 0 0 1.2rem; }
+  .block p.small { font-size: .92rem; color: var(--muted); }
+  .block mark { background: var(--highlight); color: var(--accent-deep); padding: 0 .3rem; border-radius: .25rem; }
+  .qs { list-style: none; margin: 0 0 1.6rem; padding: 0; counter-reset: q; }
+  .qs li { counter-increment: q; position: relative; padding: .9rem 0 .9rem 3rem; border-top: 1px solid var(--border); font-size: 1.12rem; line-height: 1.5; }
+  .qs li:last-child { border-bottom: 1px solid var(--border); }
+  .qs li::before { content: counter(q); position: absolute; left: 0; top: .95rem; width: 2rem; height: 2rem; border-radius: 50%; background: var(--highlight); color: var(--accent-deep); font: 700 .95rem "Montserrat", sans-serif; display: grid; place-items: center; }
+  .qs strong { display: inline; }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: .6rem; padding: 1.4rem 1.6rem 1rem; margin: 1.8rem 0 1.2rem; }
+  .callout .eyebrow { margin-bottom: .6rem; }
+  .callout ul { margin: 0; padding-left: 1.2rem; }
+  .callout li { font-size: 1.02rem; line-height: 1.55; margin-bottom: .55rem; }
+  .steps { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: .9rem; }
+  .steps li { display: grid; grid-template-columns: 2.2rem 1fr; gap: .9rem; align-items: start; font-size: 1.06rem; line-height: 1.55; background: var(--surface); border: 1px solid var(--border); border-radius: .6rem; padding: 1rem 1.2rem; }
+  .steps .n { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--accent-deep); color: #fff; font: 700 1rem "Montserrat", sans-serif; display: grid; place-items: center; }
+
+  .example .example-intro { text-align: left; max-width: 46rem; margin: 0 auto 2rem; }
+  .example .section-title { text-align: left; margin-top: 0; }
+  .ex-card { background: var(--bg); border: 1px solid var(--border); border-radius: .7rem; padding: 1.3rem 1.5rem; margin: 1.5rem 0 2.2rem; }
+  .ex-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-deep); background: var(--highlight); border-radius: 999px; padding: .2rem .7rem; margin-bottom: .6rem; }
+  .ex-card h3, .ex-h3 { font-family: "Montserrat", sans-serif; font-size: 1.25rem; margin: 0 0 .5rem; }
+  .ex-card p, .ex-lead { font-size: 1.05rem; line-height: 1.6; color: var(--fg); margin: 0 0 .8rem; }
+  .example .example-action { max-width: none; margin: 0; }
+  .ex-note { max-width: 46rem; margin: 2rem auto 0; font-size: .95rem; color: var(--muted); }
+  .collab-band .section-title { margin-top: 0; }
+  @media (max-width: 760px) {
+    .screen-showcase { grid-template-columns: 1fr; }
+    .example > .inner { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .prose { padding: 0 1.25rem; }
+    .block { padding-top: 2.5rem; }
+    .cta-band { flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
 
-  <div class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-kazakhstan.jpg" aria-hidden="true">
-      <source src="assets/hero-kazakhstan-video.mp4" type="video/mp4">
-    </video>
+  <nav class="topnav" aria-label="Page sections">
+    <div class="inner">
+      <a class="brand" href="#top">SEZ <span>› Central Asia</span></a>
+      <div class="links">
+        <a href="#why">Why</a>
+        <a href="#looks">The assessment</a>
+        <a href="#follow">What could follow</a>
+        <a href="#first">One country first</a>
+        <a href="#examples">Examples</a>
+      </div>
+      <a class="nav-cta" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Apply</a>
+    </div>
+  </nav>
+
+  <div class="hero" id="top">
     <div class="inner">
       <div class="hero-copy">
-        <div class="kicker">Special economic zones and free zones · Central Asia</div>
-        <h1 id="nar-hero">Digital transformation of zones in Central Asia</h1>
-        <div class="audience">A regional needs assessment to identify priorities and possible pathways for cooperation</div>
-        <div class="partner">This page presents a proposed approach for identifying the digitalization needs of zones across the region. A short, voluntary questionnaire would help understand the current regulatory frameworks, procedures and digital systems, identify common and country-specific priorities, and provide an initial basis for exploring possible projects, partnerships and financing opportunities. The approach could start in one interested country, with the same methodology then replicated in other countries at the regional level.</div>
-        <a class="hero-cta" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Answer the questionnaire →</a>
-        <p style="margin:.8rem 0 0;font-size:.85rem;opacity:.85;">Participation in the assessment would not imply technical assistance, financing or commitment to a subsequent phase.</p>
+        <div class="kicker">Special economic zones · Central Asia</div>
+        <h1 id="nar-hero">Simpler, more transparent, digital zone services</h1>
+        <div class="audience">A needs assessment for the zones of Central Asia, proposed by the WFZO Regional Office for Central Asia with the technical support of UNCTAD and UNITAR.</div>
+        <a class="hero-cta" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Apply for the assessment →</a>
       </div>
     </div>
   </div>
 
-  <div class="inner">
-    
+  <main class="prose">
 
-    <h2 class="section-title centered" id="nar-services">A regional view</h2>
-    <p style="text-align:center;max-width:52rem;margin:0 auto 1.75rem;opacity:.9;">Countries across the region have different regulatory frameworks, institutional arrangements and levels of digitalization. Comparable information would help recognize progress, identify common needs and facilitate regional exchange.</p>
-    <div style="max-width:66rem;margin:0 auto 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.25rem;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Regulatory and institutional framework</h3>
-        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify the applicable rules, responsible institutions and current arrangements for managing zones.</p>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Procedures and services</h3>
-        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify the main procedures, requirements, steps, costs, timelines and responsible authorities.</p>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Digitalization and priorities</h3>
-        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify which services are available online, how institutional systems interact and which processes each country considers priorities for improvement.</p>
-      </div>
-    </div>
+    <section class="block" id="why">
+      <div class="eyebrow">Why this assessment</div>
+      <h2>The same investors, the same services, a different procedure in every country</h2>
+      <p>The zones of Central Asia serve the same investors and offer them the same services: land and buildings, registration, incentives, customs regimes, renewals. Each country has built its own way of delivering them, and an investor who works in several countries relearns the procedure each time. Making these procedures transparent, simple and digital is therefore more than a technical improvement. It is an instrument of investment policy, and it works best when what is done in one country can be adopted by the others.</p>
+      <p>This assessment is the first step. It documents, country by country, what is in place, what is already digital and what the country wants to improve first. Each country applies individually and receives its own report. The regional picture is built one country at a time.</p>
+      <p class="small">Voluntary. Applying creates no commitment on either side.</p>
+    </section>
 
-    <h2 class="section-title centered">Possible areas of collaboration</h2>
-    <p style="text-align:center;max-width:48rem;margin:0 auto 1.75rem;opacity:.85;">Based on the assessment, the following areas of collaboration are possible. Their inclusion does not imply that technical assistance or financing is currently available.</p>
-    <div class="services">
-      <section class="service">
-        <div class="photo" style="background-image: url('assets/service-transparencia.jpg')"></div>
-        <div class="body">
-          <div class="service-head">
-            <div class="num">01</div>
-            <h3>Transparency of procedures and requirements</h3>
-          </div>
-          <p class="lead">Documenting and publishing clearly how zone procedures are carried out.</p>
-          <ul><li>Requirements, steps, costs, timelines and legal basis.</li><li>Responsible institutions and the output of each procedure.</li><li>Information kept up to date by the competent authorities.</li></ul>
-          <div class="quote">Transparency is not only publishing legislation — it is <em>explaining clearly how it applies</em>.</div>
-        </div>
-      </section>
-      <section class="service">
-        <div class="photo" style="background-image: url('assets/service-legal-closeup.jpg')"></div>
-        <div class="body">
-          <div class="service-head">
-            <div class="num">02</div>
-            <h3>Regulatory and administrative simplification</h3>
-          </div>
-          <p class="lead">Analysing how rules and procedures relate, to identify opportunities for simplification.</p>
-          <ul><li>Detect unnecessary requirements or steps.</li><li>Clarify institutional responsibilities.</li><li>Formulate improvement options adapted to each country’s context.</li></ul>
-          <div class="quote">Simplification <em>reduces administrative burdens</em> without weakening necessary controls.</div>
-        </div>
-      </section>
-      <section class="service">
-        <div class="photo" style="background-image: url('assets/service-digital-closeup.jpg')"></div>
-        <div class="body">
-          <div class="service-head">
-            <div class="num">03</div>
-            <h3>Digitalization of services</h3>
-          </div>
-          <p class="lead">Turning previously simplified procedures into accessible, integrated digital services.</p>
-          <ul><li>Applications, authorizations, payments and renewals online.</li><li>Information exchange between institutions.</li><li>Solutions adapted to each country’s legal framework and capacities.</li></ul>
-          <div class="quote"><em>First simplify; then digitize.</em></div>
-        </div>
-      </section>
-    </div>
-    <p style="max-width:52rem;margin:2rem auto 0;font-size:.98rem;line-height:1.6;color:var(--muted);text-align:center;">Depending on the priorities identified, possible future responses could include regulatory analysis, procedure simplification, capacity development and the use of tools such as UNCTAD&rsquo;s eRegistrations and smart rules approaches. Any such activity would require a separate request, agreed scope and identified resources.</p>
-  </div>
+    <section class="block" id="looks">
+      <div class="eyebrow">What the assessment looks at</div>
+      <h2 id="nar-services">Three questions, the same in every country</h2>
+      <ol class="qs">
+        <li><strong>What is in place?</strong> Rules, responsible institutions, procedures.</li>
+        <li><strong>What is digital?</strong> Which services are available online.</li>
+        <li><strong>What are the priorities?</strong> The improvements the country wants first.</li>
+      </ol>
+      <p>The questionnaire is completed with the zone authority and validated in a short working session. The country receives its report within <mark>[x weeks]</mark>. Available in <mark>[English and Russian]</mark>.</p>
+      <div class="callout">
+        <div class="eyebrow">What the country gets</div>
+        <ul>
+          <li><strong>A national report</strong>: where the country stands on the three questions, and how it compares with the region.</li>
+          <li><strong>A place in the regional picture</strong>: results are consolidated across participating countries, in anonymised form unless the country agrees otherwise.</li>
+          <li><strong>A basis for the next step</strong>, if the country wants one.</li>
+        </ul>
+      </div>
+    </section>
 
-  <div class="example">
+    <section class="block" id="follow">
+      <div class="eyebrow">What could follow</div>
+      <h2>Transparent, then simple, then digital</h2>
+      <p>A digital zone service means an investor can go from choosing a location to launching a project without leaving the digital environment: available land and buildings, infrastructure and connection costs, incentives, registration, customs regime, all online, with one process and one verified certificate at the end. Reaching that takes three steps: make the procedures transparent, simplify them, then digitise them. Digitising a procedure nobody has simplified only makes it faster to get wrong.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><strong>Transparency.</strong> Publish each procedure from the user's point of view: steps, documents, costs, timelines, legal basis, kept up to date by the competent authority.</div></li>
+        <li><span class="n">2</span><div><strong>Simplification.</strong> Remove steps and requirements that add no control. Clarify who is responsible for what.</div></li>
+        <li><span class="n">3</span><div><strong>Digitalisation.</strong> Turn the simplified procedures into online services: applications, approvals, payments, renewals. UNCTAD's eRegistrations platform is one available tool; the country chooses what fits its law and capacity.</div></li>
+      </ol>
+    </section>
+
+    <section class="block" id="first">
+      <div class="eyebrow">One country first, then all the others</div>
+      <h2>What is done once can be adopted everywhere</h2>
+      <p>The first country does not only improve its own procedures. It produces a <strong>reference procedure</strong> for each zone service: a standard, simplified sequence of steps, documents and timelines that the other countries can adopt and adapt. What transfers is the method, the reference procedure, the service design and the tools. What stays national is the legal basis and the institutions.</p>
+      <p>Over time this gives the region what investors are asking for: the same steps wherever the zone is, while each country keeps its own policy, incentives and specialisation. Cooperation between zones starts with procedures investors can recognise from one country to the next.</p>
+    </section>
+
+  </main>
+
+  <div class="example" id="examples">
     <div class="inner">
       <div class="example-intro">
-        <h2 class="section-title" id="nar-practica">Reference experiences</h2>
-        <p style="max-width:52rem;margin:.5rem 0 1rem;font-size:.95rem;opacity:.85;">These experiences illustrate possible approaches. They are not proposed projects for Central Asia and would not be replicated without adaptation to each country&rsquo;s priorities, institutions and legal framework.</p>
-        <div style="max-width:52rem;margin:0 0 1.5rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:.8rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1rem;margin:0 0 .4rem;">Kazakhstan: transparency of procedures</h3>
-          <p style="font-size:.92rem;line-height:1.55;color:var(--muted);margin:0;">The national trade portal (tradeinfo.kz) shows how procedures can be documented from the user&rsquo;s point of view: steps, institutions, costs, timelines and legal basis.</p>
+        <div class="eyebrow">Two examples of the method</div>
+        <h2 class="section-title" id="nar-practica">What the first and the third step look like</h2>
+        <div class="ex-card">
+          <div class="ex-tag">Step 1 · Transparency</div>
+          <h3>Kazakhstan</h3>
+          <p>The national trade portal tradeinfo.kz shows procedures the way a user experiences them: steps, institutions, costs, timelines and legal basis. It is not a zone portal, but it is from the region, and the same approach applies to zone procedures.</p>
         </div>
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.1rem;margin:0 0 .5rem;">Jamaica: digitalization of zone services</h3>
+        <div class="ex-tag">Step 3 · Digitalisation</div>
+        <h3 class="ex-h3">Jamaica</h3>
+        <p class="ex-lead">Jamaica's institutional set-up is simpler than most in Central Asia. What matters here is what the investor sees at the end: one entry point, every zone on a map, one process, one certificate.</p>
         <div class="example-action">
           <p>This experience shows a concrete way to make zone services transparent, simple and digital. It is a reference, not a model to copy: any solution would have to be adapted to each country’s legal framework, institutions and priorities.</p>
         </div>
@@ -780,52 +832,24 @@
           </div>
         </div>
       </div>
+      <p class="ex-note">These are references, not proposals for Central Asia. Any solution would be adapted to each country's law, institutions and priorities.</p>
     </div>
   </div>
 
-  <div class="inner">
-    <h2 class="section-title centered" id="nar-roadmap">What could follow the assessment</h2>
-    <p style="text-align:center;max-width:46rem;margin:0 auto 1.5rem;opacity:.85;">Each subsequent step would depend on country interest, institutional agreement, available partnerships and identified resources.</p>
-    <div class="roadmap">
-      <div class="step-line"></div>
-      <div class="step">
-        <div class="step-head"><div class="num">1</div><h3>Consolidate the regional picture</h3></div>
-        <p>Review the responses and identify common needs, national priorities and existing initiatives.</p>
-      </div>
-      <div class="step">
-        <div class="step-head"><div class="num">2</div><h3>Discuss the findings</h3></div>
-        <p>Present the preliminary regional findings to participating countries and the WFZO Regional Office.</p>
-      </div>
-      <div class="step">
-        <div class="step-head"><div class="num">3</div><h3>Define possible responses</h3></div>
-        <p>Explore which needs might be addressed nationally, regionally or through knowledge exchange.</p>
-      </div>
-      <div class="step">
-        <div class="step-head"><div class="num">4</div><h3>Identify partnerships and resources</h3></div>
-        <p>Consider potential partners, cooperation mechanisms and financing opportunities for selected priorities.</p>
-      </div>
-      <div class="step">
-        <div class="step-head"><div class="num">5</div><h3>Develop separate proposals where feasible</h3></div>
-        <p>If a country requests support and resources can be identified, prepare a separate project or pilot proposal with an agreed scope.</p>
-      </div>
-    </div>
-
-  </div>
 
   <div class="collab-band">
     <div class="inner">
-      <h2 class="section-title" id="nar-collab">Help shape the next step</h2>
+      <h2 class="section-title" id="nar-collab">Be the first</h2>
       <div class="cta-band" style="margin-top:1rem;padding-top:0;border-top:0;">
         <div class="cta-txt">
-          <strong>Contribute to the regional picture</strong>
-          <span>Your experience will improve the regional picture and help identify shared challenges, progress and possible priorities.</span>
+          <strong>The first country shapes the reference the others will follow.</strong>
+          <span>Apply, receive your national report, and decide afterwards whether to go further.</span>
         </div>
-        <a class="cta-btn" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Answer the questionnaire →</a>
+        <a class="cta-btn" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Apply for the assessment →</a>
       </div>
-      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">This initiative is at an exploratory stage and entails no commitment for participants, the Regional Office or UNCTAD. Regional results would be presented in consolidated form; any individual reference would require the country’s consent.</p>
+      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">The assessment and the national report are provided by the partners. This initiative is exploratory and creates no commitment for participants or the partners. Regional results are presented in consolidated form; any reference to an individual country requires its consent.</p>
     </div>
   </div>
-
 
   <footer>
     <div class="inner">
@@ -833,8 +857,8 @@
         <img src="assets/logo-unctad-white.png" alt="UNCTAD">
         <img src="assets/logo-unitar-white.png" alt="UNITAR">
       </div>
-      <p class="org">An initiative of the WFZO Regional Office for Central Asia · with the technical support of UNCTAD and UNITAR — Digital Government Program</p>
-      <p style="font-size:.72rem;opacity:.65;max-width:70rem;margin:.8rem auto 0;line-height:1.5;">This page is a basis for discussion and an invitation to express interest. It does not constitute a commitment by UNCTAD or any United Nations entity; any technical assistance would be subject to applicable mandates, availability of resources and subsequent formal agreements. The designations employed do not imply any judgement concerning the legal status of any country or territory.</p>
+      <p class="org">An initiative of the WFZO Regional Office for Central Asia, with the technical support of UNCTAD and UNITAR, Digital Government Programme</p>
+      <p style="font-size:.72rem;opacity:.65;max-width:70rem;margin:.8rem auto 0;line-height:1.5;">This page is a basis for discussion and an invitation to express interest. It does not constitute a commitment by UNCTAD or any United Nations entity. Further technical assistance is subject to mandates, resources and formal agreements. The designations employed do not imply any judgement concerning the legal status of any country or territory.</p>
     </div>
   </footer>
 
@@ -957,14 +981,14 @@
 </div>
 <aside id="md-panel" aria-hidden="true">
   <div class="h"><span class="pic2" style="background-image:url('assets/madina.jpg');background-size:cover;background-position:50% 12%;color:transparent">M</span><div><b>Madina</b><small>Assistant · SEZ Central Asia · UNCTAD + WFZO</small></div><button class="x" id="md-x" aria-label="Close">&times;</button></div>
-  <div id="md-msgs"><div class="b ai">Hello, I'm Madina. This page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region and possible pathways for cooperation. Shall I explain what it would look at, how it would work, or what could follow?</div></div>
-  <div id="md-sug"><button>What is this proposal?</button><button>What can UNCTAD bring?</button><button>What was done in Jamaica?</button><button>What is the roadmap?</button></div>
+  <div id="md-msgs"><div class="b ai">Hello, I'm Madina. This page proposes an assessment of zone procedures, one country at a time, so that what is made simple and digital in one country can be adopted by the others. I can explain what the assessment looks at, what Jamaica did, or how a country applies.</div></div>
+  <div id="md-sug"><button>What does the assessment involve?</button><button>What does my country get?</button><button>What was done in Jamaica?</button><button>How do we apply?</button></div>
   <div id="md-foot"><div class="row"><input id="md-text" placeholder="Type your question…" autocomplete="off"><button class="act" id="md-send">Send</button></div><button class="act" id="md-talk">🎤 Talk to Madina</button></div>
 </aside>
 <script src="https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js"></script>
 <script>
 (function(){
-  var AGENT="agent_1401kxnpzt5sfv09q3h9w6xdxtgm", GREET="Hello, I'm Madina. This page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region and possible pathways for cooperation. Shall I explain what it would look at, how it would work, or what could follow?";
+  var AGENT="agent_1401kxnpzt5sfv09q3h9w6xdxtgm", GREET="Hello, I'm Madina. This page proposes an assessment of zone procedures, one country at a time, so that what is made simple and digital in one country can be adopted by the others. I can explain what the assessment looks at, what Jamaica did, or how a country applies.";
   var $=function(i){return document.getElementById(i);}, session=null, mode=null;
   function add(t,w){var d=document.createElement('div');d.className='b '+w;d.textContent=t;var m=$('md-msgs');m.appendChild(d);m.scrollTop=m.scrollHeight;}
   function stat(t){var s=document.querySelector('#md-msgs .st');if(!s){s=document.createElement('div');s.className='st';$('md-msgs').appendChild(s);}s.textContent=t;}
@@ -1022,11 +1046,10 @@
 <script>
 (function(){
   var SEGS=[
-    {block:"nar-hero", audio:"assets/madina-audio/seg1.mp3", text:"Hello, I'm Madina. Following discussions between the WFZO Regional Office for Central Asia and UNCTAD, this page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region, and possible pathways for cooperation. Let me explain it in a minute."},
-    {block:"nar-services", audio:"assets/madina-audio/seg2.mp3", text:"Countries across the region have different regulatory frameworks, institutions and levels of digitalization. The questionnaire would help identify three things: the applicable rules and responsible institutions; the main procedures, with their steps, costs and timelines; and which services are already online — and what each country considers a priority for improvement."},
-    {block:"nar-practica", audio:"assets/madina-audio/seg3.mp3", cycleTabs:true, text:"Some reference experiences. Kazakhstan's trade portal shows how procedures can be documented from the user's point of view. And Jamaica shows zone services fully digitalized: each zone on an interactive map, and the registration completed online, with a digital certificate at the end. These illustrate possible approaches — not proposed projects for Central Asia."},
-    {block:"nar-roadmap", audio:"assets/madina-audio/seg4.mp3", text:"What could follow the assessment? First, consolidate the regional picture and discuss the findings with the countries and the Regional Office. Then, define possible responses and identify partnerships and resources. And where a country requests support and resources are identified, a separate proposal could be prepared. Each step would depend on country interest, agreements and resources."},
-    {block:"nar-collab", audio:"assets/madina-audio/seg5.mp3", text:"This assessment is exploratory. Answering the questionnaire takes a few minutes and helps build the regional picture: recognizing progress, and identifying common needs and priorities. If you have any questions, I'm here to help."}
+    {block:"nar-hero", audio:"assets/madina-audio/seg1.mp3", text:"Hello, I'm Madina. The WFZO Regional Office for Central Asia, with UNCTAD and UNITAR, proposes a needs assessment of zone procedures, one country at a time, so that what is made simple and digital in one country can be adopted by the others. Let me explain it in a minute."},
+    {block:"nar-services", audio:"assets/madina-audio/seg2.mp3", text:"The assessment asks three questions, the same in every country: what is in place, which rules, institutions and procedures; what is already digital; and what the country wants to improve first. It is completed with the zone authority, and the country receives its own report."},
+    {block:"nar-practica", audio:"assets/madina-audio/seg3.mp3", cycleTabs:true, text:"Two examples of the method. Kazakhstan's trade portal shows procedures documented from the user's point of view, the first step, transparency. And Jamaica shows the third step, digitalisation: every zone on an interactive map, the registration completed online, and a digital certificate at the end. These are references, not proposals for Central Asia."},
+    {block:"nar-collab", audio:"assets/madina-audio/seg5.mp3", text:"The first country shapes the reference the others will follow. Applying creates no commitment. If you have any questions, I'm here to help."}
   ];
   var $=function(i){return document.getElementById(i);};
   var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null;
