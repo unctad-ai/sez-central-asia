@@ -968,57 +968,6 @@
     </div>
   </div>
 
-  <style>
-    .yb-band{background:oklch(0.965 0.012 78);border-bottom:1px solid rgba(50,35,15,.08);}
-    .yb-band .inner{display:flex;align-items:center;gap:1.1rem;padding:1.05rem 0;flex-wrap:wrap;}
-    .yb-pic{flex:0 0 auto;width:76px;height:76px;border-radius:50%;border:3px solid var(--brand-blue,#3b84b9);
-      background-image:url('../assets/yerbol.jpg');background-size:150%;background-position:50% 22%;cursor:pointer;padding:0;}
-    .yb-who{flex:1 1 16rem;min-width:0;}
-    .yb-who b{font-family:"Montserrat",system-ui,sans-serif;font-size:1.02rem;display:block;}
-    .yb-who small{display:block;font-size:.82rem;opacity:.8;line-height:1.35;margin-top:2px;}
-    .yb-play{flex:0 0 auto;display:inline-flex;align-items:center;gap:.55rem;border:1.5px solid var(--brand-blue,#3b84b9);
-      background:#fff;color:var(--brand-blue,#3b84b9);border-radius:999px;padding:.55rem 1.05rem;cursor:pointer;
-      font:600 .9rem "Source Sans 3",system-ui,sans-serif;}
-    .yb-play .ico{font-size:.8rem;}
-    .yb-play.on{background:var(--brand-blue,#3b84b9);color:#fff;}
-    .yb-time{font-variant-numeric:tabular-nums;font-size:.8rem;opacity:.75;}
-    @media (max-width:600px){.yb-band .inner{gap:.8rem;}.yb-who small{font-size:.76rem;}}
-    @media print{.yb-band{display:none!important;}}
-  </style>
-  <div class="yb-band">
-    <div class="inner">
-      <button class="yb-pic" id="yb-pic" aria-label="Прослушать выступление Ербола Бухарбаева"></button>
-      <div class="yb-who">
-        <b>Ербол Бухарбаев</b>
-        <small>Руководитель Регионального офиса по Центральной Азии, Всемирная организация свободных зон (World FZO) &middot; Выступление на Международном инвестиционном форуме по цифровизации свободных экономических зон, Таджикистан, август 2026</small>
-      </div>
-      <button class="yb-play" id="yb-play"><span class="ico" id="yb-ico">&#9654;</span><span id="yb-label">Слушать выступление</span><span class="yb-time" id="yb-time">8:13</span></button>
-    </div>
-  </div>
-  <audio id="yb-audio" preload="none" src="../assets/yerbol-audio/yerbol-ru.mp3"></audio>
-  <script>
-  (function(){
-    var a=document.getElementById('yb-audio'),p=document.getElementById('yb-play'),
-        ico=document.getElementById('yb-ico'),tm=document.getElementById('yb-time'),
-        pic=document.getElementById('yb-pic'),total="8:13";
-    function fmt(s){s=Math.floor(s);return Math.floor(s/60)+":"+("0"+s%60).slice(-2);}
-    function toggle(){
-      if(a.paused){
-        var g=document.getElementById('mdn-x'),bar=document.getElementById('md-bar');
-        if(bar&&bar.classList.contains('on')&&g&&g.onclick)g.onclick();
-        var m=document.getElementById('mdn-audio'); if(m){try{m.pause();}catch(e){}}
-        a.play();
-      } else a.pause();
-    }
-    p.onclick=toggle; pic.onclick=toggle;
-    a.addEventListener('play',function(){p.classList.add('on');ico.innerHTML='&#10074;&#10074;';});
-    a.addEventListener('pause',function(){p.classList.remove('on');ico.innerHTML='&#9654;';});
-    a.addEventListener('timeupdate',function(){tm.textContent=fmt(a.currentTime)+" / "+total;});
-    a.addEventListener('ended',function(){tm.textContent=total;});
-    var g=document.getElementById('md-guide');
-    if(g)g.addEventListener('click',function(){try{a.pause();}catch(e){}});
-  })();
-  </script>
 
   <div class="inner">
     <section class="scope-section" aria-labelledby="scope-title" id="why">
@@ -1026,6 +975,62 @@
         <p class="scope-eyebrow">Зачем нужна оценка</p>
         <h2 class="scope-title" id="scope-title">В каждой стране своя процедура для одной и той же услуги</h2>
         <p class="scope-aside">Оценка — первый шаг. Она фиксирует, страна за страной, что уже есть, что уже переведено в цифру и что страна хочет улучшить в первую очередь. Каждая страна подаёт заявку самостоятельно и получает собственный отчёт. Региональная картина складывается по одной стране за раз.</p>
+        <style>
+          .yb-card{position:relative;margin-top:1.6rem;background:#fff;border:1px solid rgba(50,35,15,.1);
+            border-radius:16px;box-shadow:0 12px 30px rgba(30,53,72,.12);padding:1.15rem 1.25rem;
+            display:flex;gap:1rem;align-items:flex-end;overflow:hidden;}
+          .yb-photo{flex:0 0 118px;align-self:center;}
+          .yb-photo img{display:block;width:118px;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(30,53,72,.2);}
+          .yb-body{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.5rem;padding:.1rem 0 .15rem;}
+          .yb-eyebrow{font:600 .66rem "Montserrat",system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;
+            color:var(--brand-blue,#3b84b9);}
+          .yb-quote{font-family:"Montserrat",system-ui,sans-serif;font-weight:500;font-size:.94rem;line-height:1.45;
+            color:#26201a;margin:0;text-wrap:balance;}
+          .yb-who b{font-size:.85rem;font-family:"Montserrat",system-ui,sans-serif;display:block;}
+          .yb-who small{display:block;font-size:.73rem;opacity:.75;line-height:1.3;}
+          .yb-play{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--brand-blue,#3b84b9);
+            background:#fff;color:var(--brand-blue,#3b84b9);border-radius:999px;padding:.42rem .9rem;cursor:pointer;
+            font:600 .82rem "Source Sans 3",system-ui,sans-serif;margin-top:.15rem;}
+          .yb-play .ico{font-size:.72rem;}
+          .yb-play.on{background:var(--brand-blue,#3b84b9);color:#fff;}
+          .yb-time{font-variant-numeric:tabular-nums;font-size:.75rem;opacity:.75;}
+          @media (max-width:600px){.yb-photo{flex-basis:96px;}.yb-photo img{width:96px;}}
+          @media print{.yb-card{display:none!important;}}
+        </style>
+        <div class="yb-card">
+          <div class="yb-photo"><img src="../assets/yerbol-card-duo-white.jpg" alt="Ербол Бухарбаев"></div>
+          <div class="yb-body">
+            <div class="yb-eyebrow">Вступительное слово &middot; Инвестиционный форум, Таджикистан &middot; 2026</div>
+            <p class="yb-quote">&laquo;Наша цель &mdash; создать так, чтобы, приходя в Центральную Азию, инвестор видел единый, понятный, цифровой и конкурентоспособный инвестиционный регион&raquo;.</p>
+            <div class="yb-who"><b>Ербол Бухарбаев</b><small>Руководитель Регионального офиса по Центральной Азии, Всемирная организация свободных зон (World FZO)</small></div>
+            <button class="yb-play" id="yb-play"><span class="ico" id="yb-ico">&#9654;</span><span id="yb-label">Слушать выступление</span><span class="yb-time" id="yb-time">8:13</span></button>
+          </div>
+        </div>
+        <audio id="yb-audio" preload="none" src="../assets/yerbol-audio/yerbol-ru.mp3"></audio>
+        <script>
+        (function(){
+          var a=document.getElementById('yb-audio'),p=document.getElementById('yb-play'),
+              ico=document.getElementById('yb-ico'),tm=document.getElementById('yb-time'),total="8:13";
+          function fmt(s){s=Math.floor(s);return Math.floor(s/60)+":"+("0"+s%60).slice(-2);}
+          p.onclick=function(){
+            if(a.paused){
+              var g=document.getElementById('mdn-x'),bar=document.getElementById('md-bar');
+              if(bar&&bar.classList.contains('on')&&g&&g.onclick)g.onclick();
+              var m=document.getElementById('mdn-audio'); if(m){try{m.pause();}catch(e){}}
+              a.play();
+            } else a.pause();
+          };
+          a.addEventListener('play',function(){p.classList.add('on');ico.innerHTML='&#10074;&#10074;';});
+          a.addEventListener('pause',function(){p.classList.remove('on');ico.innerHTML='&#9654;';});
+          a.addEventListener('timeupdate',function(){tm.textContent=fmt(a.currentTime)+" / "+total;});
+          a.addEventListener('ended',function(){tm.textContent=total;});
+          window.addEventListener('load',function(){
+            var g=document.getElementById('md-guide');
+            if(g)g.addEventListener('click',function(){try{a.pause();}catch(e){}});
+          });
+        })();
+        </script>
+
       </div>
       <p class="scope-copy">Зоны Центральной Азии работают с одними и теми же инвесторами и предлагают им одни и те же услуги: земля и здания, регистрация, льготы, таможенные режимы, продление. Каждая страна выстроила свой порядок их предоставления, и инвестор, работающий в нескольких странах, каждый раз осваивает процедуру заново. Сделать эти процедуры прозрачными, простыми и цифровыми — значит не просто улучшить технику. Это инструмент инвестиционной политики, и он работает лучше всего, когда сделанное в одной стране могут перенять другие.</p>
     </section>
