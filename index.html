@@ -898,7 +898,7 @@
     .scope-section { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8mm !important; break-inside: avoid; }
     .scope-copy { margin-top: 0 !important; font-size: 10pt !important; }
     .scope-title { font-size: 20pt !important; }
-    .regional-pillars { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 6mm !important; margin-top: 6mm !important; }
+    .regional-pillars { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 6mm !important; margin-top: 6mm !important; }
     .regional-view, .collaboration-header, .reference-gateway, .jamaica-intro, footer { break-inside: avoid; }
     .collaboration-header, .example-eyebrow, .example-title, .example-lead, .regional-eyebrow, .regional-title, .scope-eyebrow, .scope-title { break-after: avoid; }
     .collaboration-title, .example-title, .regional-title { font-size: 20pt !important; }
@@ -985,7 +985,7 @@
 
     <section class="regional-view" aria-labelledby="nar-services" id="assessment">
       <p class="regional-eyebrow">What the assessment covers</p>
-      <h2 class="regional-title" id="nar-services">Three questions</h2>
+      <h2 class="regional-title" id="nar-services">Four parts</h2>
       <div class="regional-pillars">
         <article class="regional-pillar">
           <div class="regional-icon" aria-hidden="true"><i data-lucide="landmark"></i></div>
@@ -1001,6 +1001,11 @@
           <div class="regional-icon" aria-hidden="true"><i data-lucide="loader"></i></div>
           <h3>What is underway?</h3>
           <p>Reforms, initiatives and partners already at work, to build on and never duplicate.</p>
+        </article>
+        <article class="regional-pillar">
+          <div class="regional-icon" aria-hidden="true"><i data-lucide="message-square"></i></div>
+          <h3>In your words</h3>
+          <p>Anything the boxes could not carry: context, priorities, ideas.</p>
         </article>
       </div>
     </section>
@@ -1134,7 +1139,7 @@
       <div class="cta-band" style="margin-top:1rem;padding-top:0;border-top:0;">
         <div class="cta-txt">
           <strong>Any country can start.</strong>
-          <span>Apply, receive your national report, and decide afterwards whether to go further.</span>
+          <span>Answer the questionnaire, and decide afterwards whether to go further.</span>
         </div>
         <a class="cta-btn" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Answer the questionnaire →</a>
       </div>
@@ -1307,7 +1312,7 @@
 <aside id="md-panel" aria-hidden="true">
   <div class="h"><span class="pic2" style="background-image:url('assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;color:transparent">M</span><div><b>Gulnura</b><small>Assistant · SEZ Central Asia · UNCTAD + WFZO</small></div><button class="x" id="md-x" aria-label="Close">&times;</button></div>
   <div id="md-msgs"><div class="b ai">Hello, I'm Gulnura. This page proposes an assessment of zone procedures, one country at a time, so that what is made simple and digital in one country can be adopted by the others. I can explain what the assessment looks at, what Jamaica did, or how a country applies.</div></div>
-  <div id="md-sug"><button>What does the assessment involve?</button><button>What does my country get?</button><button>What was done in Jamaica?</button><button>How do we apply?</button></div>
+  <div id="md-sug"><button>What does the assessment involve?</button><button>What does my country get?</button><button>What was done in Jamaica?</button><button>How do we take part?</button></div>
   <div id="md-foot"><div class="row"><input id="md-text" placeholder="Type your question…" autocomplete="off"><button class="act" id="md-send">Send</button></div><button class="act" id="md-talk">🎤 Talk to Gulnura</button></div>
 </aside>
 <script>
@@ -1386,7 +1391,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     {block:"why", audio:"assets/gulnura-audio/seg2.mp3", text:"Why do an assessment? The zones of Central Asia serve the same investors and offer them the same services, yet every country has its own procedure, and an investor who works in several countries relearns it each time. Making these procedures transparent, simple and digital is an instrument of investment policy. The assessment is the first step. Each country applies individually and receives its own report; the regional picture is built one country at a time."},
     {block:"nar-services", audio:"assets/gulnura-audio/seg3.mp3", text:"The assessment asks three questions, the same in every country. What is in place: rules, responsible institutions, procedures. What is digital: which services are available online. And what are the priorities: the improvements the country wants first."},
     {block:"after", audio:"assets/gulnura-audio/seg4.mp3", text:"After the assessment come three steps, in this order. Transparency: publish each procedure from the user's point of view. Simplification: remove steps and requirements that add no control. Digitalisation: turn the simplified procedures into online services. Digitising a procedure nobody has simplified only makes it faster to get wrong."},
-    {block:"nar-regional", audio:"assets/gulnura-audio/seg5.mp3", text:"The regional approach: start in one country, extend to the region. The first country produces a reference procedure for each zone service, which the other countries can adopt and adapt. The method, the procedures and the tools transfer. The legal basis and the institutions stay national."},
+    {block:"after", audio:"assets/gulnura-audio/seg5.mp3", text:"The regional approach: start in one country, extend to the region. The first country produces a reference procedure for each zone service, which the other countries can adopt and adapt. The method, the procedures and the tools transfer. The legal basis and the institutions stay national."},
     {block:"nar-practica", audio:"assets/gulnura-audio/seg6.mp3", cycleTabs:true, text:"Two reference experiences. The Central Asia Gateway shows trade procedures documented from the user's point of view for the five countries of the region; the same regional approach can be applied to zone procedures. And Jamaica shows digitalised zone services: every zone on an interactive map, the registration completed online, and a digital certificate at the end."},
     {block:"nar-collab", audio:"assets/gulnura-audio/seg7.mp3", text:"Any country can start. Applying is voluntary and creates no commitment. If you have any questions, I'm here to help."},
   ];
