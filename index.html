@@ -1124,7 +1124,7 @@
   </div>
 
   <div class="example" id="nar-practica">
-    <div class="inner">
+    <div class="inner" id="nar-practica-frame">
       <div class="example-intro">
         <p class="example-eyebrow">In practice</p>
         <h2 class="example-title">Working examples</h2>
@@ -1145,7 +1145,7 @@
         <div class="shots">
           <div class="screen-showcase" aria-label="Jamaica SEZ digital service screens">
             <div class="reference-rail">
-              <div class="jamaica-intro">
+              <div class="jamaica-intro" id="jamaica-example">
                 <span class="reference-country-label">Jamaica</span>
                 <h3>Digitalisation of zone services</h3>
                 <p>Jamaica's institutional set-up differs from those across Central Asia. What matters here is what the investor sees at the end: one entry point, every zone on a map, one process, one certificate.</p>
@@ -1428,6 +1428,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   .mdn-head b{font-family:"Montserrat",sans-serif;font-size:.95rem;} .mdn-head small{display:block;opacity:.85;font-size:.72rem;margin-top:2px;}
   .mdn-x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:1.3rem;cursor:pointer;}
   .mdn-cap{padding:.9rem 1rem;font-size:.98rem;line-height:1.5;min-height:4.6em;}
+  .mdn-cap-x{display:none;}
   .mdn-ctrls{display:flex;align-items:center;gap:.5rem;padding:.2rem .85rem .85rem;}
   .mdn-btn{background:oklch(0.945 0.014 78);border:1px solid #e8ddcb;color:var(--brand-blue,#3b84b9);border-radius:50%;width:2.3rem;height:2.3rem;cursor:pointer;display:grid;place-items:center;}
   .mdn-play{background:var(--brand-blue,#3b84b9);border-color:var(--brand-blue,#3b84b9);color:#fff;width:2.7rem;height:2.7rem;font-size:1.1rem;}
@@ -1466,9 +1467,9 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     left:-1.5rem;
     right:-1.5rem;
   }
-  #nar-practica.mdn-flash::before{
-    top:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
-    bottom:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+  #nar-practica-frame.mdn-flash::before{
+    top:-1.5rem;
+    bottom:-1.5rem;
     left:calc(2rem - 1.5rem);
     right:calc(2rem - 1.5rem);
   }
@@ -1476,6 +1477,9 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
 </style>
 <aside id="md-bar" aria-live="polite">
   <div class="mdn-head"><span class="avatar"></span><div><b>Gulnura</b><small>walks you through the proposal</small></div><button class="mdn-x" id="mdn-x" aria-label="Close">×</button></div>
+  <button type="button" class="mdn-cap-x" id="gn-cap-x" aria-label="Hide narration text">
+    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
   <div class="mdn-cap" id="mdn-cap"></div>
   <div class="mdn-ctrls">
     <button class="mdn-btn" id="mdn-prev" aria-label="Previous">⏮</button>
@@ -1498,6 +1502,9 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
 <!-- the two controls shown only while the tour is on (mdn-play/prev/next/dots
      are hidden for the duration, see CSS section): Pause/Continue and Stop -->
 <div id="gn-controls">
+  <button type="button" id="gn-text" class="gn-btn" aria-label="Hide narration text" data-label="Text">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h11M4 17h13"/></svg>
+  </button>
   <button type="button" id="gn-pause" class="gn-btn" aria-label="Pause" data-label="Pause">
     <svg class="gn-ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
     <svg class="gn-ic-resume" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
@@ -1539,7 +1546,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
      the caption text only, beside her ---- */
   body.gl-on .mdn-head{display:none;}
   body.gl-on #md-bar{
-    width:258px;right:calc(24px + var(--gl-w) + 8px);
+    width:258px;right:calc(24px + var(--gl-w));
     bottom:calc(var(--gl-w) * 0.32);
     background:linear-gradient(150deg, rgb(255 255 255 / 0.74), rgb(255 255 255 / 0.66));
     border:1px solid rgb(255 255 255 / 0.72);border-radius:20px;
@@ -1552,7 +1559,16 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   }
   @keyframes gnCardRise{from{opacity:0;transform:translateY(14px) scale(.75)}to{opacity:1;transform:scale(.75)}}
   body.gl-on #md-bar::after{content:none;}
-  body.gl-on .mdn-cap{padding:1.1rem 1.2rem;min-height:0;color:#26201a;}
+  body.gl-on.gn-caption-hidden #md-bar{display:none;}
+  body.gl-on .mdn-cap{padding:1.1rem 2.5rem 1.1rem 1.2rem;min-height:0;color:#26201a;}
+  body.gl-on .mdn-cap-x{
+    display:grid;place-items:center;position:absolute;top:10px;right:10px;z-index:1;
+    width:24px;height:24px;border:0;border-radius:50%;padding:0;cursor:pointer;
+    color:#2e2e2e;background:rgb(255 255 255 / 0.55);
+    transition:background .15s,transform .15s;
+  }
+  body.gl-on .mdn-cap-x:hover{background:rgb(255 255 255 / 0.82);transform:translateY(-1px);}
+  .mdn-cap-x svg{width:14px;height:14px;display:block;}
 
   /* ---- the old nav row (prev/play/next/dots) steps aside for the whole
      tour, video or audio fallback alike, replaced by the two controls below ---- */
@@ -1562,7 +1578,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   :root{--gl-w:min(160px,17vw);}
   #gn-controls{
     position:fixed;z-index:9003;display:none;flex-direction:row;gap:10px;
-    right:calc(24px + (var(--gl-w) - 90px) / 2);
+    right:calc(24px + (var(--gl-w) - 140px) / 2);
     bottom:calc(var(--gl-w) * 1.12 + 4px);
   }
   body.gn-tour-on #gn-controls{display:flex;}
@@ -1595,7 +1611,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     #gl-video,#gl-video-b,#gn-poster{
       width:var(--gl-w);right:10px;bottom:0;
     }
-    #gn-controls{right:calc(10px + (var(--gl-w) - 90px) / 2);bottom:calc(var(--gl-w) * 1.2 + 4px);}
+    #gn-controls{right:10px;bottom:calc(var(--gl-w) * 1.2 + 4px);}
     body.gl-on #md-bar{
       right:auto;left:10px;bottom:12px;
       width:calc(100vw - min(104px,27vw) - 44px);max-width:230px;
@@ -1620,11 +1636,11 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     {block:"assessment", video:"assets/gulnura-bust/seg3", say:"The questionnaire asks three things, the same for every country: what exists today, what you want to achieve, and what is underway. A final open box lets you add anything else in your own words.", audio:"assets/gulnura-audio/seg3.mp3?v=2708b", text:"The assessment asks three questions, the same in every country. What is in place, what is digital, and what are the priorities."},
     {block:"after", video:"assets/gulnura-bust/seg4", say:"After the assessment, a country could consider four areas of possible work: transparency, simplification, digitalisation and better regulations. Where digitalisation is chosen, the useful order is: document a procedure, simplify it, then put it online.", audio:"assets/gulnura-audio/seg4.mp3?v=2708b", text:"After the assessment come three steps in order: transparency, simplification, then digitalisation. Digitising a procedure nobody has simplified only makes it faster to get wrong."},
     {block:"after", video:"assets/gulnura-bust/seg5", say:"Cooperation could begin with the priorities identified by one country and later inform regional discussion. A documented procedure, method or tool from one country could offer a reference for others to consider and adapt. Each country's legal basis and institutions would remain national.", audio:"assets/gulnura-audio/seg5.mp3?v=2708b", text:"Start in one country, extend to the region. The first country produces reference procedures the others can adopt. The legal basis and the institutions stay national."},
-    {block:"nar-practica", video:"assets/gulnura-bust/seg6", cycleTabs:true, say:"Two working examples. The Central Asia Gateway documents trade procedures from the user's point of view across the five countries; it could inform how zone procedures are presented. Jamaica shows a public portal, an interactive map, zone details and a verifiable digital certificate. Anything used here would be adapted locally.", audio:"assets/gulnura-audio/seg6.mp3?v=2708b", text:"Two reference experiences: the Central Asia Gateway documents trade procedures from the user's point of view, and Jamaica shows zone services digitalised end to end."},
+    {block:"nar-practica-frame", video:"assets/gulnura-bust/seg6", cycleTabs:true, scrollTo:"jamaica-example", scrollAt:19000, say:"Two working examples. The Central Asia Gateway documents trade procedures from the user's point of view across the five countries; it could inform how zone procedures are presented. Jamaica shows a public portal, an interactive map, zone details and a verifiable digital certificate. Anything used here would be adapted locally.", audio:"assets/gulnura-audio/seg6.mp3?v=2708b", text:"Two reference experiences: the Central Asia Gateway documents trade procedures from the user's point of view, and Jamaica shows zone services digitalised end to end."},
     {block:"nar-collab", video:"assets/gulnura-bust/seg7", say:"A country can begin by answering the questionnaire. Participation is voluntary and creates no commitment. The partners could then discuss whether further assistance is appropriate and possible. If you have questions, I'm here to explain the proposal.", audio:"assets/gulnura-audio/seg7.mp3?v=2708b", text:"Any country can start. Applying is voluntary and creates no commitment. If you have any questions, I'm here to help."},
   ];
   var $=function(i){return document.getElementById(i);};
-  var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null;
+  var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null, tabStartTimer=null, scrollTimer=null;
   var dots=$("mdn-dots");
   SEGS.forEach(function(_,i){var b=document.createElement("button");b.className="mdn-dot";b.onclick=function(){go(i);};dots.appendChild(b);});
   function paint(){[].forEach.call(dots.children,function(d,i){d.className="mdn-dot"+(i===idx?" on":(i<idx?" done":""));});}
@@ -1674,43 +1690,68 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   function stageAbort(){++stageToken;}
   function stagePrefetch(src){if(!src||srcOf(vBack)===src)return;vBack.loop=false;vBack.setAttribute("src",src);vBack.load();}
 
-  function stopTabs(){if(tabTimer){clearInterval(tabTimer);tabTimer=null;}}
+  function stopTabs(){if(tabTimer){clearInterval(tabTimer);tabTimer=null;}if(tabStartTimer){clearTimeout(tabStartTimer);tabStartTimer=null;}}
+  function stopScrollCue(){if(scrollTimer){clearTimeout(scrollTimer);scrollTimer=null;}}
   function activeDuration(){return activeMedia&&activeMedia.duration&&isFinite(activeMedia.duration)?activeMedia.duration:14;}
   function cycleTabs(){
     stopTabs();
     var tabs=[].slice.call(document.querySelectorAll(".screen-tab")); if(tabs.length<2) return;
     tabs[0].click(); var i=0;
-    var step=Math.max(3000,(activeDuration()*1000)/tabs.length);
+    var elapsed=activeMedia&&isFinite(activeMedia.currentTime)?activeMedia.currentTime:0;
+    var remaining=Math.max(0,activeDuration()-elapsed);
+    var step=Math.max(2200,(remaining*1000)/tabs.length);
     tabTimer=setInterval(function(){ i++; if(i>=tabs.length){stopTabs();return;} tabs[i].click(); },step);
+  }
+  function maybeCycleTabs(s){
+    if(s.cycleTabs&&!s.scrollTo)cycleTabs();
   }
   function scrollToEl(el){if(!el)return;var y0=window.pageYOffset,y1=Math.max(0,el.getBoundingClientRect().top+y0-80),t0=null,D=650;
     function step(t){if(t0===null)t0=t;var k=Math.min(1,(t-t0)/D);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;window.scrollTo({top:y0+(y1-y0)*k,behavior:"instant"});if(k<1)requestAnimationFrame(step);}
     var fb=setTimeout(function(){window.scrollTo({top:y1,behavior:"instant"});},120);
     requestAnimationFrame(function(t){clearTimeout(fb);step(t);});}
   function flash(el){if(lastFlash)lastFlash.classList.remove("mdn-flash");if(el){el.classList.add("mdn-flash");lastFlash=el;}}
+  function setCaptionVisible(on){
+    document.body.classList.toggle("gn-caption-hidden",!on);
+    var label=on?"Hide narration text":"Show narration text";
+    var text=$("gn-text"); if(text){text.setAttribute("aria-label",label);text.setAttribute("data-label",on?"Hide text":"Show text");}
+    var close=$("gn-cap-x"); if(close)close.setAttribute("aria-label",label);
+  }
 
   function go(i){
     if(i<0||i>=SEGS.length)return;
     idx=i;var s=SEGS[i],token=++loadToken;
-    stopTabs();clearFallbackTimer();pauseBoth();activeMedia=null;wantsPlayback=true;
+    stopTabs();stopScrollCue();clearFallbackTimer();pauseBoth();activeMedia=null;wantsPlayback=true;
     bar.classList.add("on"); $("md-launch").style.display="none";
     $("mdn-cap").textContent=s.say||s.text; paint();
     var el=document.getElementById(s.block); scrollToEl(el); flash(el);
+    if(s.scrollTo){
+      scrollTimer=setTimeout(function(){
+        if(token!==loadToken)return;
+        scrollToEl(document.getElementById(s.scrollTo));
+        scrollTimer=null;
+        if(s.cycleTabs){
+          tabStartTimer=setTimeout(function(){
+            tabStartTimer=null;
+            if(token===loadToken)cycleTabs();
+          },700);
+        }
+      },s.scrollAt||9000);
+    }
     function startFallback(){
       if(token!==loadToken||activeMedia===audio)return;
       clearFallbackTimer();stageAbort();try{vA.pause();vB.pause();}catch(e){}
       showBust(false);activeMedia=audio;$("mdn-cap").textContent=s.say||s.text;
       audio.src=s.audio;
-      if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);if(activeMedia===audio)cycleTabs();});}
+      if(s.cycleTabs&&!s.scrollTo){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);if(activeMedia===audio)cycleTabs();});}
       var p=audio.play(); if(p&&p.catch)p.catch(function(){setPlay(false);});
-      if(s.cycleTabs)setTimeout(function(){if(!tabTimer&&activeMedia===audio)cycleTabs();},900);
+      if(s.cycleTabs&&!s.scrollTo)setTimeout(function(){if(!tabTimer&&activeMedia===audio)cycleTabs();},900);
     }
     /* she speaks first; only a real load error or the 5 s watchdog below
        falls back to sound alone */
     stageShow(videoSrc(s),{muted:false,onError:startFallback,onFront:function(elFront){
       if(token!==loadToken||activeMedia===audio){try{elFront.pause();}catch(e){}return;}
       clearFallbackTimer();showBust(true);activeMedia=elFront;
-      if(s.cycleTabs)cycleTabs();
+      maybeCycleTabs(s);
       /* preload the next clip only once this fade is done, not mid fade */
       var nx=SEGS[i+1]; if(nx)setTimeout(function(){if(token===loadToken)stagePrefetch(videoSrc(nx));},320);
     }});
@@ -1728,8 +1769,8 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
        without it the idle clip's own ended event, six seconds later, reads
        as "segment finished" and she starts talking again by herself. This
        handler is unconditional on purpose, never guarded by "is she on". */
-    wantsPlayback=false;++loadToken;stageAbort();clearFallbackTimer();pauseBoth();activeMedia=null;stopTabs();
-    if(hideBar){bar.classList.remove("on");$("md-launch").style.display="flex";}
+    wantsPlayback=false;++loadToken;stageAbort();clearFallbackTimer();pauseBoth();activeMedia=null;stopTabs();stopScrollCue();
+    if(hideBar){bar.classList.remove("on");$("md-launch").style.display="flex";setCaptionVisible(true);}
     if(lastFlash){lastFlash.classList.remove("mdn-flash");lastFlash=null;}
     setPlay(false);
     /* she does not vanish, she goes back to breathing quietly */
@@ -1741,7 +1782,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     m.addEventListener("play",function(){if(m===activeMedia){wantsPlayback=true;setPlay(true);}});
     m.addEventListener("pause",function(){if(m===activeMedia&&!m.ended&&wantsPlayback)setPlay(false);});
   });
-  document.getElementById("md-guide").onclick=function(){go(0);};
+  document.getElementById("md-guide").onclick=function(){setCaptionVisible(true);go(0);};
   $("mdn-play").onclick=function(){
     if(idx<0){go(0);return;}
     if(!activeMedia){
@@ -1755,6 +1796,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   $("mdn-prev").onclick=function(){go(Math.max(0,idx-1));};
   $("mdn-next").onclick=function(){if(idx<SEGS.length-1)go(idx+1);};
   $("mdn-x").onclick=function(){stopAll(true);};
+  $("gn-cap-x").addEventListener("click",function(){setCaptionVisible(false);});
 
   /* ---- the two controls follow the TOUR panel, never a single clip ----
      a MutationObserver on #md-bar's own "on" class, so the icons do not
@@ -1765,6 +1807,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   }).observe(bar,{attributes:true,attributeFilter:["class"]});
   $("gn-pause").addEventListener("click",function(){$("mdn-play").click();});
   $("gn-stop").addEventListener("click",function(){$("mdn-x").click();});
+  $("gn-text").addEventListener("click",function(){setCaptionVisible(document.body.classList.contains("gn-caption-hidden"));});
 
   /* ---- idle: silent, waits six seconds between plays, never a speaking take ---- */
   var idleGap=null;
