@@ -1309,7 +1309,7 @@
 
 <!-- ===== Gulnura · voice & chat assistant ===== -->
 <style>
-  #md-launch{position:fixed;bottom:26px;right:26px;z-index:9000;display:flex;align-items:center;gap:.1rem;}
+  #md-launch{position:fixed;bottom:12px;right:58px;z-index:9004;display:flex;align-items:center;gap:.1rem;}
   .md-go{display:flex;align-items:center;gap:.6rem;background:var(--brand-blue,#3b84b9);color:#fff;border:0;
     border-radius:999px;padding:.7rem 1.3rem;font:700 1.02rem "Montserrat",system-ui,sans-serif;
     cursor:pointer;box-shadow:0 10px 28px rgb(32 84 120 / 0.28);white-space:nowrap;transition:filter .15s,transform .15s;}
@@ -1483,14 +1483,14 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
 
   /* ---- the caption card, slimmed: while the bust is on screen, the round
      photo avatar and the old prev/play/next/dots row disappear, leaving
-     the caption text only, beside her, pointing at her ---- */
+     the caption text only, beside her ---- */
   body.gl-on .mdn-head{display:none;}
   body.gl-on #md-bar{
     width:258px;right:calc(24px + var(--gl-w) + 8px);
     bottom:calc(var(--gl-w) * 0.32);
-    background:linear-gradient(150deg, rgb(255 255 255 / 0.20), rgb(255 255 255 / 0.10));
-    border:1px solid rgb(255 255 255 / 0.44);border-radius:20px;
-    box-shadow:0 16px 38px rgba(22,35,51,.10);
+    background:linear-gradient(150deg, rgb(255 255 255 / 0.74), rgb(255 255 255 / 0.66));
+    border:1px solid rgb(255 255 255 / 0.72);border-radius:20px;
+    box-shadow:0 16px 38px rgba(22,35,51,.16);
     backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);
     transform-origin:100% 50%;
     /* the scale must live INSIDE the keyframes, a transform set beside an
@@ -1498,12 +1498,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     animation:gnCardRise .7s cubic-bezier(.22,1,.36,1) both;
   }
   @keyframes gnCardRise{from{opacity:0;transform:translateY(14px) scale(.75)}to{opacity:1;transform:scale(.75)}}
-  body.gl-on #md-bar::after{
-    content:"";position:absolute;right:-7px;top:50%;
-    transform:translateY(-50%) rotate(45deg);width:14px;height:14px;
-    background:rgb(255 255 255 / 0.72);
-    border-top:1px solid rgb(255 255 255 / 0.78);border-right:1px solid rgb(255 255 255 / 0.78);
-  }
+  body.gl-on #md-bar::after{content:none;}
   body.gl-on .mdn-cap{padding:1.1rem 1.2rem;min-height:0;color:#26201a;}
 
   /* ---- the old nav row (prev/play/next/dots) steps aside for the whole
@@ -1552,9 +1547,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
       right:auto;left:10px;bottom:12px;
       width:calc(100vw - min(104px,27vw) - 44px);max-width:230px;
     }
-    body.gl-on #md-bar::after{
-      right:auto;left:-7px;transform:translateY(-50%) rotate(225deg);
-    }
+    body.gl-on #md-bar::after{content:none;}
     #gn-controls{
       right:10px;bottom:calc(min(104px,27vw) + 8px);
       flex-direction:row;
