@@ -4,7 +4,7 @@ import re,json,sys,os
 here=os.path.dirname(os.path.abspath(__file__)); src=open(os.path.join(here,"..","index.html"),encoding="utf-8").read()
 T=[
 ('<html lang="en">','<html lang="ru">'),
-('<title>Zone services made simple and digital · Central Asia</title>','<title>Простые и цифровые услуги зон · Центральная Азия</title>'),
+('<title>SEZ services made simple and digital · Central Asia</title>','<title>Простые и цифровые услуги СЭЗ · Центральная Азия</title>'),
 # nav
 ('<a class="topbar-brand" href="#top"><span>SEZ</span> › Central Asia</a>','<a class="topbar-brand" href="#top"><span>СЭЗ</span> › Центральная Азия</a>'),
 ('<a class="navlink" href="#why">Why</a>','<a class="navlink" href="#why">Зачем</a>'),
@@ -16,11 +16,9 @@ T=[
  '<span class="lang-switch" aria-label="Язык"><a href="../" lang="en">EN</a><span class="sep">|</span><a class="on" href="#" aria-current="page" lang="ru">RU</a></span>'),
 ('<button class="btn-print" id="btn-print" type="button">Print / PDF</button>','<button class="btn-print" id="btn-print" type="button">Печать / PDF</button>'),
 # hero
-('<div class="kicker">Special economic zones · Central Asia</div>','<div class="kicker">Особые экономические зоны · Центральная Азия</div>'),
-('<h1 id="nar-hero">Zone services made<br>simple and digital</h1>','<h1 id="nar-hero">Услуги зон:<br>просто и в цифре</h1>'),
+('<h1 id="nar-hero">SEZ services made<br>simple and digital</h1>','<h1 id="nar-hero">Услуги СЭЗ:<br>просто и в цифре</h1>'),
 ('<div class="audience">A needs assessment for the zones of Central Asia, proposed by the WFZO Regional Office for Central Asia with the technical support of UNCTAD and UNITAR.</div>','<div class="audience">Оценка потребностей зон Центральной Азии по предложению Регионального офиса WFZO для Центральной Азии при технической поддержке ЮНКТАД и ЮНИТАР.</div>'),
 ('rel="noopener">Apply for the assessment →</a>\n          <a class="hero-cta secondary" href="#nar-practica">View reference experiences</a>','rel="noopener">Подать заявку на оценку →</a>\n          <a class="hero-cta secondary" href="#nar-practica">Посмотреть примеры</a>'),
-('Voluntary. Applying creates no commitment on either side.</p>','Добровольно. Заявка не создаёт обязательств ни для одной из сторон.</p>'),
 # why
 ('<p class="scope-eyebrow">Why do an assessment</p>','<p class="scope-eyebrow">Зачем нужна оценка</p>'),
 ('<h2 class="scope-title" id="scope-title">Every country has its own procedure for the same service</h2>','<h2 class="scope-title" id="scope-title">В каждой стране своя процедура для одной и той же услуги</h2>'),
