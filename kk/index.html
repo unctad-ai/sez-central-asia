@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Простые и цифровые услуги СЭЗ · Центральная Азия</title>
+<title>Орталық Азия аймақтары жаңа кезеңге өтуде · WFZO</title>
 <link rel="icon" href="../assets/training-eregistrations-favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/hero-central-asia.jpg" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" onload="window.lucide&&lucide.createIcons({attrs:{&quot;stroke-width&quot;:1.75,&quot;aria-hidden&quot;:&quot;true&quot;}})"></script>
+<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" onload="window.lucide&&lucide.createIcons({attrs:{'stroke-width':1.75,'aria-hidden':'true'}})"></script>
 <style>
   :root {
     --bg: #fcfaf8;
@@ -331,7 +331,7 @@
   }
   .services {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem;
   }
   .service {
@@ -766,9 +766,9 @@
   .next strong { color: var(--accent-deep); }
   .org { font-size: 0.85rem; color: oklch(0.92 0.01 80); }
 
+  @media (max-width: 1200px) { .scope-section { grid-template-columns: 1fr; gap: 2rem; } }
   @media (max-width: 1000px) {
     .services, .collab { grid-template-columns: 1fr; }
-    .scope-section { grid-template-columns: 1fr; gap: 2rem; }
     .scope-copy { margin-top: 0; max-width: 48rem; }
     .regional-pillars { grid-template-columns: 1fr; gap: 3rem; }
     .roadmap { grid-template-columns: 1fr; gap: 1rem; }
@@ -855,7 +855,11 @@
   .btn-print:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
   #why, #assessment, #after, #nar-regional, #nar-practica, #apply { scroll-margin-top: 4rem; }
   .nav-burger { display: none; order: 99; margin-left: 8px; background: none; border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; font-size: 18px; line-height: 1.3; color: var(--ink); cursor: pointer; }
-  @media (max-width: 900px) {
+  @media (max-width: 1120px) and (min-width: 901px) {
+    .navlink { font-size: .72rem; letter-spacing: .04em; }
+    .topbar-nav { gap: .9rem; }
+  }
+  @media (max-width: 1080px) {
     .topbar-nav .navlink { display: none; }
     .nav-burger { display: inline-block; }
     .topbar-nav.open .navlink { display: block; }
@@ -941,16 +945,15 @@
 
 <header class="topbar" data-print="hide">
   <div class="inner topbar-inner">
-    <a class="topbar-brand" href="#top"><span>WFZO</span> › Центральная Азия</a>
-    <button class="nav-burger" id="nav-burger" type="button" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav class="topbar-nav" aria-label="Sections">
-      <a class="navlink" href="#why">Зачем</a>
-      <a class="navlink" href="#assessment">Оценка</a>
-      <a class="navlink" href="#nar-regional">Региональный подход</a>
-      <a class="navlink" href="#nar-practica">Примеры</a>
-      <a class="navlink" href="#apply">Подать заявку</a>
-      <span class="lang-switch" aria-label="Язык"><a href="../" lang="en">EN</a><span class="sep">|</span><a href="../kk/" lang="kk">ҚАЗ</a><span class="sep">|</span><a class="on" href="#" aria-current="page" lang="ru">РУС</a></span>
-      <button class="btn-print" id="btn-print" type="button">Печать / PDF</button>
+    <a class="topbar-brand" href="#top"><span>WFZO</span> › Орталық Азия</a>
+    <button class="nav-burger" id="nav-burger" type="button" aria-label="Мәзір" aria-expanded="false">☰</button>
+    <nav class="topbar-nav" aria-label="Бөлімдер">
+      <a class="navlink" href="#why">Неліктен</a>
+      <a class="navlink" href="#assessment">Бағалау</a>
+      <a class="navlink" href="#nar-practica">Мысалдар</a>
+      <a class="navlink" href="#apply">Сауалнама</a>
+      <span class="lang-switch" aria-label="Тіл"><a href="../" lang="en">EN</a><span class="sep">|</span><a class="on" href="#" aria-current="page" lang="kk">ҚАЗ</a><span class="sep">|</span><a href="../ru/" lang="ru">РУС</a></span>
+      <button class="btn-print" id="btn-print" type="button">Басып шығару / PDF</button>
     </nav>
   </div>
 </header>
@@ -958,11 +961,12 @@
   <div class="hero" id="top">
     <div class="inner">
       <div class="hero-copy">
-        <h1 id="nar-hero">Услуги СЭЗ: <br>просто и в цифре</h1>
-        <div class="audience">Оценка потребностей зон Центральной Азии по предложению Регионального офиса WFZO для Центральной Азии при технической поддержке ЮНКТАД и ЮНИТАР.</div>
+        <h1 id="nar-hero">Орталық Азия аймақтары <br>жаңа кезеңге өтуде</h1>
+        <div class="audience">Басымдықтар мен ынтымақтастықтың ықтимал жолдарын айқындауға арналған өңірлік қажеттіліктерді бағалау.</div>
+        <div class="audience" style="font-size:.72em;opacity:.85;margin-top:.35em;">WFZO Орталық Азия өңірлік кеңсесінің бастамасы, ЮНКТАД пен ЮНИТАР-дың техникалық қолдауымен.</div>
         <div class="hero-actions">
-          <a class="hero-cta" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Подать заявку на оценку →</a>
-          <a class="hero-cta secondary" href="#nar-practica">Посмотреть примеры</a>
+          <a class="hero-cta" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Сауалнамаға жауап беріңіз →</a>
+          <a class="hero-cta secondary" href="#nar-practica">Мысалдарды қараңыз</a>
         </div>
       </div>
     </div>
@@ -987,20 +991,20 @@
   </style>
   <div class="yb-band">
     <div class="inner">
-      <button class="yb-pic" id="yb-pic" aria-label="Прослушать выступление Ербола Бухарбаева"></button>
+      <button class="yb-pic" id="yb-pic" aria-label="Ербол Бұхарбаевтың сөзін тыңдау"></button>
       <div class="yb-who">
-        <b>Ербол Бухарбаев</b>
-        <small>Руководитель Регионального офиса по Центральной Азии, Всемирная организация свободных зон (World FZO) &middot; Выступление на Международном инвестиционном форуме по цифровизации свободных экономических зон, Таджикистан, август 2026</small>
+        <b>Ербол Бұхарбаев</b>
+        <small>Дүниежүзілік еркін аймақтар ұйымының (World FZO) Орталық Азия өңірлік кеңсесінің басшысы &middot; Еркін экономикалық аймақтарды цифрландыру жөніндегі халықаралық инвестициялық форумдағы сөзі, Тәжікстан, 2026 жылғы тамыз</small>
       </div>
-      <button class="yb-play" id="yb-play"><span class="ico" id="yb-ico">&#9654;</span><span id="yb-label">Слушать выступление</span><span class="yb-time" id="yb-time">8:13</span></button>
+      <button class="yb-play" id="yb-play"><span class="ico" id="yb-ico">&#9654;</span><span id="yb-label">Сөзін тыңдау</span><span class="yb-time" id="yb-time">7:12</span></button>
     </div>
   </div>
-  <audio id="yb-audio" preload="none" src="../assets/yerbol-audio/yerbol-ru.mp3"></audio>
+  <audio id="yb-audio" preload="none" src="../assets/yerbol-audio/yerbol-kk.mp3"></audio>
   <script>
   (function(){
     var a=document.getElementById('yb-audio'),p=document.getElementById('yb-play'),
         ico=document.getElementById('yb-ico'),tm=document.getElementById('yb-time'),
-        pic=document.getElementById('yb-pic'),total="8:13";
+        pic=document.getElementById('yb-pic'),total="7:12";
     function fmt(s){s=Math.floor(s);return Math.floor(s/60)+":"+("0"+s%60).slice(-2);}
     function toggle(){
       if(a.paused){
@@ -1023,128 +1027,133 @@
   <div class="inner">
     <section class="scope-section" aria-labelledby="scope-title" id="why">
       <div>
-        <p class="scope-eyebrow">Зачем нужна оценка</p>
-        <h2 class="scope-title" id="scope-title">В каждой стране своя процедура для одной и той же услуги</h2>
-        <p class="scope-aside">Оценка — первый шаг. Она фиксирует, страна за страной, что уже есть, что уже переведено в цифру и что страна хочет улучшить в первую очередь. Каждая страна подаёт заявку самостоятельно и получает собственный отчёт. Региональная картина складывается по одной стране за раз.</p>
+        <p class="scope-eyebrow">Бұл бағалау неліктен қажет</p>
+        <h2 class="scope-title" id="scope-title">Қарапайым, ашық және цифрлық аймақ қызметтері</h2>
+        <p class="scope-aside">Инвестор қайда бару керегін, не алатынын, қанша уақыт кететінін және нәтижеге кім жауап беретінін түсінуі тиіс. Бағалау осыдан басталады: ол елден елге не бар екенін, ненің цифрланғанын және әр елдің алдымен нені жақсартқысы келетінін құжаттайды — ынтымақтастық осылайша дәлелдерге сүйеніп құрылады.</p>
       </div>
-      <p class="scope-copy">Зоны Центральной Азии работают с одними и теми же инвесторами и предлагают им одни и те же услуги: земля и здания, регистрация, льготы, таможенные режимы, продление. Каждая страна выстроила свой порядок их предоставления, и инвестор, работающий в нескольких странах, каждый раз осваивает процедуру заново. Сделать эти процедуры прозрачными, простыми и цифровыми — значит не просто улучшить технику. Это инструмент инвестиционной политики, и он работает лучше всего, когда сделанное в одной стране могут перенять другие.</p>
+      <p class="scope-copy">Өңір аймақтарының келесі кезеңі салықтық жеңілдіктер мен инфрақұрылымнан әрі асады: цифрлық, кіріктірілген, халықаралық бағдардағы аймақ. Инвестор орын таңдаудан жобаны іске қосуға дейінгі жолды цифрлық ортада өтуі тиіс: жер мен ғимараттар, қосылу құны, жеңілдіктер, тіркеу және кеден режимдері — барлығы онлайн. Цифрландыру — жай технологиялық құрал емес; ол инвестициялық саясаттың құралына айналып келеді.<br><br>Инвесторлар енді бір ел мен бір нарықты ғана таңдамайды: олар өңірге тұтас қарайды. Өндіріс бір елде, шикізат екінші елден, логистикалық бағыт үшінші ел арқылы өтуі мүмкін. Бұл жекелеген аймақтар арасындағы бәсекеден елдер арасындағы аймақтар ынтымақтастығына көшуді талап етеді — сонда Орталық Азияға келген инвестор біртұтас, түсінікті, цифрлық және бәсекеге қабілетті инвестициялық өңірді көреді.</p>
     </section>
 
     <section class="regional-view" aria-labelledby="nar-services" id="assessment">
-      <p class="regional-eyebrow">Что охватывает оценка</p>
-      <h2 class="regional-title" id="nar-services">Три вопроса</h2>
+      <p class="regional-eyebrow">Бағалау нені қамтиды</p>
+      <h2 class="regional-title" id="nar-services">Үш сұрақ</h2>
       <div class="regional-pillars">
         <article class="regional-pillar">
           <div class="regional-icon" aria-hidden="true"><i data-lucide="landmark"></i></div>
-          <h3>Что уже есть?</h3>
-          <p>Правила, ответственные органы, процедуры.</p>
+          <h3>Бүгінде не бар?</h3>
+          <p>Қағидалар, жауапты мекемелер, рәсімдер және олардың қайсысы цифрланған.</p>
         </article>
         <article class="regional-pillar">
-          <div class="regional-icon" aria-hidden="true"><i data-lucide="monitor-check"></i></div>
-          <h3>Что в цифре?</h3>
-          <p>Какие услуги доступны онлайн.</p>
+          <div class="regional-icon" aria-hidden="true"><i data-lucide="target"></i></div>
+          <h3>Неге қол жеткізгіңіз келеді?</h3>
+          <p>Ел бірінші кезекте қалайтын жақсартулар және олардың қаншалықты шұғыл екені.</p>
         </article>
         <article class="regional-pillar">
-          <div class="regional-icon" aria-hidden="true"><i data-lucide="flag"></i></div>
-          <h3>Каковы приоритеты?</h3>
-          <p>Улучшения, которых страна хочет в первую очередь.</p>
+          <div class="regional-icon" aria-hidden="true"><i data-lucide="loader"></i></div>
+          <h3>Қазір не жүріп жатыр?</h3>
+          <p>Жұмыс істеп жатқан реформалар, бастамалар мен әріптестер — соларға сүйену және қайталамау үшін.</p>
         </article>
       </div>
     </section>
 
     <section class="collaboration-section" aria-labelledby="collaboration-title" id="after">
       <header class="collaboration-header">
-        <p class="collaboration-eyebrow">После оценки</p>
-        <h2 class="collaboration-title" id="collaboration-title">Прозрачность, упрощение, цифровизация</h2>
-        <p class="collaboration-lead">Цифровая услуга зоны означает, что инвестор проходит путь от выбора площадки до запуска проекта, не выходя из цифровой среды: свободные земля и здания, инфраструктура и стоимость подключения, льготы, регистрация, таможенный режим — всё онлайн, в одном процессе, с одним проверяемым сертификатом на выходе. Для этого нужны три шага: сделать процедуры прозрачными, упростить их, затем перевести в цифру. Оцифровать процедуру, которую никто не упростил, — значит лишь быстрее получить ошибку.</p>
+        <p class="collaboration-eyebrow">Бағалаудан кейін</p>
+        <h2 class="collaboration-title" id="collaboration-title">Ашықтық, оңайлату,<br>цифрландыру,<br>жақсартылған реттеу</h2>
+        <p class="collaboration-lead">Цифрлық аймақ қызметі инвестордың орын таңдаудан жобаны іске қосуға дейінгі жолды цифрлық ортадан шықпай өтуін білдіреді: бос жер мен ғимараттар, инфрақұрылым мен қосылу құны, жеңілдіктер, тіркеу, кеден режимі — барлығы онлайн, бір процесте, соңында бір тексерілетін сертификатпен. Бұған үш қадам жеткізеді: рәсімдерді ашық ету, оларды оңайлату, содан кейін цифрландыру. Ешкім оңайлатпаған рәсімді цифрландыру — қатеге тезірек жету ғана.</p>
       </header>
       <div class="services">
       <section class="service">
         <div class="body">
           <div class="service-head">
-            <h3>Прозрачность</h3>
+            <h3>Ашықтық</h3>
           </div>
-          <p>Опубликовать каждую процедуру с точки зрения пользователя: шаги, документы, стоимость, сроки, правовая основа; поддерживается в актуальном состоянии компетентным органом.</p>
+          <p>Әр рәсімді пайдаланушы тұрғысынан жариялау: қадамдар, құжаттар, құны, мерзімдері, құқықтық негізі; өзектілігін құзыретті орган қамтамасыз етеді.</p>
         </div>
       </section>
       <section class="service">
         <div class="body">
           <div class="service-head">
-            <h3>Упрощение</h3>
+            <h3>Оңайлату</h3>
           </div>
-          <p>Убрать шаги и требования, которые не добавляют контроля. Уточнить, кто за что отвечает.</p>
+          <p>Бақылау қоспайтын қадамдар мен талаптарды алып тастау. Кім не үшін жауап беретінін нақтылау.</p>
         </div>
       </section>
       <section class="service">
         <div class="body">
           <div class="service-head">
-            <h3>Цифровизация</h3>
+            <h3>Цифрландыру</h3>
           </div>
-          <p>Превратить упрощённые процедуры в онлайн-услуги: заявки, согласования, платежи, продление. Платформа ЮНКТАД eRegistrations — один из доступных инструментов; страна выбирает то, что соответствует её законодательству и возможностям.</p>
+          <p>Оңайлатылған рәсімдерді онлайн-қызметтерге айналдыру: өтінімдер, келісулер, төлемдер, ұзарту. ЮНКТАД-тың eRegistrations платформасы — қолжетімді құралдардың бірі; ел өз заңнамасы мен мүмкіндіктеріне сай келетінін таңдайды.</p>
+        </div>
+      </section>
+      <section class="service">
+        <div class="body">
+          <div class="service-head">
+            <h3>Жақсартылған реттеу</h3>
+          </div>
+          <p>Аймақ туралы заңды ұсыныс ретінде оқу: ел инвесторларға не ұсынады және оның орнына не күтеді. Рәсімді заң деңгейінен төмен түсіру — сонда қызметтер парламентке қайта жүгінбей-ақ жақсара алады; бейімдеуге арналған үлгілік реттеу әзірленуде. <a href="../law/">Толығырақ →</a></p>
         </div>
       </section>
       </div>
     </section>
 
-    <section class="scope-section regional-approach" aria-labelledby="regional-approach-title" id="nar-regional" data-nav="regional">
-      <div>
-        <p class="scope-eyebrow">Региональный подход</p>
-        <h2 class="scope-title" id="regional-approach-title">Начать в одной стране, распространить на регион</h2>
-      </div>
-      <div class="scope-copy"><p>Первая страна не только улучшает собственные процедуры. Она создаёт <strong>эталонную процедуру</strong> для каждой услуги зоны: стандартную упрощённую последовательность шагов, документов и сроков, которую другие страны могут перенять и адаптировать. Передаются метод, эталонная процедура, дизайн услуги и инструменты. Национальными остаются правовая основа и институты.</p><p style="margin-top:1rem;">Со временем регион получает то, о чём просят инвесторы: одни и те же шаги, где бы ни находилась зона, при том что каждая страна сохраняет свою политику, льготы и специализацию. Сотрудничество между зонами начинается с процедур, которые инвестор узнаёт от одной страны к другой.</p></div>
-    </section>
+
+
+
+
   </div>
 
   <div class="example" id="nar-practica">
     <div class="inner">
       <div class="example-intro">
-        <p class="example-eyebrow">На практике</p>
-        <h2 class="example-title">Примеры из практики</h2>
-        <p class="example-lead">Эти примеры иллюстрируют возможные подходы. Это не предлагаемые проекты для Центральной Азии, и они не будут воспроизводиться без адаптации к приоритетам, институтам и правовой базе каждой страны.</p>
+        <p class="example-eyebrow">Тәжірибеде</p>
+        <h2 class="example-title">Жұмыс істеп тұрған мысалдар</h2>
+        <p class="example-lead">Бұл мысалдар ықтимал тәсілдерді көрсетеді. Олар Орталық Азияға ұсынылған жобалар емес және әр елдің басымдықтарына, мекемелеріне және құқықтық базасына бейімдеместен қайталанбайды.</p>
         <div class="reference-gateway">
           <div class="reference-gateway-text">
-            <span class="reference-country-label">Центральная Азия</span>
-            <h3>Прозрачность процедур</h3>
-            <p>Central Asia Gateway (<a href="https://infotradecentralasia.org/" target="_blank" rel="noopener">infotradecentralasia.org</a>) объединяет национальные торговые порталы пяти стран. Для каждой процедуры импорта, экспорта или транзита он показывает то, что нужно знать пользователю: шаги, требуемые документы, органы и контактные лица, стоимость и правовую основу. Он охватывает торговлю, а не зоны. Тот же региональный подход применим к процедурам зон.</p>
-            <ul class="country-chips" aria-label="Countries covered"><li>Казахстан</li><li>Кыргызстан</li><li>Таджикистан</li><li>Туркменистан</li><li>Узбекистан</li></ul>
+            <span class="reference-country-label">Орталық Азия</span>
+            <h3>Рәсімдердің ашықтығы</h3>
+            <p>Central Asia Gateway (<a href="https://infotradecentralasia.org/" target="_blank" rel="noopener">infotradecentralasia.org</a>) бес елдің ұлттық сауда порталдарын біріктіреді. Импорт, экспорт немесе транзиттің әр рәсімі бойынша ол пайдаланушыға қажет ақпаратты көрсетеді: қадамдар, талап етілетін құжаттар, мекемелер мен байланыс тұлғалары, құны және құқықтық негізі. Ол сауданы қамтиды, аймақтарды емес. Дәл осы өңірлік тәсілді аймақ рәсімдеріне де қолдануға болады.</p>
+            <ul class="country-chips" aria-label="Қамтылған елдер"><li>Қазақстан</li><li>Қырғызстан</li><li>Тәжікстан</li><li>Түрікменстан</li><li>Өзбекстан</li></ul>
           </div>
           <a class="reference-gateway-shot" href="https://infotradecentralasia.org/" target="_blank" rel="noopener">
-            <img loading="lazy" decoding="async" src="../assets/screen-central-asia-gateway.jpg" alt="Central Asia Gateway portal: step-by-step import and export procedures for Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan and Uzbekistan">
+            <img loading="lazy" decoding="async" src="../assets/screen-central-asia-gateway.jpg" alt="Central Asia Gateway порталының скриншоты: сауда рәсімі қадам-қадаммен">
           </a>
         </div>
       </div>
       <div class="cols">
         <div class="shots">
-          <div class="screen-showcase" aria-label="Jamaica SEZ digital service screens">
+          <div class="screen-showcase" aria-label="Ямайка ЕЭА цифрлық қызмет экрандары">
             <div class="reference-rail">
               <div class="jamaica-intro">
                 <span class="reference-country-label">Ямайка</span>
-                <h3>Цифровизация услуг зон</h3>
-                <p>Институциональное устройство Ямайки проще, чем в большинстве стран Центральной Азии. Важно то, что видит инвестор в итоге: одна точка входа, все зоны на карте, один процесс, один сертификат.</p>
+                <h3>Аймақ қызметтерін цифрландыру</h3>
+                <p>Ямайканың институционалдық құрылымы Орталық Азиядағы көп елден қарапайым. Мұнда маңыздысы — инвестордың соңында көретіні: бір кіру нүктесі, картадағы барлық аймақ, бір процесс, бір сертификат.</p>
               </div>
-              <div class="screen-tabs" role="tablist" aria-label="Jamaica digital service screens">
+              <div class="screen-tabs" role="tablist" aria-label="Ямайка цифрлық қызмет экрандары">
                 <button class="screen-tab" type="button" role="tab" aria-selected="true" data-screen-tab="landing">
                   <span class="screen-copy">
-                    <strong>Публичный портал зон</strong>
-                    <span>Единый вход для инвесторов и услуг зон.</span>
+                    <strong>Аймақтардың ашық порталы</strong>
+                    <span>Инвесторлар мен аймақ қызметтеріне арналған бір есік.</span>
                   </span>
                 </button>
                 <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="map">
                   <span class="screen-copy">
-                    <strong>Интерактивная карта зон</strong>
-                    <span>Утверждённые зоны, девелоперы, расположение и отрасли.</span>
+                    <strong>Интерактивті аймақ картасы</strong>
+                    <span>Бекітілген аймақтар, девелоперлер, орналасу және салалар.</span>
                   </span>
                 </button>
                 <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="zone-detail">
                   <span class="screen-copy">
-                    <strong>Карточка зоны</strong>
-                    <span>Статус, свободные земля и здания, резиденты и поставщики услуг.</span>
+                    <strong>Аймақ мәліметтері</strong>
+                    <span>Мәртебесі, бос жер мен ғимараттар, резиденттер және қызмет көрсетушілер.</span>
                   </span>
                 </button>
                 <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="certificate">
                   <span class="screen-copy">
-                    <strong>Цифровой сертификат</strong>
-                    <span>Проверяемый результат после утверждения.</span>
+                    <strong>Цифрлық сертификат</strong>
+                    <span>Процесс бекітілген соң тексерілетін нәтиже.</span>
                   </span>
                 </button>
               </div>
@@ -1152,16 +1161,16 @@
             <div class="print-screens" data-print-only="1" id="print-screens"></div>
             <div class="screen-frame">
               <div class="screen-panel is-active" role="tabpanel" data-screen-panel="landing">
-                <img loading="lazy" decoding="async" data-src="../assets/screen-zones-landing.jpg" alt="Jamaica Special Economic Zone Authority public portal landing page">
+                <img loading="lazy" decoding="async" data-src="../assets/screen-zones-landing.jpg" alt="Ямайка арнайы экономикалық аймақтар басқармасы ашық порталының басты беті">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="map">
-                <img loading="lazy" decoding="async" data-src="../assets/screen-map-dashboard.jpg" alt="Interactive Jamaica SEZ map with filters, zone profile, and map pins">
+                <img loading="lazy" decoding="async" data-src="../assets/screen-map-dashboard.jpg" alt="Сүзгілері мен аймақ орналасуы көрсетілген Ямайка аймақтарының картасы">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="zone-detail">
-                <img loading="lazy" decoding="async" data-src="../assets/screen-zone-detail-modal.jpg" alt="Montego Bay Free Zone detail modal over the interactive Jamaica SEZ map">
+                <img loading="lazy" decoding="async" data-src="../assets/screen-zone-detail-modal.jpg" alt="Ямайка картасындағы Монтего-Бей еркін аймағының мәліметтері">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="certificate">
-                <img loading="lazy" decoding="async" data-src="../assets/screen-certificate.jpg" alt="Digital special economic zone developer certificate with QR verification">
+                <img loading="lazy" decoding="async" data-src="../assets/screen-certificate.jpg" alt="QR-тексерілімі бар аймақ девелоперінің цифрлық сертификаты">
               </div>
             </div>
           </div>
@@ -1172,27 +1181,27 @@
 
   <div class="collab-band" id="apply">
     <div class="inner">
-      <h2 class="section-title" id="nar-collab">Подать заявку</h2>
+      <h2 class="section-title" id="nar-collab">Сауалнамаға жауап беріңіз</h2>
       <div class="cta-band" style="margin-top:1rem;padding-top:0;border-top:0;">
         <div class="cta-txt">
-          <strong>Начать может любая страна.</strong>
-          <span>Подайте заявку, получите национальный отчёт и затем решите, идти ли дальше.</span>
+          <strong>Кез келген ел бастай алады.</strong>
+          <span>Сауалнамаға жауап беріңіз, әрі қарай жүру-жүрмеуді кейін шешесіз.</span>
         </div>
-        <a class="cta-btn" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Подать заявку на оценку →</a>
+        <a class="cta-btn" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Сауалнамаға жауап беріңіз →</a>
       </div>
-      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">Оценка и национальный отчёт предоставляются партнёрами. Инициатива носит предварительный характер и не создаёт обязательств ни для участников, ни для партнёров. Региональные результаты представляются в обобщённом виде; любое упоминание отдельной страны требует её согласия.</p>
+      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">Бағалау мен ұлттық есепті әріптестер ұсынады. Бұл бастама зерттеу сипатында және қатысушыларға да, әріптестерге де міндеттеме жүктемейді. Өңірлік нәтижелер жинақталған түрде ұсынылады; жекелеген елге сілтеме жасау үшін оның келісімі қажет.</p>
     </div>
   </div>
 
 
   <footer id="page-footer">
     <div class="inner">
-      <div class="footer-logos" aria-label="Partners">
-        <img src="../assets/logo-unctad-white.png" alt="UNCTAD">
-        <img src="../assets/logo-unitar-white.png" alt="UNITAR">
+      <div class="footer-logos" aria-label="Әріптестер">
+        <img src="../assets/logo-unctad-white.png" alt="">
+        <img src="../assets/logo-unitar-white.png" alt="">
       </div>
-      <p class="org">Инициатива Регионального офиса WFZO для Центральной Азии при технической поддержке ЮНКТАД и ЮНИТАР, Программа цифрового правительства</p>
-      <p style="font-size:.72rem;opacity:.65;max-width:70rem;margin:.8rem 0 0;line-height:1.5;text-align:left;">Эта страница — основа для обсуждения и приглашение выразить заинтересованность. Она не является обязательством ЮНКТАД или какой-либо структуры Организации Объединённых Наций. Дальнейшая техническая помощь зависит от мандатов, ресурсов и официальных соглашений. Употребляемые обозначения не подразумевают какого-либо суждения о правовом статусе какой-либо страны или территории.</p>
+      <p class="org">WFZO Орталық Азия өңірлік кеңсесінің бастамасы, ЮНКТАД пен ЮНИТАР Цифрлық үкімет бағдарламасының техникалық қолдауымен</p>
+      <p style="font-size:.72rem;opacity:.65;max-width:70rem;margin:.8rem 0 0;line-height:1.5;text-align:left;">Бұл бет — талқылауға негіз және мүдделілік білдіруге шақыру. Ол ЮНКТАД-тың немесе Біріккен Ұлттар Ұйымының қандай да бір құрылымының міндеттемесі болып табылмайды. Одан әрі техникалық көмек мандаттарға, ресурстарға және ресми келісімдерге байланысты. Қолданылған белгілеулер қандай да бір елдің немесе аумақтың құқықтық мәртебесіне қатысты ешқандай пікірді білдірмейді.</p>
     </div>
   </footer>
 
@@ -1340,17 +1349,17 @@
   @media print{#md-launch,#md-panel{display:none!important;}}
 </style>
 <div id="md-launch">
-  <button class="md-go" id="md-guide" aria-label="Gulnura guides you"><span class="ico">▶</span>Гульнура проведёт вас</button>
+  
   <div class="md-ava">
-    <button class="pic" id="md-pic" aria-label="Спросить Гульнуру" style="background-image:url('../assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;border:0;padding:0;cursor:pointer;color:transparent">M</button>
-    <span class="md-name">Вопросы?</span>
+    <button class="pic" id="md-pic" aria-label="Гүлнұраға сұрақ қою" style="background-image:url('../assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;border:0;padding:0;cursor:pointer;color:transparent">M</button>
+    <span class="md-name">Сұрақтарыңыз бар ма?</span>
   </div>
 </div>
 <aside id="md-panel" aria-hidden="true">
-  <div class="h"><span class="pic2" style="background-image:url('../assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;color:transparent">M</span><div><b>Гульнура</b><small>Ассистент · СЭЗ Центральная Азия · ЮНКТАД + WFZO</small></div><button class="x" id="md-x" aria-label="Close">&times;</button></div>
-  <div id="md-msgs"><div class="b ai">Здравствуйте, я Гульнура. На этой странице предлагается оценка процедур зон, по одной стране за раз, чтобы то, что упрощено и переведено в цифру в одной стране, могли перенять другие. Могу рассказать, что охватывает оценка, что сделано на Ямайке или как подать заявку.</div></div>
-  <div id="md-sug"><button>Что включает оценка?</button><button>Что получает моя страна?</button><button>Что сделано на Ямайке?</button><button>Как подать заявку?</button></div>
-  <div id="md-foot"><div class="row"><input id="md-text" placeholder="Введите вопрос…" autocomplete="off"><button class="act" id="md-send">Отправить</button></div><button class="act" id="md-talk">🎤 Поговорить с Гульнурой</button></div>
+  <div class="h"><span class="pic2" style="background-image:url('../assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;color:transparent">M</span><div><b>Гүлнұра</b><small>Көмекші · ЕЭА Орталық Азия · ЮНКТАД + WFZO</small></div><button class="x" id="md-x" aria-label="Жабу">&times;</button></div>
+  <div id="md-msgs"><div class="b ai">Сәлеметсіз бе, мен — Гүлнұра. Бұл бет аймақ рәсімдерін елден елге бағалауды ұсынады: бір елде оңайлатылып цифрланғанды басқалары қабылдай алуы үшін. Бағалау нені қарайтынын, Ямайка не істегенін немесе ел қалай қатысатынын түсіндіре аламын.</div></div>
+  <div id="md-sug"><button>Бағалау нені қамтиды?</button><button>Менің елім не алады?</button><button>Ямайкада не істелді?</button><button>Қалай қатысамыз?</button></div>
+  <div id="md-foot"><div class="row"><input id="md-text" placeholder="Сұрағыңызды жазыңыз…" autocomplete="off"><button class="act" id="md-send">Жіберу</button></div><button class="act" id="md-talk">🎤 Гүлнұрамен сөйлесу</button></div>
 </aside>
 <script>
 function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(function(res,rej){var s=document.createElement('script');s.src='https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
@@ -1366,7 +1375,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
 </script>
 <script>
 (function(){
-  var AGENT="agent_6901m106nab9erjb7atmz9qfmv72", GREET="Здравствуйте, я Гульнура. На этой странице предлагается оценка процедур зон, по одной стране за раз, чтобы то, что упрощено и переведено в цифру в одной стране, могли перенять другие. Могу рассказать, что охватывает оценка, что сделано на Ямайке или как подать заявку.";
+  var AGENT="agent_5801m1040rvjf6w961q4r8eh5gq4", GREET="Сәлеметсіз бе, мен — Гүлнұра. Бұл бет аймақ рәсімдерін елден елге бағалауды ұсынады: бір елде оңайлатылып цифрланғанды басқалары қабылдай алуы үшін. Бағалау нені қарайтынын, Ямайка не істегенін немесе ел қалай қатысатынын түсіндіре аламын.";
   var $=function(i){return document.getElementById(i);}, session=null, mode=null;
   function add(t,w){var d=document.createElement('div');d.className='b '+w;d.textContent=t;var m=$('md-msgs');m.appendChild(d);m.scrollTop=m.scrollHeight;}
   function stat(t){var s=document.querySelector('#md-msgs .st');if(!s){s=document.createElement('div');s.className='st';$('md-msgs').appendChild(s);}s.textContent=t;}
@@ -1374,106 +1383,25 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   var _mg=$('md-pic'); if(_mg) _mg.onclick=openPanel;
   $('md-x').onclick=function(){$('md-panel').classList.remove('open');if(session){session.endSession();session=null;mode=null;}};
   async function ensure(voice){await loadEL();var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
-    stat(voice?'Подключаю микрофон…':'Подключаюсь…');
+    stat(voice?'Микрофон қосылуда…':'Қосылуда…');
     session=await ElevenLabsClient.Conversation.startSession({agentId:AGENT,connectionType:voice?'webrtc':'websocket',textOnly:!voice,
-      onConnect:function(){stat(voice?'Слушаю…':'');},onDisconnect:function(){stat('');},
-      onModeChange:function(o){stat(o.mode==='speaking'?'Гульнура отвечает…':(voice?'Слушаю…':''));},
+      onConnect:function(){stat(voice?'Тыңдап тұрмын…':'');},onDisconnect:function(){stat('');},
+      onModeChange:function(o){stat(o.mode==='speaking'?'Гүлнұра жауап беруде…':(voice?'Тыңдап тұрмын…':''));},
       onMessage:function(o){if(!o.message)return;if(o.source!=='user'&&o.message.trim()===GREET)return;add(o.message,o.source==='user'?'user':'ai');},
-      onError:function(e){add('Error: '+(e&&e.message||e),'ai');}});
+      onError:function(e){add('Қате: '+(e&&e.message||e),'ai');}});
     mode=want;return session;}
-  async function send(){var t=$('md-text').value.trim();if(!t)return;$('md-text').value='';add(t,'user');try{var s=await ensure(false);s.sendUserMessage(t);}catch(e){add('Connection error: '+(e&&e.message||e),'ai');}}
+  async function send(){var t=$('md-text').value.trim();if(!t)return;$('md-text').value='';add(t,'user');try{var s=await ensure(false);s.sendUserMessage(t);}catch(e){add('Байланыс қатесі: '+(e&&e.message||e),'ai');}}
   $('md-send').onclick=send;$('md-text').addEventListener('keydown',function(e){if(e.key==='Enter')send();});
-  Array.prototype.forEach.call(document.querySelectorAll('#md-sug button'),function(b){b.onclick=async function(){openPanel();add(b.textContent,'user');try{var s=await ensure(false);s.sendUserMessage(b.textContent);}catch(e){add('Error: '+(e&&e.message||e),'ai');}};});
+  Array.prototype.forEach.call(document.querySelectorAll('#md-sug button'),function(b){b.onclick=async function(){openPanel();add(b.textContent,'user');try{var s=await ensure(false);s.sendUserMessage(b.textContent);}catch(e){add('Қате: '+(e&&e.message||e),'ai');}};});
   $('md-talk').onclick=async function(){var b=$('md-talk');
-    if(mode==='voice'){if(session){await session.endSession();session=null;mode=null;}b.classList.remove('active');b.textContent='🎤 Поговорить с Гульнурой';stat('');return;}
-    b.classList.add('active');b.textContent='⏹ Stop';
-    try{await ensure(true);}catch(e){add('Microphone unavailable: '+(e&&e.message||e),'ai');b.classList.remove('active');b.textContent='🎤 Поговорить с Гульнурой';}};
+    if(mode==='voice'){if(session){await session.endSession();session=null;mode=null;}b.classList.remove('active');b.textContent='🎤 Гүлнұрамен сөйлесу';stat('');return;}
+    b.classList.add('active');b.textContent='⏹ Тоқтату';
+    try{await ensure(true);}catch(e){add('Микрофон қолжетімсіз: '+(e&&e.message||e),'ai');b.classList.remove('active');b.textContent='🎤 Гүлнұрамен сөйлесу';}};
 })();
 </script>
 
 
-<style>
-  #md-bar{position:fixed;right:22px;bottom:22px;z-index:9001;width:min(440px,calc(100vw - 44px));
-    background:#fff;color:#26201a;border-radius:16px;box-shadow:0 14px 44px rgba(50,35,15,.30);display:none;overflow:hidden;font-family:"Source Sans 3",system-ui,sans-serif;}
-  #md-bar.on{display:block;}
-  .mdn-head{display:flex;align-items:center;gap:.6rem;padding:.7rem .85rem;background:var(--brand-blue,#3b84b9);color:#fff;}
-  .mdn-head .avatar{width:50px;height:50px;border-radius:50%;border:2px solid #fff;background-image:url('../assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;flex-shrink:0;}
-  .mdn-head b{font-family:"Montserrat",sans-serif;font-size:.95rem;} .mdn-head small{display:block;opacity:.85;font-size:.72rem;margin-top:2px;}
-  .mdn-x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:1.3rem;cursor:pointer;}
-  .mdn-cap{padding:.9rem 1rem;font-size:.98rem;line-height:1.5;min-height:4.6em;}
-  .mdn-ctrls{display:flex;align-items:center;gap:.5rem;padding:.2rem .85rem .85rem;}
-  .mdn-btn{background:oklch(0.945 0.014 78);border:1px solid #e8ddcb;color:var(--brand-blue,#3b84b9);border-radius:50%;width:2.3rem;height:2.3rem;cursor:pointer;display:grid;place-items:center;}
-  .mdn-play{background:var(--brand-blue,#3b84b9);border-color:var(--brand-blue,#3b84b9);color:#fff;width:2.7rem;height:2.7rem;font-size:1.1rem;}
-  .mdn-dots{display:flex;gap:.4rem;margin-left:auto;}
-  .mdn-dot{width:8px;height:8px;border-radius:50%;background:#e2d7c4;border:0;padding:0;cursor:pointer;}
-  .mdn-dot.on{background:var(--brand-blue,#3b84b9);} .mdn-dot.done{background:rgb(59 132 185 / 0.35);}
-  .mdn-flash{outline:3px solid var(--brand-blue,#3b84b9);outline-offset:6px;border-radius:10px;}
-  @media print{#md-bar{display:none!important;}}
-</style>
-<aside id="md-bar" aria-live="polite">
-  <div class="mdn-head"><span class="avatar"></span><div><b>Гульнура</b><small>проведёт вас по предложению</small></div><button class="mdn-x" id="mdn-x" aria-label="Close">×</button></div>
-  <div class="mdn-cap" id="mdn-cap"></div>
-  <div class="mdn-ctrls">
-    <button class="mdn-btn" id="mdn-prev" aria-label="Previous">⏮</button>
-    <button class="mdn-btn mdn-play" id="mdn-play" aria-label="Play/pause">⏸</button>
-    <button class="mdn-btn" id="mdn-next" aria-label="Next">⏭</button>
-    <div class="mdn-dots" id="mdn-dots"></div>
-  </div>
-</aside>
-<audio id="mdn-audio" preload="none"></audio>
-<script>
-(function(){
-  var SEGS=[
-    {block:"nar-hero", audio:"../assets/gulnura-audio-ru/seg1.mp3", text:"Здравствуйте, я Гульнура. На этой странице представлено предложение Регионального офиса WFZO для Центральной Азии при технической поддержке ЮНКТАД и ЮНИТАР: оценка потребностей, чтобы сделать услуги зон простыми, прозрачными и цифровыми. Позвольте провести вас по странице."},
-    {block:"why", audio:"../assets/gulnura-audio-ru/seg2.mp3", text:"Зачем нужна оценка? Зоны Центральной Азии работают с одними и теми же инвесторами и предлагают им одни и те же услуги, но в каждой стране своя процедура, и инвестор, работающий в нескольких странах, каждый раз осваивает её заново. Сделать процедуры прозрачными, простыми и цифровыми — это инструмент инвестиционной политики. Оценка — первый шаг. Каждая страна подаёт заявку самостоятельно и получает собственный отчёт; региональная картина складывается по одной стране за раз."},
-    {block:"nar-services", audio:"../assets/gulnura-audio-ru/seg3.mp3", text:"Оценка задаёт три вопроса, одинаковые для каждой страны. Что уже есть: правила, ответственные органы, процедуры. Что в цифре: какие услуги доступны онлайн. И каковы приоритеты: улучшения, которых страна хочет в первую очередь."},
-    {block:"after", audio:"../assets/gulnura-audio-ru/seg4.mp3", text:"После оценки следуют три шага, именно в таком порядке. Прозрачность: опубликовать каждую процедуру с точки зрения пользователя. Упрощение: убрать шаги и требования, которые не добавляют контроля. Цифровизация: превратить упрощённые процедуры в онлайн-услуги. Оцифровать процедуру, которую никто не упростил, — значит лишь быстрее получить ошибку."},
-    {block:"nar-regional", audio:"../assets/gulnura-audio-ru/seg5.mp3", text:"Региональный подход: начать в одной стране, распространить на регион. Первая страна создаёт эталонную процедуру для каждой услуги зоны, которую другие страны могут перенять и адаптировать. Передаются метод, процедуры и инструменты. Правовая основа и институты остаются национальными."},
-    {block:"nar-practica", audio:"../assets/gulnura-audio-ru/seg6.mp3", cycleTabs:true, text:"Два примера из практики. Central Asia Gateway показывает торговые процедуры пяти стран региона, описанные с точки зрения пользователя; тот же региональный подход применим к процедурам зон. А Ямайка показывает цифровые услуги зон: все зоны на интерактивной карте, регистрация полностью онлайн и цифровой сертификат на выходе."},
-    {block:"nar-collab", audio:"../assets/gulnura-audio-ru/seg7.mp3", text:"Начать может любая страна. Заявка добровольна и не создаёт обязательств. Если у вас есть вопросы, я здесь, чтобы помочь."},
-  ];
-  var $=function(i){return document.getElementById(i);};
-  var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null;
-  var dots=$("mdn-dots");
-  SEGS.forEach(function(_,i){var b=document.createElement("button");b.className="mdn-dot";b.onclick=function(){go(i);};dots.appendChild(b);});
-  function paint(){[].forEach.call(dots.children,function(d,i){d.className="mdn-dot"+(i===idx?" on":(i<idx?" done":""));});}
-  function stopTabs(){if(tabTimer){clearInterval(tabTimer);tabTimer=null;}}
-  function cycleTabs(){
-    stopTabs();
-    var tabs=[].slice.call(document.querySelectorAll(".screen-tab")); if(tabs.length<2) return;
-    tabs[0].click(); var i=0;
-    var dur=(audio&&audio.duration&&isFinite(audio.duration))?audio.duration:18;
-    var step=Math.max(3000,(dur*1000)/tabs.length);
-    tabTimer=setInterval(function(){ i++; if(i>=tabs.length){stopTabs();return;} tabs[i].click(); },step);
-  }
-  function scrollToEl(el){if(!el)return;var y0=window.pageYOffset,y1=Math.max(0,el.getBoundingClientRect().top+y0-80),t0=null,D=650;
-    function step(t){if(t0===null)t0=t;var k=Math.min(1,(t-t0)/D);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;window.scrollTo({top:y0+(y1-y0)*k,behavior:"instant"});if(k<1)requestAnimationFrame(step);}
-    /* if animation frames are paused (hidden tab), jump straight to the section */
-    var fb=setTimeout(function(){window.scrollTo({top:y1,behavior:"instant"});},120);
-    requestAnimationFrame(function(t){clearTimeout(fb);step(t);});}
-  function flash(el){if(lastFlash)lastFlash.classList.remove("mdn-flash");if(el){el.classList.add("mdn-flash");lastFlash=el;}}
-  function go(i){
-    if(i<0||i>=SEGS.length)return;
-    idx=i;var s=SEGS[i];
-    stopTabs();
-    bar.classList.add("on"); $("md-launch").style.display="none";
-    $("mdn-cap").textContent=s.text; paint();
-    var el=document.getElementById(s.block); scrollToEl(el); flash(el);
-    audio.src=s.audio;
-    if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);cycleTabs();});setTimeout(function(){if(!tabTimer)cycleTabs();},900);}
-    var p=audio.play(); if(p&&p.catch)p.catch(function(){});
-    $("mdn-play").textContent="⏸";
-  }
-  audio.addEventListener("ended",function(){if(idx<SEGS.length-1)go(idx+1);else $("mdn-play").textContent="▶";});
-  audio.addEventListener("pause",function(){if(!audio.ended)$("mdn-play").textContent="▶";});
-  audio.addEventListener("play",function(){$("mdn-play").textContent="⏸";});
-  document.getElementById("md-guide").onclick=function(){go(0);};
-  $("mdn-play").onclick=function(){if(idx<0){go(0);return;}if(audio.paused)audio.play();else audio.pause();};
-  $("mdn-prev").onclick=function(){go(Math.max(0,idx-1));};
-  $("mdn-next").onclick=function(){if(idx<SEGS.length-1)go(idx+1);};
-  $("mdn-x").onclick=function(){audio.pause();stopTabs();bar.classList.remove("on");$("md-launch").style.display="flex";if(lastFlash){lastFlash.classList.remove("mdn-flash");lastFlash=null;}};
-})();
-</script>
+
 
 <script>
 (function(){var b=document.getElementById('nav-burger'),n=document.querySelector('.topbar-nav');if(!b||!n)return;
