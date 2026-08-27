@@ -916,6 +916,18 @@
   .collaboration-title { font-size: clamp(1.6rem, 3vw, 2.5rem); }
   @media (min-width: 900px) { .collaboration-title { white-space: nowrap; } }
   .navlink { color: var(--muted); }
+  /* ---- Phone adjustments ---- */
+  @media (max-width: 760px) {
+    .hero h1 br { display: none; }
+    .hero h1 { font-size: clamp(2rem, 9.5vw, 2.8rem); }
+    .scope-title, .regional-title, .collaboration-title, .example-title, .collab-band .section-title { font-size: clamp(1.65rem, 7.2vw, 2.3rem) !important; overflow-wrap: anywhere; hyphens: auto; white-space: normal !important; }
+    .scope-section > * { min-width: 0; }
+    .scope-section > div { display: contents; }
+    .scope-eyebrow { order: 1; } .scope-title { order: 2; } .scope-copy { order: 3; margin-top: 0 !important; } .scope-aside { order: 4; margin-top: 0; }
+    .scope-section { gap: 1.25rem !important; }
+    .example .example-intro h3, .reference-gateway-text h3, .jamaica-intro h3 { overflow-wrap: anywhere; }
+    .topbar-inner { justify-content: space-between; }
+  }
 </style>
 </head>
 <body>
