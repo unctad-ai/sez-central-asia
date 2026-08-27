@@ -1378,29 +1378,74 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   </div>
 </aside>
 <audio id="mdn-audio" preload="none"></audio>
+<style>
+  #gl-video,#gl-video-b{position:fixed;left:24px;bottom:0;z-index:9002;width:min(300px,32vw);height:auto;pointer-events:none;
+    filter:drop-shadow(0 12px 28px rgba(50,35,15,.35));opacity:1;transition:opacity .28s ease;display:none;}
+  body.gl-on #gl-video,body.gl-on #gl-video-b{display:block;}
+  #gl-video.is-back,#gl-video-b.is-back{opacity:0;}
+  @media (max-width:760px){#gl-video,#gl-video-b{display:none!important;}}
+  @media print{#gl-video,#gl-video-b{display:none!important;}}
+</style>
+<video id="gl-video" playsinline preload="metadata" aria-label="Gulnura speaking"></video>
+<video id="gl-video-b" class="is-back" playsinline preload="auto" aria-hidden="true" aria-label="Gulnura speaking"></video>
 <script>
 (function(){
+  /* Gulnura speaks on camera: each part is a transparent talking clip (voice and lips
+     generated together). The existing mp3 narration stays as the automatic fallback
+     when a clip cannot load, so the tour never goes silent. */
   var SEGS=[
-    {block:"nar-hero", audio:"assets/gulnura-audio/seg1.mp3", text:"Hello, I'm Gulnura. This page presents a proposal from the WFZO Regional Office for Central Asia, with the technical support of UNCTAD and UNITAR: a needs assessment to make zone services simple, transparent and digital. Let me walk you through it."},
-    {block:"why", audio:"assets/gulnura-audio/seg2.mp3", text:"Why do an assessment? The zones of Central Asia serve the same investors and offer them the same services, yet every country has its own procedure, and an investor who works in several countries relearns it each time. Making these procedures transparent, simple and digital is an instrument of investment policy. The assessment is the first step. Each country applies individually and receives its own report; the regional picture is built one country at a time."},
-    {block:"nar-services", audio:"assets/gulnura-audio/seg3.mp3", text:"The assessment asks three questions, the same in every country. What is in place: rules, responsible institutions, procedures. What is digital: which services are available online. And what are the priorities: the improvements the country wants first."},
-    {block:"after", audio:"assets/gulnura-audio/seg4.mp3", text:"After the assessment come three steps, in this order. Transparency: publish each procedure from the user's point of view. Simplification: remove steps and requirements that add no control. Digitalisation: turn the simplified procedures into online services. Digitising a procedure nobody has simplified only makes it faster to get wrong."},
-    {block:"after", audio:"assets/gulnura-audio/seg5.mp3", text:"The regional approach: start in one country, extend to the region. The first country produces a reference procedure for each zone service, which the other countries can adopt and adapt. The method, the procedures and the tools transfer. The legal basis and the institutions stay national."},
-    {block:"nar-practica", audio:"assets/gulnura-audio/seg6.mp3", cycleTabs:true, text:"Two reference experiences. The Central Asia Gateway shows trade procedures documented from the user's point of view for the five countries of the region; the same regional approach can be applied to zone procedures. And Jamaica shows digitalised zone services: every zone on an interactive map, the registration completed online, and a digital certificate at the end."},
-    {block:"nar-collab", audio:"assets/gulnura-audio/seg7.mp3", text:"Any country can start. Applying is voluntary and creates no commitment. If you have any questions, I'm here to help."},
+    {block:"nar-hero", video:"assets/gulnura-bust/seg1", say:"Hello, I'm Gulnura. This page presents a proposal from the WFZO Regional Office for Central Asia, supported by UNCTAD and UNITAR. Let me walk you through it.", audio:"assets/gulnura-audio/seg1.mp3", text:"Hello, I'm Gulnura. This page presents a proposal from the WFZO Regional Office for Central Asia, supported by UNCTAD and UNITAR. Let me walk you through it."},
+    {block:"why", video:"assets/gulnura-bust/seg2", say:"Why an assessment? Every country has its own zone procedures, and investors relearn them each time. Each country applies individually and receives its own report.", audio:"assets/gulnura-audio/seg2.mp3", text:"Why an assessment? Every country has its own zone procedures, and investors relearn them each time. Each country applies individually and receives its own report."},
+    {block:"nar-services", video:"assets/gulnura-bust/seg3", say:"The assessment asks three questions, the same in every country. What is in place, what is digital, and what are the priorities.", audio:"assets/gulnura-audio/seg3.mp3", text:"The assessment asks three questions, the same in every country. What is in place, what is digital, and what are the priorities."},
+    {block:"after", video:"assets/gulnura-bust/seg4", say:"After the assessment come three steps in order: transparency, simplification, then digitalisation. Digitising a procedure nobody has simplified only makes it faster to get wrong.", audio:"assets/gulnura-audio/seg4.mp3", text:"After the assessment come three steps in order: transparency, simplification, then digitalisation. Digitising a procedure nobody has simplified only makes it faster to get wrong."},
+    {block:"after", video:"assets/gulnura-bust/seg5", say:"Start in one country, extend to the region. The first country produces reference procedures the others can adopt. The legal basis and the institutions stay national.", audio:"assets/gulnura-audio/seg5.mp3", text:"Start in one country, extend to the region. The first country produces reference procedures the others can adopt. The legal basis and the institutions stay national."},
+    {block:"nar-practica", video:"assets/gulnura-bust/seg6", cycleTabs:true, say:"Two reference experiences: the Central Asia Gateway documents trade procedures from the user's point of view, and Jamaica shows zone services digitalised end to end.", audio:"assets/gulnura-audio/seg6.mp3", text:"Two reference experiences: the Central Asia Gateway documents trade procedures from the user's point of view, and Jamaica shows zone services digitalised end to end."},
+    {block:"nar-collab", video:"assets/gulnura-bust/seg7", say:"Any country can start. Applying is voluntary and creates no commitment. If you have any questions, I'm here to help.", audio:"assets/gulnura-audio/seg7.mp3", text:"Any country can start. Applying is voluntary and creates no commitment. If you have any questions, I'm here to help."},
   ];
   var $=function(i){return document.getElementById(i);};
   var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null;
+  /* Double buffer: two stacked <video> elements; the hidden one loads the next clip and
+     they swap only once it has really painted a frame, so she is never blank. */
+  var vA=$("gl-video"), vB=$("gl-video-b"), vFront=vA, vBack=vB;
+  var BUST_EXT=vA.canPlayType('video/mp4; codecs="hvc1"')?".mov":".webm";
+  var activeMedia=null, wantsPlayback=false, loadToken=0, fallbackTimer=null, stageToken=0;
   var dots=$("mdn-dots");
   SEGS.forEach(function(_,i){var b=document.createElement("button");b.className="mdn-dot";b.onclick=function(){go(i);};dots.appendChild(b);});
   function paint(){[].forEach.call(dots.children,function(d,i){d.className="mdn-dot"+(i===idx?" on":(i<idx?" done":""));});}
+  function srcOf(el){return el.getAttribute("src")||"";}
+  function showBust(on){document.body.classList.toggle("gl-on",!!on);}
+  function pauseBoth(){[vA,vB].forEach(function(m){try{m.pause();}catch(e){}});try{audio.pause();audio.currentTime=0;}catch(e){}}
+  function clearFallbackTimer(){if(fallbackTimer){clearTimeout(fallbackTimer);fallbackTimer=null;}}
+  function onPainted(el,cb){var done=false;
+    function fire(){if(done)return;done=true;el.removeEventListener("playing",fire);el.removeEventListener("timeupdate",fire);cb();}
+    if(el.requestVideoFrameCallback)el.requestVideoFrameCallback(fire);
+    el.addEventListener("playing",fire);el.addEventListener("timeupdate",fire);}
+  function stageShow(src,opts){opts=opts||{};var token=++stageToken,back=vBack;
+    function stale(){return token!==stageToken;}
+    function fail(e){if(!stale()&&opts.onError)opts.onError(e);}
+    function commit(){if(stale())return;var old=vFront;
+      back.classList.remove("is-back");back.removeAttribute("aria-hidden");
+      old.classList.add("is-back");old.setAttribute("aria-hidden","true");
+      vFront=back;vBack=old;try{old.pause();}catch(e){}
+      if(opts.onFront)opts.onFront(back);}
+    function start(){if(stale())return;onPainted(back,commit);var p=back.play();if(p&&p.catch)p.catch(fail);}
+    back.loop=false;back.muted=false;
+    if(srcOf(back)!==src){back.setAttribute("src",src);back.load();}
+    else{try{back.currentTime=0;}catch(e){}}
+    if(back.readyState>=2){start();return;}
+    function ok(){back.removeEventListener("error",bad);start();}
+    function bad(){back.removeEventListener("canplay",ok);fail();}
+    back.addEventListener("canplay",ok,{once:true});
+    back.addEventListener("error",bad,{once:true});}
+  function stageAbort(){++stageToken;}
+  function stagePrefetch(src){if(!src||srcOf(vBack)===src)return;vBack.loop=false;vBack.setAttribute("src",src);vBack.load();}
   function stopTabs(){if(tabTimer){clearInterval(tabTimer);tabTimer=null;}}
+  function activeDuration(){return activeMedia&&activeMedia.duration&&isFinite(activeMedia.duration)?activeMedia.duration:14;}
   function cycleTabs(){
     stopTabs();
     var tabs=[].slice.call(document.querySelectorAll(".screen-tab")); if(tabs.length<2) return;
     tabs[0].click(); var i=0;
-    var dur=(audio&&audio.duration&&isFinite(audio.duration))?audio.duration:18;
-    var step=Math.max(3000,(dur*1000)/tabs.length);
+    var step=Math.max(3000,(activeDuration()*1000)/tabs.length);
     tabTimer=setInterval(function(){ i++; if(i>=tabs.length){stopTabs();return;} tabs[i].click(); },step);
   }
   function scrollToEl(el){if(!el)return;var y0=window.pageYOffset,y1=Math.max(0,el.getBoundingClientRect().top+y0-80),t0=null,D=650;
@@ -1411,24 +1456,58 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   function flash(el){if(lastFlash)lastFlash.classList.remove("mdn-flash");if(el){el.classList.add("mdn-flash");lastFlash=el;}}
   function go(i){
     if(i<0||i>=SEGS.length)return;
-    idx=i;var s=SEGS[i];
-    stopTabs();
+    idx=i;var s=SEGS[i],token=++loadToken;
+    stopTabs();clearFallbackTimer();pauseBoth();activeMedia=null;wantsPlayback=true;
     bar.classList.add("on"); $("md-launch").style.display="none";
-    $("mdn-cap").textContent=s.text; paint();
+    $("mdn-cap").textContent=s.say||s.text; paint();
     var el=document.getElementById(s.block); scrollToEl(el); flash(el);
-    audio.src=s.audio;
-    if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);cycleTabs();});setTimeout(function(){if(!tabTimer)cycleTabs();},900);}
-    var p=audio.play(); if(p&&p.catch)p.catch(function(){});
-    $("mdn-play").textContent="⏸";
+    function startFallback(){
+      if(token!==loadToken||activeMedia===audio)return;
+      clearFallbackTimer();stageAbort();try{vA.pause();vB.pause();}catch(e){}
+      showBust(false);activeMedia=audio;$("mdn-cap").textContent=s.text;
+      audio.src=s.audio;
+      if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);if(activeMedia===audio)cycleTabs();});}
+      var p=audio.play(); if(p&&p.catch)p.catch(function(){setPlay(false);});
+      if(s.cycleTabs)setTimeout(function(){if(!tabTimer&&activeMedia===audio)cycleTabs();},900);
+    }
+    showBust(true);
+    stageShow(s.video+BUST_EXT,{onError:startFallback,onFront:function(elv){
+      if(token!==loadToken||activeMedia===audio){try{elv.pause();}catch(e){}return;}
+      clearFallbackTimer();try{audio.pause();}catch(e){}activeMedia=elv;
+      if(s.cycleTabs)cycleTabs();
+      /* the next part loads out of sight, after the crossfade has finished */
+      var nx=SEGS[i+1]; if(nx)setTimeout(function(){stagePrefetch(nx.video+BUST_EXT);},320);
+    }});
+    fallbackTimer=setTimeout(startFallback,5000);
+    setPlay(true);
   }
-  audio.addEventListener("ended",function(){if(idx<SEGS.length-1)go(idx+1);else $("mdn-play").textContent="▶";});
-  audio.addEventListener("pause",function(){if(!audio.ended)$("mdn-play").textContent="▶";});
-  audio.addEventListener("play",function(){$("mdn-play").textContent="⏸";});
+  function setPlay(on){$("mdn-play").textContent=on?"⏸":"▶";}
+  function stopAll(hideBar){
+    /* activeMedia=null is the stop that STAYS stopped (resurrection bug) */
+    wantsPlayback=false;++loadToken;stageAbort();clearFallbackTimer();pauseBoth();activeMedia=null;stopTabs();showBust(false);
+    if(hideBar){bar.classList.remove("on");$("md-launch").style.display="flex";}
+    if(lastFlash){lastFlash.classList.remove("mdn-flash");lastFlash=null;}
+    setPlay(false);
+  }
+  [vA,vB,audio].forEach(function(m){
+    m.addEventListener("ended",function(){if(m!==activeMedia)return;if(idx<SEGS.length-1)go(idx+1);else stopAll(false);});
+    m.addEventListener("play",function(){if(m===activeMedia){wantsPlayback=true;setPlay(true);}});
+    m.addEventListener("pause",function(){if(m===activeMedia&&!m.ended&&wantsPlayback)setPlay(false);});
+  });
   document.getElementById("md-guide").onclick=function(){go(0);};
-  $("mdn-play").onclick=function(){if(idx<0){go(0);return;}if(audio.paused)audio.play();else audio.pause();};
+  $("mdn-play").onclick=function(){
+    if(idx<0){go(0);return;}
+    if(!activeMedia){
+      if(wantsPlayback){wantsPlayback=false;++loadToken;stageAbort();clearFallbackTimer();pauseBoth();setPlay(false);}
+      else go(idx);
+      return;
+    }
+    if(activeMedia.paused){wantsPlayback=true;var p=activeMedia.play();if(p&&p.catch)p.catch(function(){setPlay(false);});}
+    else{wantsPlayback=false;activeMedia.pause();setPlay(false);}
+  };
   $("mdn-prev").onclick=function(){go(Math.max(0,idx-1));};
   $("mdn-next").onclick=function(){if(idx<SEGS.length-1)go(idx+1);};
-  $("mdn-x").onclick=function(){audio.pause();stopTabs();bar.classList.remove("on");$("md-launch").style.display="flex";if(lastFlash){lastFlash.classList.remove("mdn-flash");lastFlash=null;}};
+  $("mdn-x").onclick=function(){stopAll(true);};
 })();
 </script>
 
