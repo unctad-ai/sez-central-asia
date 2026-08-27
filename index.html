@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
   :root {
     --bg: #fcfaf8;
@@ -1058,7 +1058,7 @@
             <ul class="country-chips" aria-label="Countries covered"><li>Kazakhstan</li><li>Kyrgyzstan</li><li>Tajikistan</li><li>Turkmenistan</li><li>Uzbekistan</li></ul>
           </div>
           <a class="reference-gateway-shot" href="https://infotradecentralasia.org/" target="_blank" rel="noopener">
-            <img loading="lazy" decoding="async" src="assets/screen-central-asia-gateway.jpg" alt="Central Asia Gateway portal: step-by-step import and export procedures for Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan and Uzbekistan">
+            <img loading="lazy" decoding="async" data-src="assets/screen-central-asia-gateway.jpg" alt="Central Asia Gateway portal: step-by-step import and export procedures for Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan and Uzbekistan">
           </a>
         </div>
       </div>
@@ -1101,16 +1101,16 @@
             <div class="print-screens" data-print-only="1" id="print-screens"></div>
             <div class="screen-frame">
               <div class="screen-panel is-active" role="tabpanel" data-screen-panel="landing">
-                <img loading="lazy" decoding="async" src="assets/screen-zones-landing.jpg" alt="Jamaica Special Economic Zone Authority public portal landing page">
+                <img loading="lazy" decoding="async" data-src="assets/screen-zones-landing.jpg" alt="Jamaica Special Economic Zone Authority public portal landing page">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="map">
-                <img loading="lazy" decoding="async" src="assets/screen-map-dashboard.jpg" alt="Interactive Jamaica SEZ map with filters, zone profile, and map pins">
+                <img loading="lazy" decoding="async" data-src="assets/screen-map-dashboard.jpg" alt="Interactive Jamaica SEZ map with filters, zone profile, and map pins">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="zone-detail">
-                <img loading="lazy" decoding="async" src="assets/screen-zone-detail-modal.jpg" alt="Montego Bay Free Zone detail modal over the interactive Jamaica SEZ map">
+                <img loading="lazy" decoding="async" data-src="assets/screen-zone-detail-modal.jpg" alt="Montego Bay Free Zone detail modal over the interactive Jamaica SEZ map">
               </div>
               <div class="screen-panel" role="tabpanel" data-screen-panel="certificate">
-                <img loading="lazy" decoding="async" src="assets/screen-certificate.jpg" alt="Digital special economic zone developer certificate with QR verification">
+                <img loading="lazy" decoding="async" data-src="assets/screen-certificate.jpg" alt="Digital special economic zone developer certificate with QR verification">
               </div>
             </div>
           </div>
@@ -1296,7 +1296,18 @@
   <div id="md-sug"><button>What does the assessment involve?</button><button>What does my country get?</button><button>What was done in Jamaica?</button><button>How do we apply?</button></div>
   <div id="md-foot"><div class="row"><input id="md-text" placeholder="Type your question…" autocomplete="off"><button class="act" id="md-send">Send</button></div><button class="act" id="md-talk">🎤 Talk to Gulnura</button></div>
 </aside>
-<script src="https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js"></script>
+<script>
+function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(function(res,rej){var s=document.createElement('script');s.src='https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+(function(){
+  function loadImg(p){var i=p&&p.querySelector('img[data-src]');if(i){i.src=i.dataset.src;i.removeAttribute('data-src');}}
+  document.addEventListener('click',function(e){var t=e.target.closest('.screen-tab');if(!t)return;
+    var sc=t.closest('.screen-showcase');var id=t.dataset.screenTab;
+    loadImg(sc.querySelector('[data-screen-panel="'+id+'"]'));});
+  var sc=document.querySelector('.screen-showcase');
+  if(sc&&'IntersectionObserver' in window){var o=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){loadImg(sc.querySelector('.screen-panel.is-active'));o.disconnect();}});},{rootMargin:'300px'});o.observe(sc);}
+  else if(sc){loadImg(sc.querySelector('.screen-panel.is-active'));}
+})();
+</script>
 <script>
 (function(){
   var AGENT="agent_5801m1040rvjf6w961q4r8eh5gq4", GREET="Hello, I'm Gulnura. This page proposes an assessment of zone procedures, one country at a time, so that what is made simple and digital in one country can be adopted by the others. I can explain what the assessment looks at, what Jamaica did, or how a country applies.";
@@ -1306,7 +1317,7 @@
   function openPanel(){$('md-panel').classList.add('open');$('md-panel').setAttribute('aria-hidden','false');$('md-text').focus();}
   var _mg=$('md-pic'); if(_mg) _mg.onclick=openPanel;
   $('md-x').onclick=function(){$('md-panel').classList.remove('open');if(session){session.endSession();session=null;mode=null;}};
-  async function ensure(voice){var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
+  async function ensure(voice){await loadEL();var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
     stat(voice?'Connecting microphone…':'Connecting…');
     session=await ElevenLabsClient.Conversation.startSession({agentId:AGENT,connectionType:voice?'webrtc':'websocket',textOnly:!voice,
       onConnect:function(){stat(voice?'Listening…':'');},onDisconnect:function(){stat('');},

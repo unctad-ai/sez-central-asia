@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
   :root {
     --bg: #fcfaf8;
@@ -1295,7 +1295,18 @@
   <div id="md-sug"><button>Что включает оценка?</button><button>Что получает моя страна?</button><button>Что сделано на Ямайке?</button><button>Как подать заявку?</button></div>
   <div id="md-foot"><div class="row"><input id="md-text" placeholder="Введите вопрос…" autocomplete="off"><button class="act" id="md-send">Отправить</button></div><button class="act" id="md-talk">🎤 Поговорить с Гульнурой</button></div>
 </aside>
-<script src="https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js"></script>
+<script>
+function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(function(res,rej){var s=document.createElement('script');s.src='https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+(function(){
+  function loadImg(p){var i=p&&p.querySelector('img[data-src]');if(i){i.src=i.dataset.src;i.removeAttribute('data-src');}}
+  document.addEventListener('click',function(e){var t=e.target.closest('.screen-tab');if(!t)return;
+    var sc=t.closest('.screen-showcase');var id=t.dataset.screenTab;
+    loadImg(sc.querySelector('[data-screen-panel="'+id+'"]'));});
+  var sc=document.querySelector('.screen-showcase');
+  if(sc&&'IntersectionObserver' in window){var o=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){loadImg(sc.querySelector('.screen-panel.is-active'));o.disconnect();}});},{rootMargin:'300px'});o.observe(sc);}
+  else if(sc){loadImg(sc.querySelector('.screen-panel.is-active'));}
+})();
+</script>
 <script>
 (function(){
   var AGENT="agent_6901m106nab9erjb7atmz9qfmv72", GREET="Здравствуйте, я Гульнура. На этой странице предлагается оценка процедур зон, по одной стране за раз, чтобы то, что упрощено и переведено в цифру в одной стране, могли перенять другие. Могу рассказать, что охватывает оценка, что сделано на Ямайке или как подать заявку.";
@@ -1305,7 +1316,7 @@
   function openPanel(){$('md-panel').classList.add('open');$('md-panel').setAttribute('aria-hidden','false');$('md-text').focus();}
   var _mg=$('md-pic'); if(_mg) _mg.onclick=openPanel;
   $('md-x').onclick=function(){$('md-panel').classList.remove('open');if(session){session.endSession();session=null;mode=null;}};
-  async function ensure(voice){var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
+  async function ensure(voice){await loadEL();var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
     stat(voice?'Подключаю микрофон…':'Подключаюсь…');
     session=await ElevenLabsClient.Conversation.startSession({agentId:AGENT,connectionType:voice?'webrtc':'websocket',textOnly:!voice,
       onConnect:function(){stat(voice?'Слушаю…':'');},onDisconnect:function(){stat('');},
