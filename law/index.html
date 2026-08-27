@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What the country offers and what it expects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fcfaf8;
+    --fg: #24313a;
+    --muted: #5d6b74;
+    --accent: #3b84b9;
+    --accent-deep: #28658f;
+    --accent-soft: #cfe3f1;
+    --border: #e3e8eb;
+    --surface: #ffffff;
+    --highlight: #edf5fa;
+    --band: #24495f;
+    --band-ink: #f5f9fc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+  .inner { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+  h1, h2, h3, h4 { font-family: "Montserrat", system-ui, sans-serif; font-weight: 700; }
+  a { color: var(--accent-deep); }
+
+  header.top {
+    background: linear-gradient(0deg, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.35)), url("../assets/service-legal-closeup.jpg") center / cover no-repeat;
+    color: var(--band-ink);
+    padding: 3.5rem 0 3rem;
+  }
+  .crumb { font-size: 0.85rem; margin-bottom: 1.2rem; }
+  .crumb a { color: var(--band-ink); }
+  .kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.95; margin-bottom: 0.8rem; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; max-width: 24ch; }
+  .sub { font-size: 1.25rem; opacity: 0.95; margin-top: 0.9rem; max-width: 46ch; }
+
+  .section-title { font-size: 1.7rem; margin: 3rem 0 1rem; }
+  .intro { max-width: 58rem; font-size: 1.2rem; }
+  p + p { margin-top: 0.75rem; }
+
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+  .three .card { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+  .three .card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--accent-deep); }
+  .three .card p { font-size: 0.98rem; line-height: 1.55; }
+  .three .card p.pt { font-weight: 600; color: var(--fg); }
+
+  .elements { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+  .el { background: var(--surface); border: 1px solid var(--border); border-radius: 0.9rem; padding: 1.25rem 1.4rem; }
+  .el .n { font-size: 0.8rem; font-weight: 700; color: var(--accent-deep); font-variant-numeric: tabular-nums; }
+  .el h3 { font-size: 1rem; margin: 0.3rem 0 0.4rem; }
+  .el p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+  .el.star { border-color: var(--accent); background: var(--highlight); }
+  .el.star p { color: var(--fg); }
+
+  .quote {
+    max-width: 58rem; margin: 2rem 0;
+    background: var(--surface); border-left: 4px solid var(--accent);
+    padding: 1.1rem 1.5rem; border-radius: 0 0.6rem 0.6rem 0;
+    font-size: 1.2rem;
+  }
+  .quote em { font-style: normal; font-weight: 700; color: var(--accent-deep); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+  .pane { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+  .pane h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .pane ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .pane li { padding-left: 1.2rem; position: relative; font-size: 0.97rem; }
+  .pane li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 0.5rem; height: 0.3rem; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+  .pane li strong { font-weight: 700; }
+
+  .deep { margin-top: 1.5rem; background: var(--band); color: var(--band-ink); border-radius: 1rem; padding: 1.75rem 2rem; max-width: 58rem; }
+  .deep h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+  .deep p { font-size: 1rem; opacity: 0.95; }
+
+  .levels { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .level { border-top: 3px solid var(--accent); background: var(--surface); border-radius: 0 0 1rem 1rem; border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.25rem 1.4rem; }
+  .level h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .level .freq { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-deep); margin-bottom: 0.5rem; }
+  .level p { font-size: 0.92rem; color: var(--muted); }
+
+  .mixed { margin-top: 2rem; background: var(--highlight); border-radius: 1rem; padding: 1.5rem 1.75rem; max-width: 58rem; }
+  .mixed h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .mixed ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .mixed li { padding-left: 1.2rem; position: relative; font-size: 1rem; }
+  .mixed li::before { content: ""; position: absolute; left: 0; top: 0.52em; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--accent); }
+  .mixed .src { font-size: 0.88rem; color: var(--muted); margin-top: 0.9rem; }
+
+  .cta-band { margin-top: 3.5rem; background: var(--band); color: var(--band-ink); padding: 2rem 0 2.2rem; }
+  .cta-band .row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .cta-band .txt { flex: 1; min-width: 16rem; }
+  .cta-band strong { display: block; font-family: "Montserrat", sans-serif; font-size: 1.1rem; }
+  .cta-band span { font-size: 0.95rem; opacity: 0.9; }
+  .cta-btn { display: inline-block; background: var(--band-ink); color: var(--accent-deep); font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 0.98rem; text-decoration: none; padding: 0.75rem 1.4rem; border-radius: 999px; white-space: nowrap; }
+  .cta-band .fine { margin-top: 1.2rem; font-size: 0.82rem; opacity: 0.75; }
+
+  @media (max-width: 1000px) {
+    .three, .twocol, .levels { grid-template-columns: 1fr; }
+    .elements { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .elements { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="inner">
+      <p class="crumb"><a href="../">← Simpler, more transparent, digital zone services · Central Asia</a></p>
+      <div class="kicker">Better zone regulations</div>
+      <h1>What the country offers and what it expects</h1>
+      <p class="sub">A zone law’s real work. Most laws only describe a procedure.</p>
+    </div>
+  </header>
+
+  <div class="inner">
+
+    <h2 class="section-title">A zone law is not a registration procedure</h2>
+    <div class="intro">
+      <p>A special economic zone is a bounded territory where a country adjusts its ordinary rules to welcome specific activities. That adjustment is the whole instrument: inside the zone, procedures, duties and conditions are set deliberately, for a purpose, rather than inherited from the general regime.</p>
+      <p>Yet most zone laws read as procedure: how to apply, which forms, which committee decides. The real questions sit before any procedure: what does the country offer a company that comes, what does it expect in return, and who makes sure both sides hold.</p>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <h3>The offer</h3>
+        <p class="pt">What does a company get for choosing this zone?</p>
+        <p>The questions that decide a location have shifted: how long until I am licensed, how certain is my legal position in ten years, can I bring my specialists and their families, is the power and land really there. Tax packages look much the same from one zone to the next; thirty zones compared on tax give thirty similar answers.</p>
+      </div>
+      <div class="card">
+        <h3>The ask</h3>
+        <p class="pt">What does the country expect in return?</p>
+        <p>Jobs, training, technology staying local, revenue, reporting. Left vague, these stay wishes. Written as conditions in the permit or the contract, with targets that can be checked, they become enforceable.</p>
+      </div>
+      <div class="card">
+        <h3>Supervision</h3>
+        <p class="pt">Who checks that both sides hold?</p>
+        <p>For a growing class of activities, advanced therapies, large-scale computing, new forms of finance, the prior question is: is there anywhere I can operate at all? They are blocked at home not for lack of merit, but because ordinary frameworks were not written for them. Competent, dedicated supervision is itself the offer.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Eight things a country can put on the table</h2>
+    <p style="max-width:58rem;">Different activities respond to different combinations. The choice should be deliberate, not copied from what other zones offered ten years ago.</p>
+    <div class="elements">
+      <div class="el">
+        <p class="n">01</p>
+        <h3>A home for activities that lack one</h3>
+        <p>A credible place to operate for activities blocked elsewhere, with proper screening for fit and values.</p>
+      </div>
+      <div class="el star">
+        <p class="n">02</p>
+        <h3>Specialised regulation by people who understand the field</h3>
+        <p>Often the most valuable element. Many activities suffer not from too much regulation but from the wrong kind. Serious investors pay for legitimacy and competent oversight, not laxity.</p>
+      </div>
+      <div class="el">
+        <p class="n">03</p>
+        <h3>Modern administrative facilitation</h3>
+        <p>Digital procedures, approval by silence after a clear deadline, templates, working languages of business.</p>
+      </div>
+      <div class="el">
+        <p class="n">04</p>
+        <h3>Legal certainty</h3>
+        <p>Independent courts or tribunals, international arbitration, quick contract enforcement.</p>
+      </div>
+      <div class="el">
+        <p class="n">05</p>
+        <h3>Talent and family permits, bundled</h3>
+        <p>Not just the founder: the team and their families, processed fast. Often the binding constraint.</p>
+      </div>
+      <div class="el">
+        <p class="n">06</p>
+        <h3>Infrastructure that fits the activity</h3>
+        <p>Labs for biotech, power and fibre for computing, testbeds for climate work. The right kind, not any kind.</p>
+      </div>
+      <div class="el">
+        <p class="n">07</p>
+        <h3>Contractual stability under adaptive law</h3>
+        <p>The framework evolves; each investor&rsquo;s deal is fixed by contract for an agreed term.</p>
+      </div>
+      <div class="el">
+        <p class="n">08</p>
+        <h3>Fiscal terms</h3>
+        <p>Useful, often expected, rarely decisive. Any country can match a tax package.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">What the country can get back</h2>
+    <div class="twocol">
+      <div class="pane">
+        <h3>The familiar benefits</h3>
+        <ul>
+          <li><strong>Jobs</strong>, at various skill levels depending on the activity mix.</li>
+          <li><strong>Tax revenue</strong>, modest early, growing as the zone matures.</li>
+          <li><strong>Investment</strong> that stays, and local suppliers pulled up the value chain.</li>
+          <li><strong>Knowledge transfer</strong>, real when written into contracts and licences, not left to chance.</li>
+        </ul>
+      </div>
+      <div class="pane">
+        <h3>The forward-looking benefits</h3>
+        <ul>
+          <li><strong>Position in fast-growing sectors</strong>: being the place where an activity is done well.</li>
+          <li><strong>Talent attraction</strong> as a national capability, and less brain drain: local talent finds frontier work at home.</li>
+          <li><strong>Regulatory reputation</strong>: being the jurisdiction whose rules others study and adopt.</li>
+          <li><strong>National brand</strong>: known for one excellent thing, with a halo across exports and diplomacy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="deep">
+      <h3>The deepest benefit, almost never discussed</h3>
+      <p>Using the zone to modernise the country&rsquo;s institutions, financed by the investors who need them. Serious activities require expert regulators, capable courts, monitoring bodies. Zone revenues, fees, levies and licences can pay for them directly. Over time these become national assets: mechanisms proven inside the zone extend to the whole administration, staff trained there serve nationally, and reform happens without head-on political confrontation. The zone is small enough to try things; what works, the country keeps.</p>
+    </div>
+
+    <div class="quote">The ask becomes real through <em>value-capture conditions</em>: training and hiring targets, partnership requirements, technology-stay clauses, measurable deployment targets, written into contracts and licences from the start, checkable one by one.</div>
+
+    <h2 class="section-title">A law drafted to evolve</h2>
+    <p style="max-width:58rem;">Rules written for a fast-moving economy cannot lock everything for twenty years. The fix is structural: each part of the framework is revisable at its own rhythm, by its own mechanism.</p>
+    <div class="levels">
+      <div class="level">
+        <p class="freq">Hard to change</p>
+        <h3>Principles</h3>
+        <p>Values, limits, fundamental commitments. The part investors and citizens rely on.</p>
+      </div>
+      <div class="level">
+        <p class="freq">By parliament</p>
+        <h3>Structure</h3>
+        <p>Institutions, governance, dispute resolution.</p>
+      </div>
+      <div class="level">
+        <p class="freq">By the authority</p>
+        <h3>Operations</h3>
+        <p>Activity scope, fiscal parameters, procedures. Changed with consultation and review, not a new Act.</p>
+      </div>
+      <div class="level">
+        <p class="freq">By decision</p>
+        <h3>Implementation</h3>
+        <p>Forms, fees, technical standards. Versioned, and drafted so compliance can be partly automated.</p>
+      </div>
+    </div>
+    <p style="max-width:58rem;margin-top:1.25rem;">Two more habits keep the framework alive: <strong>conditions instead of closed lists</strong> ("activities meeting these criteria are permitted", so a new activity can enter without reopening parliament) and <strong>review by obligation</strong> (fixed review dates, incentives that expire unless renewed with evidence). This is how respected regulators already operate: the Monetary Authority of Singapore, the FCA in the United Kingdom, the ADGM in Abu Dhabi. Adaptive is not unstable: what attracts capital is clear rules about how rules change.</p>
+
+    <div class="quote">The law sets the regime; <em>the contract sets the deal</em>. When the law evolves, existing operators continue under their contracts; new ones enter under the new framework. The framework adapts, the investor&rsquo;s conditions stay stable, and the contract is what makes both possible at once.</div>
+
+    <div class="mixed">
+      <h3>What happens when the pieces mix</h3>
+      <ul>
+        <li>Minimum capital written into the text: US$ 1,500,000 for a developer. Ten years of inflation later, changing a number needs parliament.</li>
+        <li>Day-to-day duties on fencing, waste and site security written as statute, instead of licence conditions the authority can update.</li>
+        <li>A closed list of eligible industries: an activity nobody thought of when the law was written cannot enter until parliament reopens the list.</li>
+        <li>Concessions up to fifty years with no built-in moment to revisit them.</li>
+      </ul>
+      <p class="src">All four patterns from one real law: Jamaica&rsquo;s Special Economic Zones Act, 2016. Each made sense to a drafter in a hurry, with no place to put it other than the law.</p>
+    </div>
+
+    <h2 class="section-title">What this could mean for your zones</h2>
+    <div class="three">
+      <div class="card">
+        <h3>You have a law</h3>
+        <p>A simplification map: what belongs at which layer, what is procedure that should move down, what is really one investor&rsquo;s deal that belongs in a contract. Same protections, far less to amend.</p>
+      </div>
+      <div class="card">
+        <h3>You have none yet</h3>
+        <p>The thinking before any drafting: what is the offer, what is the ask, who supervises, which layer holds each piece. The law that follows is shorter and clearer because the thinking happened first, in plain words. Local legal teams stay in charge of the drafting itself.</p>
+      </div>
+      <div class="card">
+        <h3>A model regulation</h3>
+        <p>A ready structure any country can adapt, with each piece at the layer that can change it. In preparation.</p>
+      </div>
+    </div>
+    <p style="max-width:58rem;margin-top:1.25rem;color:var(--muted);">Assistance in this area would come through the regional project, once needs are known and funds are obtained.</p>
+
+  </div>
+
+  <div class="cta-band">
+    <div class="inner">
+      <div class="row">
+        <div class="txt">
+          <strong>Does your law say what the country offers, and what it expects?</strong>
+          <span>Tell us in the questionnaire, and attach your law: it takes six minutes.</span>
+        </div>
+        <a class="cta-btn" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Answer the questionnaire →</a>
+      </div>
+      <p class="fine">This page is a basis for discussion. It does not constitute a commitment by UNCTAD or any United Nations entity.</p>
+    </div>
+  </div>
+
+</body>
+</html>
