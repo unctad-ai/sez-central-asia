@@ -375,10 +375,20 @@
     color: var(--accent-deep);
     text-shadow: none;
   }
-  .service p a {
+  .service p a,
+  .reference-gateway-text a {
     text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 0.03em;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 180ms ease;
+  }
+  .service p a:hover,
+  .service p a:focus-visible,
+  .reference-gateway-text a:hover,
+  .reference-gateway-text a:focus-visible {
+    background-size: 100% 1px;
   }
   .lead { font-weight: 600; }
   .service ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
