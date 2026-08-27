@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitalization of SEZ procedures in Central Asia</title>
+<link rel="icon" href="assets/training-eregistrations-favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/hero-kazakhstan-video.mp4" as="video" type="video/mp4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --bg: #fcfaf8;
+    --fg: oklch(0.25 0.005 80);
+    --muted: oklch(0.46 0.01 80);
+    --accent: oklch(0.70 0.055 70);       /* WFZO gold family */
+    --accent-deep: oklch(0.52 0.055 70);
+    --accent-soft: oklch(0.84 0.032 74);
+    --border: #eee6de;
+    --surface: #ffffff;
+    --highlight: oklch(0.945 0.014 78);
+    --hero-ink: oklch(0.99 0.005 80);
+    --hero-shade-1: oklch(0.2 0.01 236.03 / 0.78);
+    --hero-shade-2: oklch(0.30 0.04 70 / 0.45);
+    --hero-shade-3: oklch(0.30 0.04 70 / 0.20);
+    --collab-surface: oklch(0.34 0.01 70.18);
+    --collab-hairline: rgb(255 255 255 / 0.14);
+  }
+  :root[data-brand="blue"] {
+    --bg: oklch(0.985 0.006 238);
+    --fg: oklch(0.25 0.012 238);
+    --muted: oklch(0.46 0.018 238);
+    --accent: oklch(0.62 0.052 238);
+    --accent-deep: oklch(0.43 0.045 238);
+    --accent-soft: oklch(0.80 0.03 238);
+    --border: oklch(0.90 0.012 238);
+    --surface: oklch(0.995 0.003 238);
+    --highlight: oklch(0.935 0.022 238);
+    --hero-ink: oklch(0.99 0.005 238);
+    --hero-shade-1: oklch(0.18 0.022 238 / 0.80);
+    --hero-shade-2: oklch(0.35 0.035 238 / 0.48);
+    --hero-shade-3: oklch(0.45 0.025 238 / 0.22);
+    --collab-surface: oklch(0.36 0.035 238);
+    --collab-hairline: rgb(255 255 255 / 0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+  .inner { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: clamp(560px, 82vh, 760px);
+    display: flex;
+    color: var(--hero-ink);
+    overflow: hidden;
+    background: url("assets/hero-kazakhstan.jpg") center / cover no-repeat;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(145deg,
+        var(--hero-shade-1) 0%,
+        var(--hero-shade-2) 45%,
+        var(--hero-shade-3) 100%);
+    pointer-events: none;
+  }
+  .hero-video {
+    position: absolute;
+    inset: -2rem 0;
+    z-index: 0;
+    width: 100%;
+    height: calc(100% + 4rem);
+    object-fit: cover;
+    transform: translateY(calc(var(--hero-y, 0px) * 0.35));
+    will-change: transform;
+  }
+  .hero .inner {
+    position: relative;
+    z-index: 2;
+    min-height: inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-copy {
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  .kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    opacity: 0.95;
+  }
+  .tag {
+    border: 1px solid oklch(0.99 0.005 80 / 0.7);
+    border-radius: 999px;
+    padding: 0.05rem 0.7rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  h1, h2, h3 {
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 700 !important;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 3.6rem); overflow-wrap: anywhere; hyphens: auto;
+    line-height: 1.08;
+    margin: 0;
+    max-width: 36ch;
+    text-wrap: balance;
+  }
+  .audience { font-size: clamp(1.05rem, 4vw, 1.6rem); max-width: 100%; overflow-wrap: anywhere; opacity: 0.92; }
+  .partner { font-size: 1rem; opacity: 0.95; }
+
+  /* ---------- Credibility strip ---------- */
+  .cred {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1.35rem 2rem 1.7rem;
+    font-size: 1.1rem;
+    line-height: 1.35;
+    text-align: left;
+    color: var(--hero-ink);
+  }
+  .cred span {
+    padding: 0 1.35rem;
+  }
+  .cred span:first-child {
+    padding-left: 0;
+  }
+  .cred span + span {
+    border-left: 1px solid oklch(0.99 0.005 80 / 0.34);
+  }
+
+  /* ---------- Purpose ---------- */
+  .purpose { margin: 4rem auto 4rem; max-width: 58rem; text-align: center; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .purpose h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .purpose p { font-size: 1.35rem; line-height: 1.4; }
+  .purpose p + p { margin-top: 0.4rem; }
+  .purpose strong { color: var(--accent-deep); }
+
+  .section-title {
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 3.5rem 0 1.25rem;
+  }
+  .section-title.centered {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* ---------- Services ---------- */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+  .service {
+    border: 0;
+    border-radius: 1rem;
+    background: #ffffff;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+  .service::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 220px;
+    border-radius: 1rem 1rem 0 0;
+    background: linear-gradient(0deg, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 0.14) 42%, rgb(0 0 0 / 0.0) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .service .photo {
+    height: 220px;
+    border-radius: 1rem 1rem 0 0;
+    background-position: center;
+    background-size: cover;
+    filter: saturate(0.9);
+  }
+  .service .body {
+    padding: 1.15rem 1.2rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+  .service-head {
+    position: absolute;
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: calc(100% - 220px + 1.05rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .num {
+    display: flex;
+    width: 2.2rem; height: 2.2rem;
+    border: 1.5px solid rgb(255 255 255 / 0.78);
+    border-radius: 50%;
+    align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    flex-shrink: 0;
+    background: rgb(0 0 0 / 0.12);
+  }
+  .service .num { display: none; }
+  .service h3 {
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgb(0 0 0 / 0.45);
+  }
+  .lead { font-weight: 600; }
+  .service ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .service li { padding-left: 1.2rem; position: relative; }
+  .service li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.42em;
+    width: 0.55rem; height: 0.3rem;
+    border-left: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg);
+  }
+  .quote {
+    background: var(--highlight);
+    border-radius: 0.55rem;
+    padding: 0.8rem 1rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  .quote em { font-style: normal; font-weight: 700; color: var(--accent-deep); }
+  a { color: var(--accent-deep); }
+  .note { font-size: 0.9rem; color: var(--muted); margin-top: auto; }
+  .proof {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    border-top: 1px solid var(--border);
+    padding-top: 0.7rem;
+    margin-top: auto;
+  }
+  .actors { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .actor {
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.15rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    background: var(--bg);
+  }
+
+  /* ---------- Live example figure ---------- */
+  .example {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 4rem;
+    padding: 4rem 0;
+  }
+  .example > .inner {
+    max-width: none;
+    padding-left: clamp(1.5rem, 3vw, 3rem);
+    padding-right: clamp(1.5rem, 3vw, 3rem);
+  }
+  .example .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .example-intro {
+    max-width: 58rem;
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
+  .shots { display: flex; flex-direction: column; gap: 1.5rem; }
+  .shot-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  figure.shot {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    box-shadow: 0 14px 34px oklch(0.35 0.03 70 / 0.14);
+  }
+  .shot .bar {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .shot .dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--border); }
+  .shot .url {
+    font-size: 0.75rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 999px;
+    padding: 0.05rem 0.7rem; margin-left: 0.4rem;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .example h2 { margin-top: 0; }
+  .example p { font-size: 1.05rem; }
+  .example p + p { margin-top: 0.75rem; }
+  .example-action {
+    max-width: 38rem;
+    margin: 1.35rem auto 0;
+  }
+  .example-action .go {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  .example-action .go a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.65rem;
+    padding: 0.55rem 1.35rem;
+    border-radius: 999px;
+    background: var(--accent-deep);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 180ms ease;
+  }
+  .example-action .go a:hover {
+    background: var(--accent);
+  }
+
+
+
+  /* ---------- Tabbed screen showcase ---------- */
+  .screen-showcase {
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: minmax(20rem, 0.28fr) minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: start;
+  }
+  .screen-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .screen-tab {
+    appearance: none;
+    border: 1px solid var(--border);
+    border-radius: 0.65rem;
+    background: var(--bg);
+    color: var(--fg);
+    cursor: pointer;
+    padding: 1.2rem 1.25rem;
+    text-align: left;
+    transition: background 220ms ease, border-color 220ms ease;
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.4rem;
+    align-items: start;
+  }
+  .screen-tab:hover { border-color: var(--accent); }
+  .screen-tab[aria-selected="true"] { background: var(--highlight); border-color: var(--accent); }
+  .screen-icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-deep);
+  }
+  .screen-icon svg,
+  .screen-icon [data-lucide] {
+    width: 1.45rem;
+    height: 1.45rem;
+    stroke-width: 1.75;
+  }
+  .screen-tab[aria-selected="true"] .screen-icon {
+    color: var(--accent-deep);
+  }
+  .screen-copy > strong { display: block; font-size: 1.05rem; line-height: 1.2; }
+  .screen-tab span strong { color: var(--fg); font-weight: 700; }
+  .screen-tab span { display: block; margin-top: 0.35rem; color: var(--muted); font-size: 0.92rem; line-height: 1.32; }
+  .screen-frame {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    box-shadow: 0 18px 42px oklch(0.35 0.03 70 / 0.30);
+  }
+  .screen-panel { display: none; }
+  .screen-panel.is-active { display: block; animation: tabFade 360ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .screen-panel img {
+    display: block;
+    width: calc(100% + 1px);
+    max-width: none;
+    height: auto;
+    margin-top: -1px;
+  }
+  @keyframes tabFade {
+    from { opacity: 0; transform: translateY(10px) scale(0.992); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ---------- Motion ---------- */
+  .hero { background-position: center calc(50% + var(--hero-y, 0px)); background-size: cover; background-repeat: no-repeat; }
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(var(--parallax-y, 0px)); }
+  .hero-copy { animation: heroIn 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .cred { animation: heroIn 820ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .screen-frame { transform: translateY(var(--parallax-y, 0px)); }
+  .service, figure.shot, .screen-frame, .collab-block, .step, .screen-tab {
+    transition: border-color 240ms ease, box-shadow 240ms ease;
+  }
+  a, .actor { transition: color 180ms ease, background 180ms ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Roadmap ---------- */
+  .roadmap {
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: relative;
+  }
+  .step { padding-right: 1.25rem; position: relative; }
+  .step + .step { padding-left: 0.25rem; }
+  .step-line {
+    position: absolute;
+    top: 1.1rem;
+    left: 0; right: 1.25rem;
+    height: 1.5px;
+    background: var(--border);
+  }
+  .step-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; position: relative; }
+  .step h3 { font-size: 1rem; font-weight: 700; padding-right: 0.5rem; background: var(--bg); }
+  .step .num {
+    width: 2.05rem;
+    height: 2.05rem;
+    border-color: var(--accent);
+    color: var(--accent-deep);
+    background: var(--bg);
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  .step.is-visible .num { animation: roadmapNumberIn 560ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .step:nth-child(2).is-visible .num { animation-delay: 80ms; }
+  .step:nth-child(3).is-visible .num { animation-delay: 240ms; }
+  .step:nth-child(4).is-visible .num { animation-delay: 400ms; }
+  .step:nth-child(5).is-visible .num { animation-delay: 560ms; }
+  @keyframes roadmapNumberIn {
+    0% { opacity: 0; transform: scale(0.45); }
+    65% { opacity: 1; transform: scale(1.12); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .step p { font-size: 0.9rem; color: var(--muted); }
+
+  /* ---------- Collaboration ---------- */
+  .collab-band {
+    margin-top: 4rem;
+    position: relative;
+    color: var(--hero-ink);
+    background: var(--collab-surface);
+    padding: 2.5rem 0;
+  }
+  .collab-band .section-title { margin: 0 0 1.25rem; color: var(--hero-ink); }
+  .collab {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .collab-block {
+    /*   border-top: 2px solid oklch(0.99 0.005 80 / 0.55); */
+  
+    padding-top: 0.8rem;
+  }
+  .collab-block h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
+  .collab-block p { font-size: 0.95rem; opacity: 0.92; }
+  .collab-block ul {
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    opacity: 0.92;
+  }
+  .questions {
+    margin-top: 2rem;
+    border: 1px solid oklch(0.99 0.005 80 / 0.45);
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 0.8rem 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  .questions .tag { flex-shrink: 0; }
+  .questions p { font-size: 0.95rem; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 1.6rem 0 2rem;
+    background: var(--collab-surface);
+    border-top: 1px solid var(--collab-hairline);
+    color: var(--hero-ink);
+  }
+  footer .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-logos img {
+    display: block;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.92;
+  }
+  .footer-logos img:first-child { height: 1.55rem; }
+  .footer-logos img:last-child { height: 1.45rem; }
+  .next { font-size: 1.05rem; }
+  .next strong { color: var(--accent-deep); }
+  .org { font-size: 0.85rem; color: oklch(0.92 0.01 80); }
+
+  @media (max-width: 1000px) {
+    .services, .collab { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr; gap: 1rem; }
+    .step-line { display: none; }
+    .example .cols, .screen-showcase { grid-template-columns: 1fr; }
+    .questions { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+    h1 { font-size: 2.8rem; }
+  }
+  @media (max-width: 420px) {
+    .cred { grid-template-columns: 1fr; }
+    .cred span { padding: 0.75rem 0; }
+    .cred span + span { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .hero { min-height: 420px; }
+    h1 { font-size: 24pt; }
+    body { font-size: 9.5pt; }
+    .services, .collab { gap: 1rem; }
+    .section-title { margin: 1.25rem 0 0.6rem; }
+    .example { padding: 1rem 0; }
+    .collab-band { padding: 1.25rem 0; }
+  }
+
+  .hero-cta { display:inline-block; width:fit-content; align-self:flex-start; margin-top:1.4rem; background:var(--hero-ink); color:var(--accent-deep);
+    font-family:"Montserrat",system-ui,sans-serif; font-weight:700; font-size:1rem; text-decoration:none;
+    padding:0.8rem 1.5rem; border-radius:999px; box-shadow:0 6px 22px rgba(0,0,0,.28); transition:transform .15s, box-shadow .15s; }
+  .hero-cta:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.35); }
+  .cta-band { margin-top:1.75rem; padding-top:1.5rem; border-top:1px solid rgb(255 255 255 / 0.18);
+    display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+  .cta-band .cta-txt { flex:1; min-width:16rem; }
+  .cta-band .cta-txt strong { display:block; font-family:"Montserrat",system-ui,sans-serif; font-size:1.1rem; color:var(--hero-ink); }
+  .cta-band .cta-txt span { font-size:0.95rem; opacity:0.9; color:var(--hero-ink); }
+  .cta-btn { display:inline-block; background:var(--hero-ink); color:var(--accent-deep);
+    font-family:"Montserrat",system-ui,sans-serif; font-weight:700; font-size:0.98rem; text-decoration:none;
+    padding:0.75rem 1.4rem; border-radius:999px; white-space:nowrap; transition:transform .15s, box-shadow .15s; }
+  .cta-btn:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgb(0 0 0 / 0.25); }
+  @media print { .hero-cta, .cta-btn { display:none; } }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-kazakhstan.jpg" aria-hidden="true">
+      <source src="assets/hero-kazakhstan-video.mp4" type="video/mp4">
+    </video>
+    <div class="inner">
+      <div class="hero-copy">
+        <div class="kicker">Special economic zones and free zones · Central Asia</div>
+        <h1 id="nar-hero">Digital transformation of zones in Central Asia</h1>
+        <div class="audience">A regional needs assessment to identify priorities and possible pathways for cooperation</div>
+        <div class="partner">This page presents a proposed approach for identifying the digitalization needs of zones across the region. A short, voluntary questionnaire would help understand the current regulatory frameworks, procedures and digital systems, identify common and country-specific priorities, and provide an initial basis for exploring possible projects, partnerships and financing opportunities. The approach could start in one interested country, with the same methodology then replicated in other countries at the regional level.</div>
+        <a class="hero-cta" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Answer the questionnaire →</a>
+        <p style="margin:.8rem 0 0;font-size:.85rem;opacity:.85;">Participation in the assessment would not imply technical assistance, financing or commitment to a subsequent phase.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner">
+    
+
+    <h2 class="section-title centered" id="nar-services">A regional view</h2>
+    <p style="text-align:center;max-width:52rem;margin:0 auto 1.75rem;opacity:.9;">Countries across the region have different regulatory frameworks, institutional arrangements and levels of digitalization. Comparable information would help recognize progress, identify common needs and facilitate regional exchange.</p>
+    <div style="max-width:66rem;margin:0 auto 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.25rem;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Regulatory and institutional framework</h3>
+        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify the applicable rules, responsible institutions and current arrangements for managing zones.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Procedures and services</h3>
+        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify the main procedures, requirements, steps, costs, timelines and responsible authorities.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.5rem;">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;margin:0 0 .6rem;">Digitalization and priorities</h3>
+        <p style="font-size:.95rem;line-height:1.55;color:var(--muted);margin:0;">Identify which services are available online, how institutional systems interact and which processes each country considers priorities for improvement.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title centered">Possible areas of collaboration</h2>
+    <p style="text-align:center;max-width:48rem;margin:0 auto 1.75rem;opacity:.85;">Based on the assessment, the following areas of collaboration are possible. Their inclusion does not imply that technical assistance or financing is currently available.</p>
+    <div class="services">
+      <section class="service">
+        <div class="photo" style="background-image: url('assets/service-transparencia.jpg')"></div>
+        <div class="body">
+          <div class="service-head">
+            <div class="num">01</div>
+            <h3>Transparency of procedures and requirements</h3>
+          </div>
+          <p class="lead">Documenting and publishing clearly how zone procedures are carried out.</p>
+          <ul><li>Requirements, steps, costs, timelines and legal basis.</li><li>Responsible institutions and the output of each procedure.</li><li>Information kept up to date by the competent authorities.</li></ul>
+          <div class="quote">Transparency is not only publishing legislation — it is <em>explaining clearly how it applies</em>.</div>
+        </div>
+      </section>
+      <section class="service">
+        <div class="photo" style="background-image: url('assets/service-legal-closeup.jpg')"></div>
+        <div class="body">
+          <div class="service-head">
+            <div class="num">02</div>
+            <h3>Regulatory and administrative simplification</h3>
+          </div>
+          <p class="lead">Analysing how rules and procedures relate, to identify opportunities for simplification.</p>
+          <ul><li>Detect unnecessary requirements or steps.</li><li>Clarify institutional responsibilities.</li><li>Formulate improvement options adapted to each country’s context.</li></ul>
+          <div class="quote">Simplification <em>reduces administrative burdens</em> without weakening necessary controls.</div>
+        </div>
+      </section>
+      <section class="service">
+        <div class="photo" style="background-image: url('assets/service-digital-closeup.jpg')"></div>
+        <div class="body">
+          <div class="service-head">
+            <div class="num">03</div>
+            <h3>Digitalization of services</h3>
+          </div>
+          <p class="lead">Turning previously simplified procedures into accessible, integrated digital services.</p>
+          <ul><li>Applications, authorizations, payments and renewals online.</li><li>Information exchange between institutions.</li><li>Solutions adapted to each country’s legal framework and capacities.</li></ul>
+          <div class="quote"><em>First simplify; then digitize.</em></div>
+        </div>
+      </section>
+    </div>
+    <p style="max-width:52rem;margin:2rem auto 0;font-size:.98rem;line-height:1.6;color:var(--muted);text-align:center;">Depending on the priorities identified, possible future responses could include regulatory analysis, procedure simplification, capacity development and the use of tools such as UNCTAD&rsquo;s eRegistrations and smart rules approaches. Any such activity would require a separate request, agreed scope and identified resources.</p>
+  </div>
+
+  <div class="example">
+    <div class="inner">
+      <div class="example-intro">
+        <h2 class="section-title" id="nar-practica">Reference experiences</h2>
+        <p style="max-width:52rem;margin:.5rem 0 1rem;font-size:.95rem;opacity:.85;">These experiences illustrate possible approaches. They are not proposed projects for Central Asia and would not be replicated without adaptation to each country&rsquo;s priorities, institutions and legal framework.</p>
+        <div style="max-width:52rem;margin:0 0 1.5rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:.8rem;">
+          <h3 style="font-family:'Montserrat',sans-serif;font-size:1rem;margin:0 0 .4rem;">Kazakhstan: transparency of procedures</h3>
+          <p style="font-size:.92rem;line-height:1.55;color:var(--muted);margin:0;">The national trade portal (tradeinfo.kz) shows how procedures can be documented from the user&rsquo;s point of view: steps, institutions, costs, timelines and legal basis.</p>
+        </div>
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.1rem;margin:0 0 .5rem;">Jamaica: digitalization of zone services</h3>
+        <div class="example-action">
+          <p>This experience shows a concrete way to make zone services transparent, simple and digital. It is a reference, not a model to copy: any solution would have to be adapted to each country’s legal framework, institutions and priorities.</p>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="shots">
+          <div class="screen-showcase" aria-label="Jamaica SEZ digital service screens">
+            <div class="screen-tabs" role="tablist" aria-label="Screens">
+              <button class="screen-tab" type="button" role="tab" aria-selected="true" data-screen-tab="landing">
+                <span class="screen-icon" aria-hidden="true">
+                  <i data-lucide="laptop"></i>
+                </span>
+                <span class="screen-copy">
+                  <strong>Public zone portal</strong>
+                  <span>A front door for investors and zone services.</span>
+                </span>
+              </button>
+              <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="map">
+                <span class="screen-icon" aria-hidden="true">
+                  <i data-lucide="map"></i>
+                </span>
+                <span class="screen-copy">
+                  <strong>Interactive zone map</strong>
+                  <span>Every approved zone and developer on one interactive map: see where each zone is, what it offers and which industries it hosts. As easy to explore as a booking site.</span>
+                </span>
+              </button>
+              <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="zone-detail">
+                <span class="screen-icon" aria-hidden="true">
+                  <i data-lucide="factory"></i>
+                </span>
+                <span class="screen-copy">
+                  <strong>Zone detail modal</strong>
+                  <span>Click any zone to see its profile: status, available buildings and land, industries, occupants and service providers. Then choose <strong>Join this zone</strong> or <strong>Request a consultation</strong>.</span>
+                </span>
+              </button>
+              <button class="screen-tab" type="button" role="tab" aria-selected="false" data-screen-tab="certificate">
+                <span class="screen-icon" aria-hidden="true">
+                  <i data-lucide="badge-check"></i>
+                </span>
+                <span class="screen-copy">
+                  <strong>Digital certificate</strong>
+                  <span>Verified outputs once the process is approved.</span>
+                </span>
+              </button>
+            </div>
+            <div class="screen-frame">
+              <div class="screen-panel is-active" role="tabpanel" data-screen-panel="landing">
+                <img src="assets/screen-zones-landing.jpg" alt="Jamaica Special Economic Zone Authority public portal landing page">
+              </div>
+              <div class="screen-panel" role="tabpanel" data-screen-panel="map">
+                <img src="assets/screen-map-dashboard.jpg" alt="Interactive Jamaica SEZ map with filters, zone profile, and map pins">
+              </div>
+              <div class="screen-panel" role="tabpanel" data-screen-panel="zone-detail">
+                <img src="assets/screen-zone-detail-modal.jpg" alt="Montego Bay Free Zone detail modal over the interactive Jamaica SEZ map">
+              </div>
+              <div class="screen-panel" role="tabpanel" data-screen-panel="certificate">
+                <img src="assets/screen-certificate.jpg" alt="Digital special economic zone developer certificate with QR verification">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner">
+    <h2 class="section-title centered" id="nar-roadmap">What could follow the assessment</h2>
+    <p style="text-align:center;max-width:46rem;margin:0 auto 1.5rem;opacity:.85;">Each subsequent step would depend on country interest, institutional agreement, available partnerships and identified resources.</p>
+    <div class="roadmap">
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-head"><div class="num">1</div><h3>Consolidate the regional picture</h3></div>
+        <p>Review the responses and identify common needs, national priorities and existing initiatives.</p>
+      </div>
+      <div class="step">
+        <div class="step-head"><div class="num">2</div><h3>Discuss the findings</h3></div>
+        <p>Present the preliminary regional findings to participating countries and the WFZO Regional Office.</p>
+      </div>
+      <div class="step">
+        <div class="step-head"><div class="num">3</div><h3>Define possible responses</h3></div>
+        <p>Explore which needs might be addressed nationally, regionally or through knowledge exchange.</p>
+      </div>
+      <div class="step">
+        <div class="step-head"><div class="num">4</div><h3>Identify partnerships and resources</h3></div>
+        <p>Consider potential partners, cooperation mechanisms and financing opportunities for selected priorities.</p>
+      </div>
+      <div class="step">
+        <div class="step-head"><div class="num">5</div><h3>Develop separate proposals where feasible</h3></div>
+        <p>If a country requests support and resources can be identified, prepare a separate project or pilot proposal with an agreed scope.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="collab-band">
+    <div class="inner">
+      <h2 class="section-title" id="nar-collab">Help shape the next step</h2>
+      <div class="cta-band" style="margin-top:1rem;padding-top:0;border-top:0;">
+        <div class="cta-txt">
+          <strong>Contribute to the regional picture</strong>
+          <span>Your experience will improve the regional picture and help identify shared challenges, progress and possible priorities.</span>
+        </div>
+        <a class="cta-btn" href="https://freezones.projects.eregistrations.dev/doc/central-asia-needs-assessment" target="_blank" rel="noopener">Answer the questionnaire →</a>
+      </div>
+      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">This initiative is at an exploratory stage and entails no commitment for participants, the Regional Office or UNCTAD. Regional results would be presented in consolidated form; any individual reference would require the country’s consent.</p>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="inner">
+      <div class="footer-logos" aria-label="Partners">
+        <img src="assets/logo-unctad-white.png" alt="UNCTAD">
+        <img src="assets/logo-unitar-white.png" alt="UNITAR">
+      </div>
+      <p class="org">An initiative of the WFZO Regional Office for Central Asia · with the technical support of UNCTAD and UNITAR — Digital Government Program</p>
+      <p style="font-size:.72rem;opacity:.65;max-width:70rem;margin:.8rem auto 0;line-height:1.5;">This page is a basis for discussion and an invitation to express interest. It does not constitute a commitment by UNCTAD or any United Nations entity; any technical assistance would be subject to applicable mandates, availability of resources and subsequent formal agreements. The designations employed do not imply any judgement concerning the legal status of any country or territory.</p>
+    </div>
+  </footer>
+
+
+<script>
+  (() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.purpose, .section-title, .service, .screen-showcase, .example-intro, .step, .collab-block, .questions').forEach((el, index) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${Math.min(index % 6, 5) * 70}ms`;
+    });
+
+    if (!prefersReduced) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      const parallaxItems = [...document.querySelectorAll('.service, .screen-frame')];
+      let ticking = false;
+      const updateParallax = () => {
+        const scrollY = window.scrollY || 0;
+        const hero = document.querySelector('.hero');
+        if (hero) hero.style.setProperty('--hero-y', `${Math.min(scrollY * 0.12, 52)}px`);
+        parallaxItems.forEach((el, i) => {
+          const rect = el.getBoundingClientRect();
+          const viewportMid = window.innerHeight / 2;
+          const distance = rect.top + rect.height / 2 - viewportMid;
+          const amount = Math.max(-14, Math.min(14, distance * -0.018 * (i % 2 ? 0.8 : 1)));
+          el.style.setProperty('--parallax-y', `${amount}px`);
+        });
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+      updateParallax();
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    }
+
+    document.querySelectorAll('.screen-showcase').forEach((showcase) => {
+      const tabs = [...showcase.querySelectorAll('.screen-tab')];
+      const panels = [...showcase.querySelectorAll('.screen-panel')];
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.screenTab;
+          tabs.forEach((item) => item.setAttribute('aria-selected', item === tab ? 'true' : 'false'));
+          panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.screenPanel === target));
+        });
+      });
+    });
+
+    if (window.lucide) {
+      window.lucide.createIcons({
+        attrs: {
+          'stroke-width': 1.75,
+          'aria-hidden': 'true'
+        }
+      });
+    }
+  })();
+</script>
+
+
+<!-- ===== Madina · voice & chat assistant ===== -->
+<style>
+  #md-launch{position:fixed;bottom:26px;right:26px;z-index:9000;display:flex;align-items:center;gap:.1rem;}
+  .md-go{display:flex;align-items:center;gap:.6rem;background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;border:0;
+    border-radius:999px;padding:.7rem 1.3rem;font:700 1.02rem "Montserrat",system-ui,sans-serif;
+    cursor:pointer;box-shadow:0 10px 28px rgba(90,60,20,.30);white-space:nowrap;transition:filter .15s,transform .15s;}
+  .md-go:hover{filter:brightness(1.12);transform:translateY(-1px);}
+  .md-ava{position:relative;margin-left:-6px;}
+  .md-ava > .pic{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent,oklch(0.70 0.055 70)),var(--accent-deep,oklch(0.52 0.055 70)));
+    color:#fff;font:700 2rem "Montserrat",sans-serif;border:4px solid #fff;
+    box-shadow:0 0 0 3px var(--accent-soft,oklch(0.84 0.032 74)),0 8px 22px rgba(90,60,20,.25);cursor:pointer;padding:0;}
+  .md-name{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;
+    font:600 .76rem "Source Sans 3",sans-serif;padding:.12rem .72rem;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(90,60,20,.25);}
+  #md-panel{position:fixed;top:0;right:0;height:100vh;width:400px;max-width:94vw;z-index:9001;background:#fff;color:#26201a;
+    box-shadow:-14px 0 44px rgba(50,35,15,.24);display:flex;flex-direction:column;
+    transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);font-family:"Source Sans 3",system-ui,sans-serif;}
+  #md-panel.open{transform:translateX(0);}
+  #md-panel .h{display:flex;align-items:center;gap:.75rem;padding:1rem 1.1rem;color:#fff;
+    background:linear-gradient(120deg,var(--accent-deep,oklch(0.52 0.055 70)),var(--accent,oklch(0.70 0.055 70)));}
+  #md-panel .h .pic2{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.25);font:700 1.3rem "Montserrat",sans-serif;border:2px solid rgba(255,255,255,.85);}
+  #md-panel .h b{font-size:1.08rem;font-family:"Montserrat",system-ui,sans-serif;} #md-panel .h small{opacity:.9;display:block;font-weight:400;font-size:.8rem;}
+  #md-panel .x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:1.6rem;cursor:pointer;line-height:1;}
+  #md-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem;background:#faf7f2;}
+  #md-msgs .b{max-width:86%;padding:.65rem .9rem;border-radius:15px;line-height:1.45;font-size:.96rem;white-space:pre-wrap;}
+  #md-msgs .b.user{align-self:flex-end;background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;border-bottom-right-radius:4px;}
+  #md-msgs .b.ai{align-self:flex-start;background:#fff;border:1px solid #eee6de;border-bottom-left-radius:4px;}
+  #md-msgs .st{align-self:center;font-size:.8rem;color:#8a7a63;}
+  #md-sug{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .6rem;background:#faf7f2;}
+  #md-sug button{border:1px solid #eee6de;background:#fff;color:var(--accent-deep,oklch(0.52 0.055 70));border-radius:999px;padding:.35rem .7rem;font:600 .8rem "Source Sans 3",sans-serif;cursor:pointer;}
+  #md-foot{padding:.8rem;border-top:1px solid #eee6de;background:#fff;display:flex;flex-direction:column;gap:.55rem;}
+  #md-foot .row{display:flex;gap:.5rem;}
+  #md-foot input{flex:1;border:1.5px solid #eee6de;border-radius:12px;padding:.7rem .9rem;font:1rem "Source Sans 3",sans-serif;outline:none;}
+  #md-foot button.act{border:0;border-radius:12px;cursor:pointer;font:600 .95rem "Source Sans 3",sans-serif;padding:.7rem 1rem;}
+  #md-send{background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;}
+  #md-talk{background:oklch(0.945 0.014 78);color:var(--accent-deep,oklch(0.52 0.055 70));border:1.5px solid #e3d6bf;width:100%;padding:.75rem;}
+  #md-talk.active{background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;}
+  @media print{#md-launch,#md-panel{display:none!important;}}
+</style>
+<div id="md-launch">
+  <button class="md-go" id="md-guide" aria-label="Madina guides you"><span class="ico">▶</span>Madina guides you</button>
+  <div class="md-ava">
+    <button class="pic" id="md-pic" aria-label="Ask Madina" style="background-image:url('assets/madina.jpg');background-size:cover;background-position:50% 12%;border:0;padding:0;cursor:pointer;color:transparent">M</button>
+    <span class="md-name">Questions?</span>
+  </div>
+</div>
+<aside id="md-panel" aria-hidden="true">
+  <div class="h"><span class="pic2" style="background-image:url('assets/madina.jpg');background-size:cover;background-position:50% 12%;color:transparent">M</span><div><b>Madina</b><small>Assistant · SEZ Central Asia · UNCTAD + WFZO</small></div><button class="x" id="md-x" aria-label="Close">&times;</button></div>
+  <div id="md-msgs"><div class="b ai">Hello, I'm Madina. This page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region and possible pathways for cooperation. Shall I explain what it would look at, how it would work, or what could follow?</div></div>
+  <div id="md-sug"><button>What is this proposal?</button><button>What can UNCTAD bring?</button><button>What was done in Jamaica?</button><button>What is the roadmap?</button></div>
+  <div id="md-foot"><div class="row"><input id="md-text" placeholder="Type your question…" autocomplete="off"><button class="act" id="md-send">Send</button></div><button class="act" id="md-talk">🎤 Talk to Madina</button></div>
+</aside>
+<script src="https://unpkg.com/@elevenlabs/client@1.14.0/dist/lib.iife.js"></script>
+<script>
+(function(){
+  var AGENT="agent_1401kxnpzt5sfv09q3h9w6xdxtgm", GREET="Hello, I'm Madina. This page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region and possible pathways for cooperation. Shall I explain what it would look at, how it would work, or what could follow?";
+  var $=function(i){return document.getElementById(i);}, session=null, mode=null;
+  function add(t,w){var d=document.createElement('div');d.className='b '+w;d.textContent=t;var m=$('md-msgs');m.appendChild(d);m.scrollTop=m.scrollHeight;}
+  function stat(t){var s=document.querySelector('#md-msgs .st');if(!s){s=document.createElement('div');s.className='st';$('md-msgs').appendChild(s);}s.textContent=t;}
+  function openPanel(){$('md-panel').classList.add('open');$('md-panel').setAttribute('aria-hidden','false');$('md-text').focus();}
+  var _mg=$('md-pic'); if(_mg) _mg.onclick=openPanel;
+  $('md-x').onclick=function(){$('md-panel').classList.remove('open');if(session){session.endSession();session=null;mode=null;}};
+  async function ensure(voice){var want=voice?'voice':'text';if(session&&mode===want)return session;if(session){await session.endSession();session=null;}
+    stat(voice?'Connecting microphone…':'Connecting…');
+    session=await ElevenLabsClient.Conversation.startSession({agentId:AGENT,connectionType:voice?'webrtc':'websocket',textOnly:!voice,
+      onConnect:function(){stat(voice?'Listening…':'');},onDisconnect:function(){stat('');},
+      onModeChange:function(o){stat(o.mode==='speaking'?'Madina is answering…':(voice?'Listening…':''));},
+      onMessage:function(o){if(!o.message)return;if(o.source!=='user'&&o.message.trim()===GREET)return;add(o.message,o.source==='user'?'user':'ai');},
+      onError:function(e){add('Error: '+(e&&e.message||e),'ai');}});
+    mode=want;return session;}
+  async function send(){var t=$('md-text').value.trim();if(!t)return;$('md-text').value='';add(t,'user');try{var s=await ensure(false);s.sendUserMessage(t);}catch(e){add('Connection error: '+(e&&e.message||e),'ai');}}
+  $('md-send').onclick=send;$('md-text').addEventListener('keydown',function(e){if(e.key==='Enter')send();});
+  Array.prototype.forEach.call(document.querySelectorAll('#md-sug button'),function(b){b.onclick=async function(){openPanel();add(b.textContent,'user');try{var s=await ensure(false);s.sendUserMessage(b.textContent);}catch(e){add('Error: '+(e&&e.message||e),'ai');}};});
+  $('md-talk').onclick=async function(){var b=$('md-talk');
+    if(mode==='voice'){if(session){await session.endSession();session=null;mode=null;}b.classList.remove('active');b.textContent='🎤 Talk to Madina';stat('');return;}
+    b.classList.add('active');b.textContent='⏹ Stop';
+    try{await ensure(true);}catch(e){add('Microphone unavailable: '+(e&&e.message||e),'ai');b.classList.remove('active');b.textContent='🎤 Talk to Madina';}};
+})();
+</script>
+
+
+<style>
+  #md-bar{position:fixed;right:22px;bottom:22px;z-index:9001;width:min(440px,calc(100vw - 44px));
+    background:#fff;color:#26201a;border-radius:16px;box-shadow:0 14px 44px rgba(50,35,15,.30);display:none;overflow:hidden;font-family:"Source Sans 3",system-ui,sans-serif;}
+  #md-bar.on{display:block;}
+  .mdn-head{display:flex;align-items:center;gap:.6rem;padding:.7rem .85rem;background:var(--accent-deep,oklch(0.52 0.055 70));color:#fff;}
+  .mdn-head .avatar{width:50px;height:50px;border-radius:50%;border:2px solid #fff;background-image:url('assets/madina.jpg');background-size:cover;background-position:50% 12%;flex-shrink:0;}
+  .mdn-head b{font-family:"Montserrat",sans-serif;font-size:.95rem;} .mdn-head small{display:block;opacity:.85;font-size:.72rem;margin-top:2px;}
+  .mdn-x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:1.3rem;cursor:pointer;}
+  .mdn-cap{padding:.9rem 1rem;font-size:.98rem;line-height:1.5;min-height:4.6em;}
+  .mdn-ctrls{display:flex;align-items:center;gap:.5rem;padding:.2rem .85rem .85rem;}
+  .mdn-btn{background:oklch(0.945 0.014 78);border:1px solid #e8ddcb;color:var(--accent-deep,oklch(0.52 0.055 70));border-radius:50%;width:2.3rem;height:2.3rem;cursor:pointer;display:grid;place-items:center;}
+  .mdn-play{background:var(--accent,oklch(0.70 0.055 70));border-color:var(--accent,oklch(0.70 0.055 70));color:#fff;width:2.7rem;height:2.7rem;font-size:1.1rem;}
+  .mdn-dots{display:flex;gap:.4rem;margin-left:auto;}
+  .mdn-dot{width:8px;height:8px;border-radius:50%;background:#e2d7c4;border:0;padding:0;cursor:pointer;}
+  .mdn-dot.on{background:var(--accent-deep,oklch(0.52 0.055 70));} .mdn-dot.done{background:var(--accent-soft,oklch(0.84 0.032 74));}
+  .mdn-flash{outline:3px solid var(--accent,oklch(0.70 0.055 70));outline-offset:6px;border-radius:10px;}
+  @media print{#md-bar{display:none!important;}}
+</style>
+<aside id="md-bar" aria-live="polite">
+  <div class="mdn-head"><span class="avatar"></span><div><b>Madina</b><small>walks you through the proposal</small></div><button class="mdn-x" id="mdn-x" aria-label="Close">×</button></div>
+  <div class="mdn-cap" id="mdn-cap"></div>
+  <div class="mdn-ctrls">
+    <button class="mdn-btn" id="mdn-prev" aria-label="Previous">⏮</button>
+    <button class="mdn-btn mdn-play" id="mdn-play" aria-label="Play/pause">⏸</button>
+    <button class="mdn-btn" id="mdn-next" aria-label="Next">⏭</button>
+    <div class="mdn-dots" id="mdn-dots"></div>
+  </div>
+</aside>
+<audio id="mdn-audio" preload="none"></audio>
+<script>
+(function(){
+  var SEGS=[
+    {block:"nar-hero", audio:"assets/madina-audio/seg1.mp3", text:"Hello, I'm Madina. Following discussions between the WFZO Regional Office for Central Asia and UNCTAD, this page presents a proposed approach: a regional needs assessment to identify the digitalization needs of zones across the region, and possible pathways for cooperation. Let me explain it in a minute."},
+    {block:"nar-services", audio:"assets/madina-audio/seg2.mp3", text:"Countries across the region have different regulatory frameworks, institutions and levels of digitalization. The questionnaire would help identify three things: the applicable rules and responsible institutions; the main procedures, with their steps, costs and timelines; and which services are already online — and what each country considers a priority for improvement."},
+    {block:"nar-practica", audio:"assets/madina-audio/seg3.mp3", cycleTabs:true, text:"Some reference experiences. Kazakhstan's trade portal shows how procedures can be documented from the user's point of view. And Jamaica shows zone services fully digitalized: each zone on an interactive map, and the registration completed online, with a digital certificate at the end. These illustrate possible approaches — not proposed projects for Central Asia."},
+    {block:"nar-roadmap", audio:"assets/madina-audio/seg4.mp3", text:"What could follow the assessment? First, consolidate the regional picture and discuss the findings with the countries and the Regional Office. Then, define possible responses and identify partnerships and resources. And where a country requests support and resources are identified, a separate proposal could be prepared. Each step would depend on country interest, agreements and resources."},
+    {block:"nar-collab", audio:"assets/madina-audio/seg5.mp3", text:"This assessment is exploratory. Answering the questionnaire takes a few minutes and helps build the regional picture: recognizing progress, and identifying common needs and priorities. If you have any questions, I'm here to help."}
+  ];
+  var $=function(i){return document.getElementById(i);};
+  var audio=$("mdn-audio"), bar=$("md-bar"), idx=-1, lastFlash=null, tabTimer=null;
+  var dots=$("mdn-dots");
+  SEGS.forEach(function(_,i){var b=document.createElement("button");b.className="mdn-dot";b.onclick=function(){go(i);};dots.appendChild(b);});
+  function paint(){[].forEach.call(dots.children,function(d,i){d.className="mdn-dot"+(i===idx?" on":(i<idx?" done":""));});}
+  function stopTabs(){if(tabTimer){clearInterval(tabTimer);tabTimer=null;}}
+  function cycleTabs(){
+    stopTabs();
+    var tabs=[].slice.call(document.querySelectorAll(".screen-tab")); if(tabs.length<2) return;
+    tabs[0].click(); var i=0;
+    var dur=(audio&&audio.duration&&isFinite(audio.duration))?audio.duration:18;
+    var step=Math.max(3000,(dur*1000)/tabs.length);
+    tabTimer=setInterval(function(){ i++; if(i>=tabs.length){stopTabs();return;} tabs[i].click(); },step);
+  }
+  function scrollToEl(el){if(!el)return;var y=el.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top:Math.max(0,y),behavior:"smooth"});}
+  function flash(el){if(lastFlash)lastFlash.classList.remove("mdn-flash");if(el){el.classList.add("mdn-flash");lastFlash=el;}}
+  function go(i){
+    if(i<0||i>=SEGS.length)return;
+    idx=i;var s=SEGS[i];
+    stopTabs();
+    bar.classList.add("on"); $("md-launch").style.display="none";
+    $("mdn-cap").textContent=s.text; paint();
+    var el=document.getElementById(s.block); scrollToEl(el); flash(el);
+    audio.src=s.audio;
+    if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);cycleTabs();});setTimeout(function(){if(!tabTimer)cycleTabs();},900);}
+    var p=audio.play(); if(p&&p.catch)p.catch(function(){});
+    $("mdn-play").textContent="⏸";
+  }
+  audio.addEventListener("ended",function(){if(idx<SEGS.length-1)go(idx+1);else $("mdn-play").textContent="▶";});
+  audio.addEventListener("pause",function(){if(!audio.ended)$("mdn-play").textContent="▶";});
+  audio.addEventListener("play",function(){$("mdn-play").textContent="⏸";});
+  document.getElementById("md-guide").onclick=function(){go(0);};
+  $("mdn-play").onclick=function(){if(idx<0){go(0);return;}if(audio.paused)audio.play();else audio.pause();};
+  $("mdn-prev").onclick=function(){go(Math.max(0,idx-1));};
+  $("mdn-next").onclick=function(){if(idx<SEGS.length-1)go(idx+1);};
+  $("mdn-x").onclick=function(){audio.pause();stopTabs();bar.classList.remove("on");$("md-launch").style.display="flex";if(lastFlash){lastFlash.classList.remove("mdn-flash");lastFlash=null;}};
+})();
+</script>
+
+</body>
+</html>
