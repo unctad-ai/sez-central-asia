@@ -375,6 +375,11 @@
     color: var(--accent-deep);
     text-shadow: none;
   }
+  .service p a {
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.03em;
+  }
   .lead { font-weight: 600; }
   .service ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
   .service li { padding-left: 1.2rem; position: relative; }
@@ -917,7 +922,7 @@
   .scope-copy { margin-top: 2.4rem; }
   .regional-view { padding: clamp(3rem, 5.5vw, 4.5rem) 0 clamp(3.25rem, 5.5vw, 4.75rem); }
   .regional-pillars { margin-top: clamp(2rem, 4vw, 3rem) !important; }
-  .collaboration-section { padding: clamp(3.25rem, 6vw, 5.25rem) 0 0; }
+  .collaboration-section { padding: clamp(3.25rem, 6vw, 5.25rem) 0 clamp(2.5rem, 4vw, 3.75rem); }
   .collaboration-header { margin-bottom: clamp(2rem, 4vw, 3rem); }
   .scope-section.regional-approach { padding: clamp(3.25rem, 6vw, 5.25rem) 0 clamp(2rem, 3.5vw, 3rem); }
   .example { margin-top: 0; padding: clamp(3.25rem, 6vw, 5.25rem) 0; }
@@ -960,7 +965,7 @@
 
   <div class="hero" id="top">
     <div class="inner">
-      <div class="hero-copy">
+      <div class="hero-copy" id="nar-hero-frame">
         <h1 id="nar-hero">Central Asia&rsquo;s zones are <br>entering a new stage</h1>
         <div class="audience">A regional needs assessment to identify priorities and possible pathways for cooperation.</div>
         <div class="audience" style="font-size:.72em;opacity:.85;margin-top:.35em;">An initiative of the WFZO Regional Office for Central Asia, with technical support from UNCTAD and UNITAR.</div>
@@ -980,10 +985,10 @@
         <p class="scope-aside">An investor should understand where to go, what they will receive, how long it will take, and who is responsible for the result. The assessment starts there: it documents, country by country, what is in place, what is already digital and what each country wants to improve first, so that cooperation is built on evidence.</p>
         <style>
           .yb-card{position:relative;margin-top:1.6rem;background:#fff;border:1px solid rgba(50,35,15,.1);
-            border-radius:16px;box-shadow:0 12px 30px rgba(30,53,72,.12);padding:1.15rem 1.25rem;
+            border-radius:16px;box-shadow:none;padding:1.15rem 1.25rem;
             display:flex;gap:1rem;align-items:flex-end;overflow:hidden;}
           .yb-photo{flex:0 0 118px;align-self:center;}
-          .yb-photo img{display:block;width:118px;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(30,53,72,.2);}
+          .yb-photo img{display:block;width:118px;height:auto;border-radius:12px;box-shadow:none;}
           .yb-body{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:.5rem;padding:.1rem 0 .15rem;}
           .yb-eyebrow{font:600 .66rem "Montserrat",system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;
             color:var(--brand-blue,#3b84b9);}
@@ -1001,7 +1006,7 @@
           @media print{.yb-card{display:none!important;}}
         </style>
         <div class="yb-card">
-          <div class="yb-photo"><img src="assets/yerbol-card-duo-white.jpg" alt="Yerbol Bukharbayev"></div>
+          <div class="yb-photo"><img src="assets/yerbol-bukharbayev-opening.png" alt="Yerbol Bukharbayev"></div>
           <div class="yb-body">
             <div class="yb-eyebrow">Opening address &middot; Investment Forum, Tajikistan &middot; 2026</div>
             <p class="yb-quote">&ldquo;Our goal should be to ensure that when an investor comes to Central Asia, they see a single, clear, digital and competitive investment region.&rdquo;</p>
@@ -1418,7 +1423,44 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
   .mdn-dots{display:flex;gap:.4rem;margin-left:auto;}
   .mdn-dot{width:8px;height:8px;border-radius:50%;background:#e2d7c4;border:0;padding:0;cursor:pointer;}
   .mdn-dot.on{background:var(--brand-blue,#3b84b9);} .mdn-dot.done{background:rgb(59 132 185 / 0.35);}
-  .mdn-flash{outline:3px solid var(--brand-blue,#3b84b9);outline-offset:6px;border-radius:10px;}
+  .mdn-flash{
+    position:relative;
+    outline:0;
+    border-radius:10px;
+  }
+  .mdn-flash::before{
+    content:"";
+    position:absolute;
+    inset:-1.5rem;
+    border-radius:inherit;
+    box-shadow:inset 0 0 0 1.5px var(--brand-blue,#3b84b9),0 0 18px rgb(59 132 185 / 0.26);
+    pointer-events:none;
+  }
+  #nar-hero-frame.mdn-flash::before{inset:-1.4rem -1.2rem -1.8rem;}
+  #why.mdn-flash::before{
+    top:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+    bottom:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+    left:-1.5rem;
+    right:-1.5rem;
+  }
+  #assessment.mdn-flash::before{
+    top:calc(clamp(3rem, 5.5vw, 4.5rem) - 1.5rem);
+    bottom:calc(clamp(3.25rem, 5.5vw, 4.75rem) - 1.5rem);
+    left:-1.5rem;
+    right:-1.5rem;
+  }
+  #after.mdn-flash::before{
+    top:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+    bottom:calc(clamp(2.5rem, 4vw, 3.75rem) - 1.5rem);
+    left:-1.5rem;
+    right:-1.5rem;
+  }
+  #nar-practica.mdn-flash::before{
+    top:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+    bottom:calc(clamp(3.25rem, 6vw, 5.25rem) - 1.5rem);
+    left:calc(2rem - 1.5rem);
+    right:calc(2rem - 1.5rem);
+  }
   @media print{#md-bar{display:none!important;}}
 </style>
 <aside id="md-bar" aria-live="polite">
@@ -1562,9 +1604,9 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
      generated together). The existing mp3 narration stays as the automatic fallback
      when a clip cannot load, so the tour never goes silent. */
   var SEGS=[
-    {block:"nar-hero", video:"assets/gulnura-bust/seg1", say:"Hello, I'm Gulnura. The WFZO Regional Office for Central Asia, with technical support from UNCTAD and UNITAR, proposes a needs assessment of the region's zones. It could identify priorities for transparency, simplification, digitalisation and better regulations. Let me walk you through it.", audio:"assets/gulnura-audio/seg1.mp3?v=2708b", text:"Hello, I'm Gulnura. This page presents a proposal from the WFZO Regional Office for Central Asia, supported by UNCTAD and UNITAR. Let me walk you through it."},
+    {block:"nar-hero-frame", video:"assets/gulnura-bust/seg1", say:"Hello, I'm Gulnura. The WFZO Regional Office for Central Asia, with technical support from UNCTAD and UNITAR, proposes a needs assessment of the region's zones. It could identify priorities for transparency, simplification, digitalisation and better regulations. Let me walk you through it.", audio:"assets/gulnura-audio/seg1.mp3?v=2708b", text:"Hello, I'm Gulnura. This page presents a proposal from the WFZO Regional Office for Central Asia, supported by UNCTAD and UNITAR. Let me walk you through it."},
     {block:"why", video:"assets/gulnura-bust/seg2", say:"Why an assessment? Investors work across several countries, while procedures and institutions differ in each. The questionnaire could help each country document what it has and what it wants first. The answers could inform a national report and, in consolidated form, a regional picture.", audio:"assets/gulnura-audio/seg2.mp3?v=2708b", text:"Why an assessment? Every country has its own zone procedures, and investors relearn them each time. Each country applies individually and receives its own report."},
-    {block:"nar-services", video:"assets/gulnura-bust/seg3", say:"The questionnaire asks three things, the same for every country: what exists today, what you want to achieve, and what is underway. A final open box lets you add anything else in your own words.", audio:"assets/gulnura-audio/seg3.mp3?v=2708b", text:"The assessment asks three questions, the same in every country. What is in place, what is digital, and what are the priorities."},
+    {block:"assessment", video:"assets/gulnura-bust/seg3", say:"The questionnaire asks three things, the same for every country: what exists today, what you want to achieve, and what is underway. A final open box lets you add anything else in your own words.", audio:"assets/gulnura-audio/seg3.mp3?v=2708b", text:"The assessment asks three questions, the same in every country. What is in place, what is digital, and what are the priorities."},
     {block:"after", video:"assets/gulnura-bust/seg4", say:"After the assessment, a country could consider four areas of possible work: transparency, simplification, digitalisation and better regulations. Where digitalisation is chosen, the useful order is: document a procedure, simplify it, then put it online.", audio:"assets/gulnura-audio/seg4.mp3?v=2708b", text:"After the assessment come three steps in order: transparency, simplification, then digitalisation. Digitising a procedure nobody has simplified only makes it faster to get wrong."},
     {block:"after", video:"assets/gulnura-bust/seg5", say:"Cooperation could begin with the priorities identified by one country and later inform regional discussion. A documented procedure, method or tool from one country could offer a reference for others to consider and adapt. Each country's legal basis and institutions would remain national.", audio:"assets/gulnura-audio/seg5.mp3?v=2708b", text:"Start in one country, extend to the region. The first country produces reference procedures the others can adopt. The legal basis and the institutions stay national."},
     {block:"nar-practica", video:"assets/gulnura-bust/seg6", cycleTabs:true, say:"Two working examples. The Central Asia Gateway documents trade procedures from the user's point of view across the five countries; it could inform how zone procedures are presented. Jamaica shows a public portal, an interactive map, zone details and a verifiable digital certificate. Anything used here would be adapted locally.", audio:"assets/gulnura-audio/seg6.mp3?v=2708b", text:"Two reference experiences: the Central Asia Gateway documents trade procedures from the user's point of view, and Jamaica shows zone services digitalised end to end."},
