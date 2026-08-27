@@ -875,10 +875,10 @@
     .topbar-nav { gap: .9rem; }
   }
   @media (max-width: 1080px) {
-    .topbar-nav .navlink { display: none; }
+    .topbar-nav { display: none; }
     .nav-burger { display: inline-block; }
-    .topbar-nav.open .navlink { display: block; }
     .topbar-nav.open { position: absolute; top: 100%; right: 12px; background: #fff; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 12px 32px rgb(20 40 60 / 0.16); padding: 10px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .topbar-nav.open .lang-switch, .topbar-nav.open .btn-print { margin-left: 0; }
     .topbar-inner { position: relative; }
   }
 
@@ -944,6 +944,7 @@
   .navlink { color: var(--muted); }
   /* ---- Phone adjustments ---- */
   @media (max-width: 760px) {
+    .hero { background-position: 72% calc(50% + var(--hero-y, 0px)); }
     .hero h1 br { display: none; }
     .hero h1 { font-size: clamp(2rem, 9.5vw, 2.8rem); hyphens: manual; overflow-wrap: normal; }
     .scope-title, .regional-title, .collaboration-title, .example-title, .collab-band .section-title { font-size: clamp(1.65rem, 7.2vw, 2.3rem) !important; overflow-wrap: anywhere; hyphens: manual; white-space: normal !important; }
