@@ -968,6 +968,58 @@
     </div>
   </div>
 
+  <style>
+    .yb-band{background:oklch(0.965 0.012 78);border-bottom:1px solid rgba(50,35,15,.08);}
+    .yb-band .inner{display:flex;align-items:center;gap:1.1rem;padding:1.05rem 0;flex-wrap:wrap;}
+    .yb-pic{flex:0 0 auto;width:76px;height:76px;border-radius:50%;border:3px solid var(--brand-blue,#3b84b9);
+      background-image:url('../assets/yerbol.jpg');background-size:150%;background-position:50% 22%;cursor:pointer;padding:0;}
+    .yb-who{flex:1 1 16rem;min-width:0;}
+    .yb-who b{font-family:"Montserrat",system-ui,sans-serif;font-size:1.02rem;display:block;}
+    .yb-who small{display:block;font-size:.82rem;opacity:.8;line-height:1.35;margin-top:2px;}
+    .yb-play{flex:0 0 auto;display:inline-flex;align-items:center;gap:.55rem;border:1.5px solid var(--brand-blue,#3b84b9);
+      background:#fff;color:var(--brand-blue,#3b84b9);border-radius:999px;padding:.55rem 1.05rem;cursor:pointer;
+      font:600 .9rem "Source Sans 3",system-ui,sans-serif;}
+    .yb-play .ico{font-size:.8rem;}
+    .yb-play.on{background:var(--brand-blue,#3b84b9);color:#fff;}
+    .yb-time{font-variant-numeric:tabular-nums;font-size:.8rem;opacity:.75;}
+    @media (max-width:600px){.yb-band .inner{gap:.8rem;}.yb-who small{font-size:.76rem;}}
+    @media print{.yb-band{display:none!important;}}
+  </style>
+  <div class="yb-band">
+    <div class="inner">
+      <button class="yb-pic" id="yb-pic" aria-label="Прослушать выступление Ербола Бухарбаева"></button>
+      <div class="yb-who">
+        <b>Ербол Бухарбаев</b>
+        <small>Руководитель Регионального офиса по Центральной Азии, Всемирная организация свободных зон (World FZO) &middot; Выступление на Международном инвестиционном форуме по цифровизации свободных экономических зон, Таджикистан, август 2026</small>
+      </div>
+      <button class="yb-play" id="yb-play"><span class="ico" id="yb-ico">&#9654;</span><span id="yb-label">Слушать выступление</span><span class="yb-time" id="yb-time">8:13</span></button>
+    </div>
+  </div>
+  <audio id="yb-audio" preload="none" src="../assets/yerbol-audio/yerbol-ru.mp3"></audio>
+  <script>
+  (function(){
+    var a=document.getElementById('yb-audio'),p=document.getElementById('yb-play'),
+        ico=document.getElementById('yb-ico'),tm=document.getElementById('yb-time'),
+        pic=document.getElementById('yb-pic'),total="8:13";
+    function fmt(s){s=Math.floor(s);return Math.floor(s/60)+":"+("0"+s%60).slice(-2);}
+    function toggle(){
+      if(a.paused){
+        var g=document.getElementById('mdn-x'),bar=document.getElementById('md-bar');
+        if(bar&&bar.classList.contains('on')&&g&&g.onclick)g.onclick();
+        var m=document.getElementById('mdn-audio'); if(m){try{m.pause();}catch(e){}}
+        a.play();
+      } else a.pause();
+    }
+    p.onclick=toggle; pic.onclick=toggle;
+    a.addEventListener('play',function(){p.classList.add('on');ico.innerHTML='&#10074;&#10074;';});
+    a.addEventListener('pause',function(){p.classList.remove('on');ico.innerHTML='&#9654;';});
+    a.addEventListener('timeupdate',function(){tm.textContent=fmt(a.currentTime)+" / "+total;});
+    a.addEventListener('ended',function(){tm.textContent=total;});
+    var g=document.getElementById('md-guide');
+    if(g)g.addEventListener('click',function(){try{a.pause();}catch(e){}});
+  })();
+  </script>
+
   <div class="inner">
     <section class="scope-section" aria-labelledby="scope-title" id="why">
       <div>
