@@ -1408,7 +1408,7 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     background:#fff;color:#26201a;border-radius:16px;box-shadow:0 14px 44px rgba(50,35,15,.30);display:none;overflow:hidden;font-family:"Source Sans 3",system-ui,sans-serif;}
   #md-bar.on{display:block;}
   .mdn-head{display:flex;align-items:center;gap:.6rem;padding:.7rem .85rem;background:var(--brand-blue,#3b84b9);color:#fff;}
-  .mdn-head .avatar{display:none!important;width:50px;height:50px;border-radius:50%;border:2px solid #fff;background-image:url('assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;flex-shrink:0;}
+  .mdn-head .avatar{width:50px;height:50px;border-radius:50%;border:2px solid #fff;background-image:url('assets/gulnaz.jpg');background-size:cover;background-position:50% 12%;flex-shrink:0;}
   .mdn-head b{font-family:"Montserrat",sans-serif;font-size:.95rem;} .mdn-head small{display:block;opacity:.85;font-size:.72rem;margin-top:2px;}
   .mdn-x{margin-left:auto;background:transparent;border:0;color:#fff;font-size:1.3rem;cursor:pointer;}
   .mdn-cap{padding:.9rem 1rem;font-size:.98rem;line-height:1.5;min-height:4.6em;}
@@ -1518,21 +1518,14 @@ function loadEL(){return window.ElevenLabsClient?Promise.resolve():new Promise(f
     function startFallback(){
       if(token!==loadToken||activeMedia===audio)return;
       clearFallbackTimer();stageAbort();try{vA.pause();vB.pause();}catch(e){}
-      showBust(false);activeMedia=audio;$("mdn-cap").textContent=s.text;
+      showBust(false);activeMedia=audio;$("mdn-cap").textContent=s.say||s.text;
       audio.src=s.audio;
       if(s.cycleTabs){audio.addEventListener("loadedmetadata",function om(){audio.removeEventListener("loadedmetadata",om);if(activeMedia===audio)cycleTabs();});}
       var p=audio.play(); if(p&&p.catch)p.catch(function(){setPlay(false);});
       if(s.cycleTabs)setTimeout(function(){if(!tabTimer&&activeMedia===audio)cycleTabs();},900);
     }
-    showBust(true);
-    stageShow(s.video+BUST_EXT,{onError:startFallback,onFront:function(elv){
-      if(token!==loadToken||activeMedia===audio){try{elv.pause();}catch(e){}return;}
-      clearFallbackTimer();try{audio.pause();}catch(e){}activeMedia=elv;
-      if(s.cycleTabs)cycleTabs();
-      /* the next part loads out of sight, after the crossfade has finished */
-      var nx=SEGS[i+1]; if(nx)setTimeout(function(){stagePrefetch(nx.video+BUST_EXT);},320);
-    }});
-    fallbackTimer=setTimeout(startFallback,5000);
+    /* step 1 (Frank): sound only until the bust is declared ready; then the bust returns alone */
+    startFallback();
     setPlay(true);
   }
   function setPlay(on){$("mdn-play").textContent=on?"⏸":"▶";}
