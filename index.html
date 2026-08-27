@@ -331,7 +331,7 @@
   }
   .services {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem;
   }
   .service {
@@ -766,7 +766,6 @@
   .next strong { color: var(--accent-deep); }
   .org { font-size: 0.85rem; color: oklch(0.92 0.01 80); }
 
-  @media (max-width: 1200px) and (min-width: 1001px) { .services { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 1200px) { .scope-section { grid-template-columns: 1fr; gap: 2rem; } }
   @media (max-width: 1000px) {
     .services, .collab { grid-template-columns: 1fr; }
