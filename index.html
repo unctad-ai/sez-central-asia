@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central Asia&rsquo;s zones are entering a new stage · WFZO</title>
+<title>Regional needs assessment for Central Asia&rsquo;s zones · WFZO</title>
 <link rel="icon" href="assets/training-eregistrations-favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/hero-central-asia.jpg" as="image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -195,6 +195,17 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+  }
+  /* Same eyebrow as the sections, but over the photo it has to be white. */
+  .hero-eyebrow {
+    margin: 0 0 .9rem;
+    color: #fff;
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: .95;
   }
   .scope-title {
     margin: 0;
@@ -945,6 +956,7 @@
   /* ---- Phone adjustments ---- */
   @media (max-width: 760px) {
     .hero { background-position: 72% calc(50% + var(--hero-y, 0px)); }
+    .hero-eyebrow { font-size: .78rem; letter-spacing: .07em; }
     .hero h1 br { display: none; }
     .hero h1 { font-size: clamp(2rem, 9.5vw, 2.8rem); hyphens: manual; overflow-wrap: normal; }
     .scope-title, .regional-title, .collaboration-title, .example-title, .collab-band .section-title { font-size: clamp(1.65rem, 7.2vw, 2.3rem) !important; overflow-wrap: anywhere; hyphens: manual; white-space: normal !important; }
@@ -978,8 +990,9 @@
   <div class="hero" id="top">
     <div class="inner">
       <div class="hero-copy" id="nar-hero-frame">
-        <h1 id="nar-hero">Central Asia&rsquo;s zones are <br>entering a new stage</h1>
-        <div class="audience">A regional needs assessment to identify priorities and possible pathways for cooperation.</div>
+        <p class="hero-eyebrow">Free zones and special economic zones</p>
+        <h1 id="nar-hero">Regional needs assessment <br>for Central Asia&rsquo;s zones</h1>
+        <div class="audience">Identify the current situation and priorities of the region&rsquo;s zones to inform possible areas of technical cooperation.</div>
         <div class="audience" style="font-size:.85em;opacity:.85;margin-top:.35em;">An initiative of the <a href="https://www.worldfzo.org/en" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:3px;">World Free Zones Organization (WFZO)</a> Regional Office for Central Asia, with technical support from the <a href="https://unctad.org" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:3px;">United Nations Conference on Trade and Development (UNCTAD)</a> and the <a href="https://unitar.org" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);text-underline-offset:3px;">United Nations Institute for Training and Research (UNITAR)</a>.</div>
         <div class="hero-actions">
           <a class="hero-cta" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Answer the questionnaire →</a>
@@ -993,7 +1006,7 @@
     <section class="scope-section" aria-labelledby="scope-title" id="why">
       <div>
         <p class="scope-eyebrow">Why this assessment</p>
-        <h2 class="scope-title" id="scope-title">Simpler, more transparent, digital zone services</h2>
+        <h2 class="scope-title" id="scope-title">Simpler, more transparent and digital zone services</h2>
         <p class="scope-aside">An investor should understand where to go, what they will receive, how long it will take, and who is responsible for the result. The assessment starts there: it documents, country by country, what is in place, what is already digital and what each country wants to improve first, so that cooperation is built on evidence.</p>
         <style>
           .yb-card{position:relative;margin-top:1.6rem;background:#fff;border:1px solid rgba(50,35,15,.1);
@@ -1051,7 +1064,7 @@
         })();
         </script>
       </div>
-      <p class="scope-copy">The next stage for the region&rsquo;s zones goes beyond tax incentives and infrastructure: a digital, integrated, internationally oriented zone. An investor should be able to go from choosing a location to launching a project in a digital environment, with land and buildings, connection costs, incentives, registration and customs regimes all online. Digitalisation is not simply a technological tool; it is becoming an instrument of investment policy.<br><br>And investors no longer choose one country and one market: they look at the region as a whole. Production may take place in one country, inputs may come from another, and the logistics route may cross a third. That calls for moving from competition between individual zones towards cooperation between zones across countries, so that an investor who comes to Central Asia sees a single, clear, digital and competitive investment region.</p>
+      <p class="scope-copy">The next stage for the region&rsquo;s zones goes beyond tax incentives and infrastructure: zone services that are digital, integrated and internationally oriented. An investor passes through several procedures and institutions &mdash; land and buildings, connection costs, incentives, registration, customs &mdash; and each of them weighs on the decision. Digitalisation is not an objective in itself; it is one way of improving the investment environment.<br><br>Investors also tend to look at more than one country: production may take place in one, inputs may come from another and the logistics route may cross a third. That makes it increasingly useful to consider Central Asia as an interconnected investment region, where zones cooperate as well as compete.</p>
     </section>
 
     <section class="regional-view" aria-labelledby="nar-services" id="assessment">
@@ -1065,13 +1078,13 @@
         </article>
         <article class="regional-pillar">
           <div class="regional-icon" aria-hidden="true"><i data-lucide="target"></i></div>
-          <h3>What do you want to achieve?</h3>
-          <p>The improvements the country wants first, and how urgent they are.</p>
+          <h3>What needs to improve?</h3>
+          <p>The main difficulties, priorities and opportunities for improvement.</p>
         </article>
         <article class="regional-pillar">
           <div class="regional-icon" aria-hidden="true"><i data-lucide="loader"></i></div>
           <h3>What is underway?</h3>
-          <p>Reforms, initiatives and partners already at work, to build on and never duplicate.</p>
+          <p>Reforms, initiatives and partnerships already at work, to build on rather than duplicate.</p>
         </article>
       </div>
     </section>
@@ -1079,8 +1092,8 @@
     <section class="collaboration-section" aria-labelledby="collaboration-title" id="after">
       <header class="collaboration-header">
         <p class="collaboration-eyebrow">After the assessment</p>
-        <h2 class="collaboration-title" id="collaboration-title">Transparency, simplification,<br>digitalisation,<br>better regulations</h2>
-        <p class="collaboration-lead">A possible digital zone service could let an investor complete connected steps online, from choosing a location to launching a project. It could bring together information on available land and buildings, infrastructure and connection costs, incentives, registration and customs requirements, with verified outputs where appropriate. These are four areas of possible work, not fixed steps. Where digitalisation is chosen, the useful order is to document a procedure, simplify it, then put it online: digitising a procedure nobody has simplified only makes it faster to get wrong.</p>
+        <h2 class="collaboration-title" id="collaboration-title">Possible areas<br>of cooperation</h2>
+        <p class="collaboration-lead">The assessment will not prescribe a single solution. Depending on the needs identified, possible areas of cooperation could include greater transparency, simpler procedures, digital services and regulatory improvement. Where digitalisation is chosen, the useful order is to document a procedure, simplify it, then put it online: digitising a procedure nobody has simplified only makes it faster to get wrong.</p>
       </header>
       <div class="services">
       <section class="service">
@@ -1088,7 +1101,7 @@
           <div class="service-head">
             <h3>Transparency</h3>
           </div>
-          <p>Possible assistance could help document each procedure from the user's point of view: steps, required documents, costs, processing times, legal basis and responsible authority, kept up to date by that authority.</p>
+          <p>Where a country sees the need, possible assistance could help document each procedure from the user&rsquo;s point of view: steps, required documents, costs, processing times, legal basis and responsible authority, kept up to date by that authority.</p>
         </div>
       </section>
       <section class="service">
@@ -1096,7 +1109,7 @@
           <div class="service-head">
             <h3>Simplification</h3>
           </div>
-          <p>Possible assistance could help identify steps and requirements that do not serve a clear purpose, and clarify which authority is responsible for each action.</p>
+          <p>Depending on the needs identified, possible assistance could help review steps and requirements that no longer serve a clear purpose, and clarify which authority is responsible for each action.</p>
         </div>
       </section>
       <section class="service">
@@ -1104,15 +1117,15 @@
           <div class="service-head">
             <h3>Digitalisation</h3>
           </div>
-          <p>After procedures are simplified, possible assistance could help turn them into online services for applications, approvals, payments and renewals. UNCTAD's eRegistrations platform is one possible tool; each country decides what fits its law and capacity.</p>
+          <p>Where appropriate, and once procedures have been simplified, possible assistance could help turn them into online services for applications, approvals, payments and renewals. UNCTAD&rsquo;s eRegistrations platform is one option among others, subject to country priorities and capacity.</p>
         </div>
       </section>
       <section class="service">
         <div class="body">
           <div class="service-head">
-            <h3>Better regulations</h3>
+            <h3>Better regulation</h3>
           </div>
-          <p>Possible assistance could review the zone law from two perspectives: what the country offers investors, and what it expects from them. Where the legal system allows, detailed procedures could sit in regulations rather than in the law itself, so services improve without amending the law. A model regulation to consider adapting is being prepared. <a href="law/">Explore the regulatory approach →</a></p>
+          <p>If a country asks for it, possible assistance could look at the zone law from two perspectives: what the country offers investors, and what it expects from them. Where the legal system allows, detailed procedures could sit in regulations rather than in the law itself, so services improve without amending the law. A model regulation to consider adapting is being prepared. <a href="law/">Explore the regulatory approach →</a></p>
         </div>
       </section>
       </div>
@@ -1129,7 +1142,7 @@
       <div class="example-intro">
         <p class="example-eyebrow">In practice</p>
         <h2 class="example-title">Working examples</h2>
-        <p class="example-lead">These examples show what other countries have already built. They are inspiration, not a plan for Central Asia. Anything similar here would follow each country&rsquo;s own rules and priorities.</p>
+        <p class="example-lead">These examples show what other countries have already built. They are an inspiration, not a plan for Central Asia: anything similar here would follow each country&rsquo;s own rules and priorities.</p>
         <div class="reference-gateway">
           <div class="reference-gateway-text">
             <span class="reference-country-label">Central Asia</span>
@@ -1149,7 +1162,7 @@
               <div class="jamaica-intro" id="jamaica-example">
                 <span class="reference-country-label">Jamaica</span>
                 <h3>Digitalisation of zone services</h3>
-                <p>Jamaica's institutional set-up differs from those across Central Asia. What matters here is what the investor sees at the end: one entry point, every zone on a map, one process, one certificate.</p>
+                <p>Jamaica&rsquo;s institutional set-up differs from those across Central Asia. What matters here is what the investor sees at the end: one entry point, every zone on a map, one process, one certificate.</p>
               </div>
               <div class="screen-tabs" role="tablist" aria-label="Jamaica digital service screens">
                 <button class="screen-tab" type="button" role="tab" aria-selected="true" data-screen-tab="landing">
@@ -1204,12 +1217,12 @@
       <h2 class="section-title" id="nar-collab">Answer the questionnaire</h2>
       <div class="cta-band" style="margin-top:1rem;padding-top:0;border-top:0;">
         <div class="cta-txt">
-          <strong>A country can begin by answering the questionnaire.</strong>
+          <strong>Participation begins with the questionnaire.</strong>
           <span>Answer it, then decide whether you want to discuss possible next steps.</span>
         </div>
         <a class="cta-btn" href="https://training.eregistrations.org/zones/" target="_blank" rel="noopener">Answer the questionnaire →</a>
       </div>
-      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">Completing the questionnaire creates no commitment. Subject to the partners' mandates and available resources, the responses could inform a national assessment and report. Regional findings would be presented in consolidated form; an individual country would be named only with its consent.</p>
+      <p style="margin:1.4rem 0 0;font-size:.85rem;opacity:.8;">Completing the questionnaire is voluntary and creates no commitment. Each response reflects the view of the entity that sends it, not the official position of its country. Subject to the partners&rsquo; mandates and available resources, the responses could inform a national assessment and report. Regional findings would be presented in consolidated form; an individual country would be named only with its consent.</p>
     </div>
   </div>
 
