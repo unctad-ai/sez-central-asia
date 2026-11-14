@@ -1,0 +1,26 @@
+services:
+  app:
+    init: true
+    mem_limit: 256m
+    build: .
+    expose:
+      - "80"
+    environment:
+      PORT: "80"
+      SITE_DIR: /app/site
+      DATA_DIR: /data
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://sez-asia.eregistrations.dev}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:-}
+      QUESTIONNAIRE_CLOSED: ${QUESTIONNAIRE_CLOSED:-}
+      BREVO_API_KEY: ${BREVO_API_KEY:-}
+      MAIL_FROM: ${MAIL_FROM:-nelsonadpa@gmail.com}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME:-SEZ Central Asia needs assessment}
+      MAIL_REPLY_TO: ${MAIL_REPLY_TO:-nelson.perez@un.org}
+      NOTIFY_EMAIL: ${NOTIFY_EMAIL:-nelsonadpa@gmail.com}
+      PUBLIC_URL: ${PUBLIC_URL:-https://sez-asia.eregistrations.dev}
+    volumes:
+      - sez-asia-data:/data
+    restart: unless-stopped
+
+volumes:
+  sez-asia-data:
