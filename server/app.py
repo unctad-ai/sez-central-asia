@@ -486,9 +486,9 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Referrer-Policy', 'no-referrer')
         if target.suffix == '.html':
             self.send_header('Cache-Control', 'no-cache')
-            # The public pages stay indexable; only the questionnaire and admin are hidden from search engines.
-            if path.lstrip('/').startswith(('questionnaire', 'admin')):
-                self.send_header('X-Robots-Tag', 'noindex, nofollow')
+            # This app runs on sez-asia-questionnaire.eregistrations.dev only. The public pages
+            # it also serves duplicate sez-asia.eregistrations.dev, so nothing here is indexed.
+            self.send_header('X-Robots-Tag', 'noindex, nofollow')
         else:
             self.send_header('Cache-Control', 'public, max-age=3600')
         self.end_headers()
